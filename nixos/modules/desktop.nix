@@ -8,7 +8,7 @@
     mako
   ];
 
-  program.sway = {
+  programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
     xwayland.enable = false;

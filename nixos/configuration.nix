@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/desktop.nix
     ];
 
   # Enable flakes
@@ -62,13 +63,10 @@
     settings = {
       default_session = {
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
-        user = "sh4k0"
+        user = "sh4k0";
       };
     };
   };
-
-
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
