@@ -7,6 +7,8 @@
   # targets.genericLinux.enable = true; # enable on non-NixOS
 
   home.packages = [
+    pkgs.firefox
+    pkgs.fuzzel
     pkgs.hello
     pkgs.neovim
   ];
