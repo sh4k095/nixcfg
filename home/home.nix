@@ -11,6 +11,7 @@
     pkgs.fuzzel
     pkgs.hello
     pkgs.neovim
+    pkgs.telegram-desktop
   ];
 
   home.sessionVariables = {
