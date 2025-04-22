@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./modules/desktop.nix
       inputs.home-manager.nixosModules.home-manager
+      ./modules/nvidia.nix
     ];
 
   home-manager = {
@@ -42,6 +43,9 @@
       "keyfile.bin" = "/etc/secrets/initrd/keyfile.bin";
     };
   };
+
+  # Allow unfree software
+  nixpkgs.config.allowUnfree = true;
 
   networking.hostName = "erebus"; # Define your hostname.
   # Pick only one of the below networking options.
