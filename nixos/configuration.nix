@@ -70,11 +70,15 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-  services.greetd = {
+  services.greetd = let
+    sway-nvidia-wrapper = pkgs.writeShellScriptBin "sway-nvidia" ''
+    exec ${pkgs.sway}/bin/sway --unsupported-gpu "$@"
+  '';
+  in {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${sway-nvidia-wrapper}/bin/sway-nvidia";
         user = "sh4k0";
       };
     };
