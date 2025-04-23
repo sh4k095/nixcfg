@@ -4,6 +4,16 @@
 
 { inputs, config, lib, pkgs, ... }:
 
+
+  let nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+    export __NV_PRIME_RENDER_OFFLOAD=1 &&
+    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0 &&
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia &&
+    export __VK_LAYER_NV_optimus=NVIDIA_only &&
+    exec "$@"
+  '';
+  in
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -72,8 +82,8 @@
 
   services.greetd = let
     sway-nvidia-wrapper = pkgs.writeShellScriptBin "sway-nvidia" ''
-    exec ${pkgs.sway}/bin/sway --unsupported-gpu "$@"
-  '';
+      exec ${pkgs.sway}/bin/sway --unsupported-gpu "$@"
+    '';
   in {
     enable = true;
     settings = {
@@ -120,6 +130,13 @@
     vim
     wget
   ];
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
