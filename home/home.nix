@@ -23,6 +23,9 @@
   home.file = {
     ".config/sway/config".source = dotfiles/sway/config;
     ".config/fuzzel/fuzzel.ini".source = dotfiles/fuzzel/fuzzel.ini;
+    ".config/fuzzel/tokyonight_moon.ini".source = dotfiles/fuzzel/tokyonight_moon.ini;
+    ".config/alacritty/alacritty.toml".source = dotfiles/alacritty/alacritty.toml;
+    ".config/alacritty/tokyonight_moon.toml".source = dotfiles/alacritty/tokyonight_moon.toml;
   };
 
   home.stateVersion = "24.11";

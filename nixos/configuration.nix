@@ -118,6 +118,7 @@
   #environment.systemPackages = with pkgs; [
   environment.systemPackages = [
     (import scripts/nvidia-offload.nix { inherit pkgs; })
+    pkgs.autotiling
     pkgs.fuzzel
     pkgs.git
     pkgs.vim

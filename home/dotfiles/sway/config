@@ -18,6 +18,11 @@ set $term foot
 # Your preferred application launcher
 set $menu fuzzel
 
+default_border none
+default_floating_border none
+titlebar_padding 1
+titlebar_border_thickness 0
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
