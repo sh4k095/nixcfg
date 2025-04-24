@@ -22,6 +22,7 @@
 
   home.file = {
     ".config/sway/config".source = dotfiles/sway/config;
+    ".config/fuzzel/fuzzel.ini".source = dotfiles/fuzzel/fuzzel.ini;
   };
 
   home.stateVersion = "24.11";
