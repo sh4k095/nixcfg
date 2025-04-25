@@ -124,6 +124,7 @@
     pkgs.autotiling
     pkgs.fuzzel
     pkgs.git
+    pkgs.ueberzugpp
     pkgs.vim
     pkgs.wget
   ];
