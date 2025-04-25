@@ -10,6 +10,7 @@
     alacritty
     firefox
     fuzzel
+    imv
     i3status-rust
     zellij
     neovim
@@ -22,11 +23,13 @@
   };
 
   home.file = {
-    ".config/sway/config".source = dotfiles/sway/config;
-    ".config/fuzzel/fuzzel.ini".source = dotfiles/fuzzel/fuzzel.ini;
-    ".config/fuzzel/tokyonight_moon.ini".source = dotfiles/fuzzel/tokyonight_moon.ini;
     ".config/alacritty/alacritty.toml".source = dotfiles/alacritty/alacritty.toml;
     ".config/alacritty/tokyonight_moon.toml".source = dotfiles/alacritty/tokyonight_moon.toml;
+    ".config/fuzzel/fuzzel.ini".source = dotfiles/fuzzel/fuzzel.ini;
+    ".config/fuzzel/tokyonight_moon.ini".source = dotfiles/fuzzel/tokyonight_moon.ini;
+    ".config/i3status-rust/config.toml".source = dotfiles/i3status-rust/config.toml;
+    ".config/sway/config".source = dotfiles/sway/config;
+    ".config/sway/wp/sea.jpg".source = dotfiles/sway/wp/sea.jpg;
   };
 
   home.stateVersion = "24.11";
