@@ -10,6 +10,7 @@
     alacritty
     firefox
     fuzzel
+    i3status-rust
     zellij
     neovim
     telegram-desktop
