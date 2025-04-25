@@ -33,11 +33,16 @@ input "AT Translated Set 2 keyboard" {
 output "eDP-1" {
   resolution 2560x1600
   scale 1
+  bg ~/.config/sway/wp/sea.jpg fill
+}
+
+output "HDMI-A-1" {
+  resolution 2440x1440
+  scale 1
 }
 
 #
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
-output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
@@ -223,22 +228,10 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
+# Status bar
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+  font JetBrainsMonoNLNerdFontMono 12
+  status_command i3status-rs ~/.config/i3status-rust/config.toml
 }
 
 include /etc/sway/config.d/*
