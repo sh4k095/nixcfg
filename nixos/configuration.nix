@@ -124,6 +124,7 @@
   #environment.systemPackages = with pkgs; [
   environment.systemPackages = [
     (import scripts/nvidia-offload.nix { inherit pkgs; })
+    pkgs.libsForQt5.qt5ct
     pkgs.autotiling
     pkgs.fuzzel
     pkgs.git
@@ -132,6 +133,12 @@
     pkgs.vim
     pkgs.wget
   ];
+
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+    style= "kvantum";
+  };
 
   fonts.packages = with pkgs; [
     noto-fonts
