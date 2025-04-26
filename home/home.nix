@@ -8,6 +8,7 @@
 
   home.packages = with pkgs; [
     alacritty
+    kdePackages.dolphin
     firefox
     fuzzel
     imv
@@ -19,7 +20,7 @@
   ];
 
   home.sessionVariables = {
-    # EDITOR = "nvim";
+    EDITOR = "nvim";
   };
 
   home.file = {
@@ -29,7 +30,11 @@
     ".config/fuzzel/tokyonight_moon.ini".source = dotfiles/fuzzel/tokyonight_moon.ini;
     ".config/i3status-rust/config.toml".source = dotfiles/i3status-rust/config.toml;
     ".config/sway/config".source = dotfiles/sway/config;
-    ".config/sway/wp/sea.jpg".source = dotfiles/sway/wp/sea.jpg;
+    ".config/sway/config.d/daemons.conf".source = dotfiles/sway/config.d/daemons.conf;
+    ".config/sway/config.d/keybinds.conf".source = dotfiles/sway/config.d/keybinds.conf;
+    ".config/sway/config.d/modes.conf".source = dotfiles/sway/config.d/modes.conf;
+    ".config/sway/config.d/theme.conf".source = dotfiles/sway/config.d/theme.conf;
+    ".config/sway/wp/samarkand.png".source = dotfiles/sway/wp/samarkand.png;
   };
 
   home.stateVersion = "24.11";
