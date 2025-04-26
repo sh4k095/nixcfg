@@ -86,6 +86,9 @@
 
   services.automatic-timezoned.enable = true;
   services.geoclue2.geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
+  services.devmon.enable = true;
+  services.gvfs.enable = true; 
+  services.udisks2.enable = true;
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -124,6 +127,7 @@
     pkgs.autotiling
     pkgs.fuzzel
     pkgs.git
+    pkgs.udisks
     pkgs.ueberzugpp
     pkgs.vim
     pkgs.wget
