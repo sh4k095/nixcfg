@@ -4,6 +4,7 @@
 
   imports = [
     ./modules/theme.nix
+    ./modules/lazyvim.nix
   ];
 
   home.username = "sh4k0";
@@ -12,6 +13,7 @@
   # targets.genericLinux.enable = true; # enable on non-NixOS
 
   home.packages = with pkgs; [
+    vimPlugins.LazyVim
     alacritty
     kdePackages.dolphin
     firefox
@@ -38,6 +40,7 @@
     ".config/sway/config.d/daemons.conf".source = dotfiles/sway/config.d/daemons.conf;
     ".config/sway/config.d/keybinds.conf".source = dotfiles/sway/config.d/keybinds.conf;
     ".config/sway/config.d/modes.conf".source = dotfiles/sway/config.d/modes.conf;
+    ".config/sway/config.d/rules.conf".source = dotfiles/sway/config.d/rules.conf;
     ".config/sway/config.d/theme.conf".source = dotfiles/sway/config.d/theme.conf;
     ".config/sway/wp/samarkand.png".source = dotfiles/sway/wp/samarkand.png;
   };

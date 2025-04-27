@@ -46,6 +46,9 @@ output "HDMI-A-1" {
 bar {
   font JetBrainsMonoNLNerdFontMono 12
   status_command i3status-rs ~/.config/i3status-rust/config.toml
+  #tray {
+  #  icon_theme adwaita
+  #}
 }
 
 # Includes:
