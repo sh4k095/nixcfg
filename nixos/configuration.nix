@@ -127,6 +127,7 @@
     pkgs.libsForQt5.qt5ct
     pkgs.autotiling
     pkgs.fuzzel
+    pkgs.gcc
     pkgs.git
     pkgs.udisks
     pkgs.ueberzugpp
