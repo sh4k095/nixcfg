@@ -4,7 +4,6 @@
 
   imports = [
     ./modules/theme.nix
-    ./modules/lazyvim.nix
   ];
 
   home.username = "sh4k0";
