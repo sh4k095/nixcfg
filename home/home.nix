@@ -18,6 +18,7 @@
     fuzzel
     imv
     i3status-rust
+    #ovito
     zellij
     neovim
     telegram-desktop
