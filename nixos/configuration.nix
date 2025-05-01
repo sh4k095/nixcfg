@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./modules/desktop.nix
+      ./modules/firefox.nix
       inputs.home-manager.nixosModules.home-manager
       ./modules/nvidia.nix
     ];

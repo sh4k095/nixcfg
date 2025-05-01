@@ -15,7 +15,7 @@
     alacritty
     android-tools
     kdePackages.dolphin
-    firefox
+    #firefox
     fuzzel
     imv
     i3status-rust
