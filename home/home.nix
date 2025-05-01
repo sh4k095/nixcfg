@@ -13,6 +13,7 @@
   home.packages = with pkgs; [
     vimPlugins.LazyVim
     alacritty
+    android-tools
     kdePackages.dolphin
     firefox
     fuzzel
