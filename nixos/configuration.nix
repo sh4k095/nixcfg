@@ -106,6 +106,9 @@
   #   pulse.enable = true;
   # };
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   #hardware.tuxedo-rs = {
   #  enable = true;
   #  tailor-gui.enable = true;
@@ -133,6 +136,7 @@
     pkgs.libsForQt5.qt5ct
     pkgs.autotiling
     pkgs.fuzzel
+    pkgs.networkmanagerapplet
     pkgs.gcc
     pkgs.git
     pkgs.udisks
