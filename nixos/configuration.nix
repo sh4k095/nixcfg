@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { inputs, config, lib, pkgs, ... }:
 
 {
@@ -45,8 +41,30 @@
     };
   };
 
-  # Allow unfree software
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    #enableParallelBuildingByDefault = true;
+    #cudaSupport = true;
+    rocmSupport = true;
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      # CUDA
+      "cuda_cudart"
+      "cuda_cccl"
+      "libnpp"
+      "libcublas"
+      "libcufft"
+      "cuda_nvcc"
+      # Nvidia
+      "nvidia-x11"
+      "nvidia-settings"
+      "nvidia-persistenced"
+      # Steam
+      "steam"
+      "steam-original"
+      "steam-unwrapped"
+      "steam-run"
+    ];
+  };
+
 
   networking.hostName = "erebus"; # Define your hostname.
   # Pick only one of the below networking options.
