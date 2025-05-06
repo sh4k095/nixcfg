@@ -20,26 +20,35 @@
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/efi";
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-    enableCryptodisk = true;
+  boot = {
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/efi";
+      };
+      grub = {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        enableCryptodisk = true;
+      };
+    };
+    initrd = {
+      luks = {
+        devices = {
+          "cryptroot" = {
+            device = "/dev/disk/by-uuid/ad60d70a-147b-4f77-84f0-daad5f89206b";
+            keyFile = "/keyfile.bin";
+            allowDiscards = true;
+          };
+        };
+      };
+      secrets = {
+        "keyfile.bin" = "/etc/secrets/initrd/keyfile.bin";
+      };
+    };
   };
   
-  boot.initrd = {
-    luks.devices."cryptroot" = {
-      device = "/dev/disk/by-uuid/ad60d70a-147b-4f77-84f0-daad5f89206b";
-      keyFile = "/keyfile.bin";
-      allowDiscards = true;
-    };
-    secrets = {
-      "keyfile.bin" = "/etc/secrets/initrd/keyfile.bin";
-    };
-  };
 
   nixpkgs.config = {
     #enableParallelBuildingByDefault = true;
@@ -64,7 +73,6 @@
       "steam-run"
     ];
   };
-
 
   networking.hostName = "erebus"; # Define your hostname.
   # Pick only one of the below networking options.
