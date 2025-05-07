@@ -1,14 +1,14 @@
 { inputs, config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules/desktop.nix
-      ./modules/firefox.nix
-      inputs.home-manager.nixosModules.home-manager
-      ./modules/nvidia.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./modules/desktop.nix
+    ./modules/firefox.nix
+    ./modules/gaming.nix
+    inputs.home-manager.nixosModules.home-manager
+    ./modules/nvidia.nix
+  ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -49,19 +49,18 @@
     };
   };
   
-
   nixpkgs.config = {
     #enableParallelBuildingByDefault = true;
     #cudaSupport = true;
     rocmSupport = true;
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       # CUDA
-      "cuda_cudart"
-      "cuda_cccl"
-      "libnpp"
-      "libcublas"
-      "libcufft"
-      "cuda_nvcc"
+      #"cuda_cudart"
+      #"cuda_cccl"
+      #"libnpp"
+      #"libcublas"
+      #"libcufft"
+      #"cuda_nvcc"
       # Nvidia
       "nvidia-x11"
       "nvidia-settings"
@@ -73,6 +72,17 @@
       "steam-run"
     ];
   };
+
+  nixpkgs.overlays = [(final: prev: { ovito = prev.ovito.overrideAttrs  rec {
+  version = "3.12.2";
+  src = final.fetchFromGitLab {
+    owner = "stuko";
+    repo = "ovito";
+    rev = "v${version}";
+    hash = "sha256-qpKQAO2f1TfspqjbCLA/3ERWdMeknKe0a54yd9PZbsA=";
+    fetchSubmodules = true;
+  };
+}; })];
 
   networking.hostName = "erebus"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -163,12 +173,18 @@
     pkgs.autotiling
     pkgs.fuzzel
     pkgs.networkmanagerapplet
+    #pkgs.python3
+    pkgs.ovito
     pkgs.gcc
     pkgs.git
     pkgs.udisks
     pkgs.ueberzugpp
     pkgs.vim
     pkgs.wget
+    #pkgs.python312Packages.jupyterlab
+    (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
+      jupyterlab
+  ]))
   ];
 
   qt = {
@@ -183,12 +199,12 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  };
+  #programs.steam = {
+  #  enable = true;
+  #  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  #  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  #  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  #};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
