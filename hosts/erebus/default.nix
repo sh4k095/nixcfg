@@ -3,17 +3,17 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/desktop.nix
-    ./modules/firefox.nix
-    ./modules/gaming.nix
+    ../../modules/desktop.nix
+    ../../modules/firefox.nix
+    ../../modules/gaming.nix
     inputs.home-manager.nixosModules.home-manager
-    ./modules/nvidia.nix
+    ../../modules/nvidia.nix
   ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      sh4k0 = import ../home/home.nix;
+      sh4k0 = import ../../home/home.nix;
     };
   };
 

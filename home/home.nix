@@ -13,7 +13,6 @@
 
   # targets.genericLinux.enable = true; # enable on non-NixOS
 
-
   home.packages = [
     #pkgs.btop
     pkgs.vimPlugins.LazyVim

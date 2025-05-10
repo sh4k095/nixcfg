@@ -33,7 +33,7 @@
       erebus = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs system; };
         modules = [
-          ./nixos/configuration.nix
+          ./hosts/erebus
         ];
       };
     };
