@@ -70,6 +70,8 @@
       "steam-original"
       "steam-unwrapped"
       "steam-run"
+      # winbox
+      "winbox"
     ];
   };
 
@@ -169,6 +171,7 @@
   #environment.systemPackages = with pkgs; [
   environment.systemPackages = [
     (import scripts/nvidia-offload.nix { inherit pkgs; })
+    pkgs.winbox4
     pkgs.libsForQt5.qt5ct
     pkgs.autotiling
     pkgs.fuzzel
