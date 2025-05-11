@@ -19,21 +19,33 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
- 
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-    };
-
+    inherit (self) outputs;
+    systems = [ 
+      "aarch64-linux"
+      "i686-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+    forAllSystems = nixpkgs.lib.genAttrs systems;
   in
   {
     nixosConfigurations = {
       erebus = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system; };
+        specialArgs = { inherit inputs outputs; };
         modules = [
           ./hosts/erebus
+        ];
+      };
+    };
+    homeConfigurations = {
+      "sh4k0@erebus" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit inputs outputs; };
+        modules = [
+          ./home-manager/home.nix
         ];
       };
     };
