@@ -32,6 +32,7 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in
   {
+    # NixOS multi-host configuration
     nixosConfigurations = {
       erebus = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs outputs; };
@@ -40,6 +41,7 @@
         ];
       };
     };
+    # home-manager standalone configuration
     homeConfigurations = {
       "sh4k0@erebus" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
