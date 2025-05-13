@@ -2,12 +2,14 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    modules/hardware-configuration.nix
     ../../modules/desktop.nix
     ../../modules/firefox.nix
     ../../modules/gaming.nix
     inputs.home-manager.nixosModules.home-manager
     ../../modules/nvidia.nix
+    modules/boot.nix
+    ../../users/sh4k0
   ];
 
   home-manager = {
@@ -20,35 +22,6 @@
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  boot = {
-    loader = {
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/efi";
-      };
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        enableCryptodisk = true;
-      };
-    };
-    initrd = {
-      luks = {
-        devices = {
-          "cryptroot" = {
-            device = "/dev/disk/by-uuid/ad60d70a-147b-4f77-84f0-daad5f89206b";
-            keyFile = "/keyfile.bin";
-            allowDiscards = true;
-          };
-        };
-      };
-      secrets = {
-        "keyfile.bin" = "/etc/secrets/initrd/keyfile.bin";
-      };
-    };
-  };
-  
   nixpkgs.config = {
     #enableParallelBuildingByDefault = true;
     #cudaSupport = true;
@@ -156,13 +129,13 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.sh4k0 = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "seat" "networkmanager" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      tree
-    ];
-  };
+  #users.users.sh4k0 = {
+  #  isNormalUser = true;
+  #  extraGroups = [ "wheel" "seat" "networkmanager" ]; # Enable ‘sudo’ for the user.
+  #  packages = with pkgs; [
+  #    tree
+  #  ];
+  #};
 
   # programs.firefox.enable = true;
 

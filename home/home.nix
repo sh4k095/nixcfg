@@ -22,6 +22,7 @@
     #pkgs.kdePackages.dolphin
     #pkgs.firefox
     pkgs.fuzzel
+    pkgs.xmage
     pkgs.imv
     pkgs.i3status-rust
     #pkgs.ovito
