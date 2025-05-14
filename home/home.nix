@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/theme.nix
+    ./modules/sway
     ./modules/i3status-rust.nix
     #./modules/btop.nix
     inputs.LazyVim.homeManagerModules.default
@@ -19,6 +20,7 @@
     #python3.12Packages.jupyterlab
     pkgs.alacritty
     pkgs.android-tools
+    pkgs.waybar
     #pkgs.kdePackages.dolphin
     #pkgs.firefox
     pkgs.fuzzel
@@ -50,10 +52,10 @@
       source = dotfiles/fuzzel;
       recursive = true;
     };
-    ".config/sway" = {
-      source = dotfiles/sway;
-      recursive = true;
-    };
+    #".config/sway" = {
+    #  source = dotfiles/sway;
+    #  recursive = true;
+    #};
   };
 
   home.stateVersion = "24.11";
