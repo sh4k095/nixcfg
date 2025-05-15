@@ -10,7 +10,7 @@
   ];
   wayland.windowManager.sway = {
     enable = true;
-    xwayland = false;
+    #xwayland = false;
     config = {
       modifier = "Mod4";
       floating = {
@@ -53,10 +53,27 @@
           scale = "1";
         };
       };
-      bars = [{
-        position = "top";
-        command = "${pkgs.waybar}/bin/waybar";
-      }];
+      bars = [
+        {
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
+          position = "top";
+          fonts = {
+            names = [ "JetBrainsMonoNLNerdFontMono" ];
+            style = "Regular";
+            size = 12.0;
+          };
+        }
+        {
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-bottom.toml";
+          position = "bottom";
+          fonts = {
+            names = [ "JetBrainsMonoNLNerdFontMono" ];
+            style = "Regular";
+            size = 12.0;
+          };
+          workspaceButtons = false;
+        }
+      ];
     };
   };
 }

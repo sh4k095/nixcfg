@@ -4,7 +4,7 @@
   imports = [
     ./modules/theme.nix
     ./modules/sway
-    ./modules/i3status-rust.nix
+    ./modules/i3status-rust
     #./modules/btop.nix
     inputs.LazyVim.homeManagerModules.default
   ];
@@ -37,6 +37,7 @@
     pkgs.lammps
     pkgs.calibre
     pkgs.devenv
+    pkgs.powerline-symbols
   ];
 
   home.sessionVariables = {
