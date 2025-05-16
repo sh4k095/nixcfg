@@ -48,16 +48,16 @@
     ];
   };
 
-#  nixpkgs.overlays = [(final: prev: { ovito = prev.ovito.overrideAttrs  rec {
-#  version = "3.12.2";
-#  src = final.fetchFromGitLab {
-#    owner = "stuko";
-#    repo = "ovito";
-#    rev = "v${version}";
-#    hash = "sha256-qpKQAO2f1TfspqjbCLA/3ERWdMeknKe0a54yd9PZbsA=";
-#    fetchSubmodules = true;
-#  };
-#}; })];
+  nixpkgs.overlays = [(final: prev: { ovito = prev.ovito.overrideAttrs  rec {
+  version = "3.12.2";
+  src = final.fetchFromGitLab {
+    owner = "stuko";
+    repo = "ovito";
+    rev = "v${version}";
+    hash = "sha256-qpKQAO2f1TfspqjbCLA/3ERWdMeknKe0a54yd9PZbsA=";
+    fetchSubmodules = true;
+  };
+}; })];
 
   networking.hostName = "erebus"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -174,6 +174,8 @@
     noto-fonts
     noto-fonts-emoji
     nerd-fonts.jetbrains-mono
+    powerline-fonts
+    powerline-symbols
   ];
 
   #programs.steam = {

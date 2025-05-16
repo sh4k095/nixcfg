@@ -38,6 +38,7 @@
     pkgs.calibre
     pkgs.devenv
     pkgs.powerline-symbols
+    pkgs.swaylock-effects
   ];
 
   home.sessionVariables = {

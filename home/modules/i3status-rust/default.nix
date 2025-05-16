@@ -49,14 +49,19 @@
       bottom = {
         theme = "gruvbox-dark";
         blocks = [
-        #  {
-        #    block = "disk_space";
-        #    path = "/";
-        #    info_type = "available";
-        #    interval = 60;
-        #    warning = 20.0;
-        #    alert = 10.0;
-        #  }
+          {
+            block = "disk_space";
+            path = "/";
+            info_type = "available";
+            interval = 60;
+            warning = 20.0;
+            alert = 10.0;
+          }
+          {
+            block = "amd_gpu";
+            format_mem = "$icon $mem_used_percents";
+            format_swap = "$icon $swap_used_percents";
+          }
         #  {
         #    block = "memory";
         #    format_mem = "$icon $mem_used_percents";

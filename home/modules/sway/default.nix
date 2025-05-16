@@ -60,7 +60,7 @@
           fonts = {
             names = [ "JetBrainsMonoNLNerdFontMono" ];
             style = "Regular";
-            size = 12.0;
+            size = 11.0;
           };
         }
         {
@@ -69,7 +69,7 @@
           fonts = {
             names = [ "JetBrainsMonoNLNerdFontMono" ];
             style = "Regular";
-            size = 12.0;
+            size = 11.0;
           };
           workspaceButtons = false;
         }
