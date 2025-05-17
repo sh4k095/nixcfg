@@ -6,7 +6,7 @@
     ./modules/keybindings
     ./modules/modes
     #./modules/rules
-    #./modules/theme
+    ./modules/theme
   ];
   wayland.windowManager.sway = {
     enable = true;
@@ -57,6 +57,7 @@
         {
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
           position = "top";
+          trayOutput = "none";
           fonts = {
             names = [ "JetBrainsMonoNLNerdFontMono" ];
             style = "Regular";
@@ -66,6 +67,7 @@
         {
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-bottom.toml";
           position = "bottom";
+          trayOutput = "none";
           fonts = {
             names = [ "JetBrainsMonoNLNerdFontMono" ];
             style = "Regular";

@@ -1,4 +1,4 @@
-{ config, ... }
+{ config, ... }:
 
 let
   col_focused = "#FE8019";
@@ -12,11 +12,32 @@ in
   {
     config.wayland.windowManager.sway.config.colors = {
       focused = {
-        background = ${col_focused};
-        border = ${col_foc};
-        background = ${col_focused};
-        background = ${col_focused};
-        background = ${col_focused};
+        background = "${col_focused}";
+        border = "${col_focused}";
+        childBorder = "${col_focused}";
+        indicator = "${col_focused}";
+        text = "${col_text_dark}";
+      };
+      focusedInactive = {
+        background = "${col_focused_inactive}";
+        border = "${col_focused_inactive}";
+        childBorder = "${col_focused_inactive}";
+        indicator = "${col_focused_inactive}";
+        text = "${col_text_dark}";
+      };
+      unfocused = {
+        background = "${col_unfocused}";
+        border = "${col_unfocused_border}";
+        childBorder = "${col_unfocused}";
+        indicator = "${col_unfocused}";
+        text = "${col_text_light}";
+      };
+      urgent = {
+        background = "${col_urgent}";
+        border = "${col_text_dark}";
+        childBorder = "${col_urgent}";
+        indicator = "${col_urgent}";
+        text = "${col_text_dark}";
       };
     };
   }

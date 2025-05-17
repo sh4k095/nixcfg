@@ -5,11 +5,12 @@
     enable = true;
     bars = {
       top = {
+        icons = "emoji";
         settings = {
           theme = {
             theme = "gruvbox-dark";
             overrides = {
-              #separator = "";
+              separator = "";
             };
           };
         };
@@ -23,8 +24,12 @@
             warning = 20.0;
           }
           {
+            block = "backlight";
+            format = "$icon $brightness";
+          }
+          {
             block = "memory";
-            format = " $icon mem_used_percents ";
+            format = " $icon $mem_used_percents ";
             format_alt = " $icon $swap_used_percents ";
           }
           {
@@ -47,7 +52,16 @@
         ];
       };
       bottom = {
-        theme = "gruvbox-dark";
+        icons = "emoji";
+        settings = {
+          theme = {
+            theme = "gruvbox-dark";
+            overrides = {
+              icons = "emoji";
+              separator = "";
+            };
+          };
+        };
         blocks = [
           {
             block = "disk_space";
@@ -59,8 +73,11 @@
           }
           {
             block = "amd_gpu";
-            format_mem = "$icon $mem_used_percents";
-            format_swap = "$icon $swap_used_percents";
+            format = "$icon $utilization ($vram_used/$vram_total)";
+          }
+          {
+            block = "nvidia_gpu";
+            format = "$icon $utilization $temperature";
           }
         #  {
         #    block = "memory";
