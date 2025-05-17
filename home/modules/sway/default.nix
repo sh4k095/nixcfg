@@ -2,9 +2,9 @@
 
 {
   imports = [
-    #./modules/daemons
+    ./modules/daemons
     ./modules/keybindings
-    #./modules/modes
+    ./modules/modes
     #./modules/rules
     #./modules/theme
   ];

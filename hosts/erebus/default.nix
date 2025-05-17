@@ -147,7 +147,7 @@
     (import scripts/xmage-sway.nix { inherit pkgs; })
     pkgs.winbox4
     pkgs.libsForQt5.qt5ct
-    pkgs.autotiling
+    #pkgs.autotiling
     pkgs.fuzzel
     pkgs.networkmanagerapplet
     #pkgs.python3

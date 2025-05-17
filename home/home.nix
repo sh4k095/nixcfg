@@ -16,6 +16,8 @@
 
   home.packages = [
     #pkgs.btop
+    pkgs.fastfetch
+    pkgs.wl-mirror
     pkgs.vimPlugins.LazyVim
     #python3.12Packages.jupyterlab
     pkgs.alacritty
@@ -24,6 +26,7 @@
     #pkgs.kdePackages.dolphin
     #pkgs.firefox
     pkgs.fuzzel
+    pkgs.autotiling-rs
     pkgs.xmage
     pkgs.imv
     pkgs.i3status-rust
