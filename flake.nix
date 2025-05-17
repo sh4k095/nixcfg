@@ -17,9 +17,12 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tuxedo-nixos = {
+      url = "github:blitz/tuxedo-nixos";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, tuxedo-nixos, ... }@inputs:
   let
     inherit (self) outputs;
     systems = [ 
@@ -38,6 +41,13 @@
         specialArgs = { inherit inputs outputs; };
         modules = [
           ./hosts/erebus
+          tuxedo-nixos.nixosModules.default
+          {
+            hardware.tuxedo-control-center = {
+              enable = true;
+              package = tuxedo-nixos.packages.x86_64-linux.default;
+            };
+          }
         ];
       };
     };

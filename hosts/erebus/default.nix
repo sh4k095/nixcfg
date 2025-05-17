@@ -112,10 +112,12 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+   services.pipewire = {
+     enable = true;
+     alsa.enable = true;
+     alsa.support32Bit = true;
+     pulse.enable = true;
+   };
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -155,6 +157,8 @@
     pkgs.gcc
     pkgs.git
     pkgs.udisks
+    pkgs.pavucontrol
+    pkgs.helvum
     pkgs.ueberzugpp
     pkgs.vim
     pkgs.wget
@@ -163,6 +167,8 @@
       jupyterlab
   ]))
   ];
+
+  hardware.tuxedo-keyboard.enable = true;
 
   qt = {
     enable = true;
