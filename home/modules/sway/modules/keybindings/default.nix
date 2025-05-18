@@ -14,8 +14,8 @@ in
     "${mod}+p" = "mode present";
     # special keys
     "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
-    "XF86AudioLowerVolume" = "exec ${pkgs.pipewire}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
-    "XF86AudioRaiseVolume" = "exec ${pkgs.pipewire}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
+    "XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
+    "XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
     "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%-";
     "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%+";
   };

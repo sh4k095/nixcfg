@@ -5,16 +5,53 @@
     enable = true;
     bars = {
       top = {
-        icons = "emoji";
+        icons = "material-nf";
         settings = {
           theme = {
             theme = "gruvbox-dark";
             overrides = {
-              separator = "";
+              idle_bg = "#282828";
+              idle_fg = "#FE8019";
+              good_bg = "#282828";
+              good_fg = "#98971A";
+              warning_bg = "#282828";
+              warning_fg = "#D79921";
+              critical_bg = "#282828";
+              critical_fg = "#CC241D";
+              info_bg = "#282828";
+              info_fg = "#458588";
+              alternating_ting_bg = "#282828";
+              alternating_ting_fg = "#FE8019";
+              separator_bg = "#282828";
+              separator_fg = "#FE8019";
+              separator = "|";
+              end_separator = "|";
             };
           };
         };
         blocks = [
+          {
+            block = "scratchpad";
+            format = " $icon $count ";
+          }
+          {
+            block = "kdeconnect";
+            format = " $icon $name ($bat_icon $bat_charge) ";
+          }
+          {
+            block = "bluetooth";
+            mac = "70:08:10:B1:E7:FB";
+            format = " $icon ";
+          }
+          {
+            block = "sound";
+            format = " $icon $volume ";
+            headphones_indicator = true;
+          }
+          {
+            block = "backlight";
+            format = " $icon $brightness ";
+          }
           {
             alert = 10.0;
             block = "disk_space";
@@ -24,13 +61,8 @@
             warning = 20.0;
           }
           {
-            block = "backlight";
-            format = "$icon $brightness";
-          }
-          {
             block = "memory";
-            format = " $icon $mem_used_percents ";
-            format_alt = " $icon $swap_used_percents ";
+            format = " $icon $mem_used_percents ($mem_used/$mem_total) ";
           }
           {
             block = "cpu";
@@ -42,7 +74,8 @@
             interval = 1;
           }
           {
-            block = "sound";
+            block = "battery";
+            format = " $icon $percentage ($time_remaining) $power ";
           }
           {
             block = "time";
@@ -52,13 +85,27 @@
         ];
       };
       bottom = {
-        icons = "emoji";
+        icons = "material-nf";
         settings = {
           theme = {
             theme = "gruvbox-dark";
             overrides = {
-              icons = "emoji";
-              separator = "";
+              idle_bg = "#282828";
+              idle_fg = "#EBDBB2";
+              good_bg = "#282828";
+              good_fg = "#EBDBB2";
+              warning_bg = "#282828";
+              warning_fg = "#EBDBB2";
+              critical_bg = "#282828";
+              critical_fg = "#EBDBB2";
+              info_bg = "#282828";
+              info_fg = "#EBDBB2";
+              alternating_ting_bg = "#282828";
+              alternating_ting_fg = "#EBDBB2";
+              separator_bg = "#282828";
+              separator_fg = "#EBDBB2";
+              separator = "|";
+              end_separator = "|";
             };
           };
         };

@@ -12,6 +12,9 @@
   home.username = "sh4k0";
   home.homeDirectory = "/home/sh4k0";
 
+services.kdeconnect.enable = true;
+
+
   # targets.genericLinux.enable = true; # enable on non-NixOS
 
   home.packages = [
