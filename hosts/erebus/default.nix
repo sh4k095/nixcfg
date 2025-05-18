@@ -158,6 +158,7 @@
     pkgs.git
     pkgs.udisks
     pkgs.pavucontrol
+    pkgs.brightnessctl
     pkgs.helvum
     pkgs.ueberzugpp
     pkgs.vim
@@ -203,6 +204,10 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+networking.firewall = rec {
+  allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+  allowedUDPPortRanges = allowedTCPPortRanges;
+};
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
