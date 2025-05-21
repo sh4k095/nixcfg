@@ -38,8 +38,8 @@
       termguicolors = true;
       spell = false;
       wrap = false;
-      tabstop = 4;
-      shiftwidth = 4;
+      tabstop = 2;
+      shiftwidth = 2;
       expandtab = true;
       autoindent = true;
       textwidth = 0;

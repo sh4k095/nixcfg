@@ -5,7 +5,7 @@
     enable = true;
     bars = {
       top = {
-        icons = "material-nf";
+        icons = "emoji";
         settings = {
           theme = {
             theme = "gruvbox-dark";
@@ -70,7 +70,7 @@
         ];
       };
       bottom = {
-        icons = "material-nf";
+        icons = "emoji";
         settings = {
           theme = {
             theme = "gruvbox-dark";

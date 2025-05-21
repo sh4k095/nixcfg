@@ -1,11 +1,18 @@
 {
   imports = [
+    ./modules/nvim-autopairs.nix
     ./modules/barbar.nix
+    ./modules/comment.nix
     ./modules/floaterm.nix
     ./modules/gruvbox.nix
+    ./modules/lualine.nix
+    ./modules/lsp.nix
     ./modules/neo-tree.nix
+    ./modules/snacks.nix
     ./modules/startify.nix
     ./modules/telescope.nix
+    ./modules/transparent.nix
     ./modules/treesitter.nix
+    ./modules/web-devicons.nix
   ];
 }
