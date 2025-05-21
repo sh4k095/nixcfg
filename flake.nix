@@ -22,7 +22,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, tuxedo-nixos, ... }@inputs:
+  outputs = { self, nixpkgs, nixvim, home-manager, tuxedo-nixos, ... }@inputs:
   let
     inherit (self) outputs;
     systems = [ 
@@ -58,6 +58,7 @@
         extraSpecialArgs = { inherit inputs outputs; };
         modules = [
           ./home/home.nix
+          nixvim.homeManagerModules.nixvim
         ];
       };
     };

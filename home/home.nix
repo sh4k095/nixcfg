@@ -4,9 +4,11 @@
   imports = [
     ./modules/theme.nix
     ./modules/sway
+    ./modules/nvim
     ./modules/i3status-rust
     #./modules/btop.nix
-    inputs.LazyVim.homeManagerModules.default
+    #inputs.LazyVim.homeManagerModules.default
+    inputs.nixvim.homeManagerModules.nixvim
   ];
 
   home.username = "sh4k0";
@@ -19,6 +21,7 @@ services.kdeconnect.enable = true;
 
   home.packages = [
     #pkgs.btop
+    pkgs.ripgrep
     pkgs.fastfetch
     pkgs.wl-mirror
     pkgs.vimPlugins.LazyVim
@@ -68,5 +71,5 @@ services.kdeconnect.enable = true;
 
   home.stateVersion = "24.11";
   programs.home-manager.enable = true;
-  programs.lazyvim.enable = true;
+  #programs.lazyvim.enable = true;
 }

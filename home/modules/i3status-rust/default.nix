@@ -10,22 +10,7 @@
           theme = {
             theme = "gruvbox-dark";
             overrides = {
-              #idle_bg = "#282828";
-              #idle_fg = "#FE8019";
-              #good_bg = "#282828";
-              #good_fg = "#98971A";
-              #warning_bg = "#282828";
-              #warning_fg = "#D79921";
-              #critical_bg = "#282828";
-              #critical_fg = "#CC241D";
-              #info_bg = "#282828";
-              #info_fg = "#458588";
-              #alternating_ting_bg = "#282828";
-              #alternating_ting_fg = "#FE8019";
-              #separator_bg = "#282828";
-              #separator_fg = "#FE8019";
               separator = "<span font='14.5'></span>";
-              #end_separator = "<span font='13.5'></span>";
             };
           };
         };
@@ -90,22 +75,7 @@
           theme = {
             theme = "gruvbox-dark";
             overrides = {
-              idle_bg = "#282828";
-              idle_fg = "#EBDBB2";
-              good_bg = "#282828";
-              good_fg = "#EBDBB2";
-              warning_bg = "#282828";
-              warning_fg = "#EBDBB2";
-              critical_bg = "#282828";
-              critical_fg = "#EBDBB2";
-              info_bg = "#282828";
-              info_fg = "#EBDBB2";
-              alternating_ting_bg = "#282828";
-              alternating_ting_fg = "#EBDBB2";
-              separator_bg = "#282828";
-              separator_fg = "#EBDBB2";
-              separator = "|";
-              end_separator = "|";
+              separator = "<span font='14.5'></span>";
             };
           };
         };
