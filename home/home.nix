@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./modules/alacritty
     ./modules/theme.nix
     ./modules/sway
     ./modules/nvim
@@ -55,10 +56,10 @@ services.kdeconnect.enable = true;
   };
 
   home.file = {
-    ".config/alacritty" = {
-      source = dotfiles/alacritty;
-      recursive = true;
-      };
+    #".config/alacritty" = {
+    #  source = dotfiles/alacritty;
+    #  recursive = true;
+    #  };
     ".config/fuzzel" = {
       source = dotfiles/fuzzel;
       recursive = true;
