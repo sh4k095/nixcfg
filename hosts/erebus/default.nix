@@ -169,7 +169,7 @@
   ]))
   ];
 
-  hardware.tuxedo-keyboard.enable = true;
+  #hardware.tuxedo-keyboard.enable = true;
 
   qt = {
     enable = true;
