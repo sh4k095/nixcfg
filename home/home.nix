@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/alacritty
+    ./modules/fuzzel
     ./modules/theme.nix
     ./modules/sway
     ./modules/nvim
@@ -33,7 +34,7 @@ services.kdeconnect.enable = true;
     pkgs.waybar
     #pkgs.kdePackages.dolphin
     #pkgs.firefox
-    pkgs.fuzzel
+    #pkgs.fuzzel
     pkgs.autotiling-rs
     pkgs.xmage
     pkgs.imv
@@ -60,10 +61,10 @@ services.kdeconnect.enable = true;
     #  source = dotfiles/alacritty;
     #  recursive = true;
     #  };
-    ".config/fuzzel" = {
-      source = dotfiles/fuzzel;
-      recursive = true;
-    };
+    #".config/fuzzel" = {
+    #  source = dotfiles/fuzzel;
+    #  recursive = true;
+    #};
     #".config/sway" = {
     #  source = dotfiles/sway;
     #  recursive = true;
