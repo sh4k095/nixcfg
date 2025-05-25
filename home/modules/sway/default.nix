@@ -12,6 +12,7 @@
     enable = true;
     #xwayland = false;
     config = {
+      defaultWorkspace = "workspace number 1";
       modifier = "Mod4";
       floating = {
         modifier = "Mod4";

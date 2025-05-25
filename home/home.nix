@@ -7,6 +7,7 @@
     ./modules/sway
     ./modules/nvim
     ./modules/i3status-rust
+    ./modules/zellij
     #./modules/btop.nix
     #inputs.LazyVim.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
@@ -38,7 +39,6 @@ services.kdeconnect.enable = true;
     pkgs.imv
     pkgs.i3status-rust
     #pkgs.ovito
-    pkgs.zellij
     #pkgs.neovim
     pkgs.telegram-desktop
     pkgs.yazi
