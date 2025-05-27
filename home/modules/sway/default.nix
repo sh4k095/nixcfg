@@ -9,6 +9,7 @@
     ./modules/theme
   ];
   wayland.windowManager.sway = {
+    checkConfig = false;
     enable = true;
     #xwayland = false;
     config = {
@@ -47,6 +48,7 @@
       output = {
         "eDP-1" = {
           resolution = "2560x1600";
+          bg = "~/.config/sway/wp.png fill";
           scale = "1";
         };
         "HDMI-A-1" = {

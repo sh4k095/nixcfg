@@ -3,6 +3,7 @@
 {
   imports = [
     ./modules/alacritty
+    ./modules/swaylock
     ./modules/fuzzel
     ./modules/theme.nix
     ./modules/sway
@@ -65,10 +66,7 @@ services.kdeconnect.enable = true;
     #  source = dotfiles/fuzzel;
     #  recursive = true;
     #};
-    #".config/sway" = {
-    #  source = dotfiles/sway;
-    #  recursive = true;
-    #};
+    ".config/sway/wp.png".source = modules/sway/modules/wp.png;
   };
 
   home.stateVersion = "24.11";
