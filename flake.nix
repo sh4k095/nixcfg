@@ -9,21 +9,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #LazyVim = {
-    #  url = "github:matadaniel/LazyVim-module";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #tuxedo-nixos = {
-    #  url = "github:blitz/tuxedo-nixos";
-    #};
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  #outputs = { self, nixpkgs, nixvim, home-manager, tuxedo-nixos, ... }@inputs:
-  outputs = { self, nixpkgs, nixvim, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixvim, nix-on-droid, ... }@inputs:
   let
     inherit (self) outputs;
     systems = [ 
@@ -42,13 +38,6 @@
         specialArgs = { inherit inputs outputs; };
         modules = [
           ./hosts/erebus
-            #tuxedo-nixos.nixosModules.default
-            #{
-            #  hardware.tuxedo-control-center = {
-            #    enable = true;
-            #    package = tuxedo-nixos.packages.x86_64-linux.default;
-            #  };
-            #}
         ];
       };
     };
@@ -62,6 +51,12 @@
           nixvim.homeManagerModules.nixvim
         ];
       };
+    };
+    nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
+      pkgs = import nixpkgs { system = "aarch64-linux"; };
+      modules = [
+        ./nix-on-droid
+      ];
     };
   };
 }
