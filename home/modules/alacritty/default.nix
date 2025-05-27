@@ -9,7 +9,7 @@
           y = 4;
         };
         decorations = "None";
-        opacity = 0.8;
+        opacity = 0.9;
         blur = true;
       };
       font = {
@@ -39,6 +39,15 @@
       };
       mouse = {
         hide_when_typing = true;
+      };
+      terminal = {
+        shell = {
+          program = "zellij";
+          args = [
+            "-l"
+            "welcome"
+          ];
+        };
       };
     };
   };
