@@ -109,6 +109,8 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+
+  services.cpupower-gui.enable = true;
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
