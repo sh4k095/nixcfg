@@ -28,7 +28,6 @@
     nixosConfigurations = {
       erebus = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs outputs; };
         modules = [
           ./hosts/erebus
           home-manager.nixosModules.home-manager {
