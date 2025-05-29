@@ -4,7 +4,7 @@
   imports = [
     ./modules/alacritty
     ./modules/swaylock
-    ./modules/fuzzel
+    ./modules/fuzzel.nix
     ./modules/theme.nix
     ./modules/sway
     ./modules/nvim

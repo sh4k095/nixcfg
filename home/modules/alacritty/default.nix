@@ -40,15 +40,6 @@
       mouse = {
         hide_when_typing = true;
       };
-      terminal = {
-        shell = {
-          program = "zellij";
-          args = [
-            "-l"
-            "welcome"
-          ];
-        };
-      };
     };
   };
 }

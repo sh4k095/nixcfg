@@ -16,6 +16,9 @@
           {
             block = "scratchpad";
             format = " $icon $count ";
+            icons_overrides = {
+              scratchpad = "📋";
+            };
           }
           {
             block = "kdeconnect";
@@ -24,12 +27,20 @@
           {
             block = "bluetooth";
             mac = "70:08:10:B1:E7:FB";
-            format = " $icon ";
+            format = " $icon $name ($percentage) ";
           }
           {
             block = "sound";
+            device_kind = "sink";
             format = " $icon $volume ";
             headphones_indicator = true;
+            show_volume_when_muted = true;
+          }
+          {
+            block = "sound";
+            device_kind = "source";
+            format = " $icon $volume ";
+            show_volume_when_muted = true;
           }
           {
             block = "backlight";
