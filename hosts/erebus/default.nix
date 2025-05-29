@@ -112,12 +112,16 @@
   # Enable sound.
   # hardware.pulseaudio.enable = true;
   # OR
-   services.pipewire = {
-     enable = true;
-     alsa.enable = true;
-     alsa.support32Bit = true;
-     pulse.enable = true;
-   };
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    audio.enable = true;
+    pulse.enable = true;
+    alsa = {
+      enable = true;
+      support32Bit = true;
+    };
+  };
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -148,22 +152,21 @@
     (import scripts/nvidia-offload.nix { inherit pkgs; })
     (import scripts/xmage-sway.nix { inherit pkgs; })
     pkgs.winbox4
+    pkgs.wireplumber
+    pkgs.pwvucontrol
     pkgs.libsForQt5.qt5ct
-    #pkgs.autotiling
     pkgs.fuzzel
     pkgs.networkmanagerapplet
-    #pkgs.python3
     pkgs.ovito
     pkgs.gcc
     pkgs.git
+    pkgs.alsa-utils
     pkgs.udisks
-    pkgs.pavucontrol
     pkgs.brightnessctl
     pkgs.helvum
     pkgs.ueberzugpp
     pkgs.vim
     pkgs.wget
-    #pkgs.python312Packages.jupyterlab
     (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
       jupyterlab
   ]))
