@@ -44,23 +44,33 @@
           }
           {
             block = "backlight";
+            minimum = 0;
             format = " $icon $brightness ";
           }
           {
-            alert = 10.0;
             block = "disk_space";
-            info_type = "available";
-            interval = 60;
-            path = "/";
-            warning = 20.0;
+            info_type = "used";
+            warning = 80;
+            alert = 90;
+            icons_overrides = {
+              disk_drive = "💾";
+            };
+            format = " $icon $percentage ($used/$total) ";
           }
           {
             block = "memory";
+            icons_overrides = {
+              memory_mem = "🧠";
+            };
             format = " $icon $mem_used_percents ($mem_used/$mem_total) ";
           }
           {
             block = "cpu";
             interval = 1;
+            icons_overrides = {
+              cpu = "🫀";
+            };
+            format = " $icon $utilization ($frequency/$max_frequency) $barchart ";
           }
           {
             block = "load";
