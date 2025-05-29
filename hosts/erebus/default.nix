@@ -6,18 +6,18 @@
     ../../modules/desktop.nix
     ../../modules/firefox.nix
     ../../modules/gaming.nix
-    inputs.home-manager.nixosModules.home-manager
+    #inputs.home-manager.nixosModules.home-manager
     ../../modules/nvidia.nix
     modules/boot.nix
     ../../users/sh4k0
   ];
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      sh4k0 = import ../../home/home.nix;
-    };
-  };
+  #home-manager = {
+  #  extraSpecialArgs = { inherit inputs; };
+  #  users = {
+  #    sh4k0 = import ../../home/home.nix;
+  #  };
+  #};
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -84,7 +84,7 @@
 
   services.greetd = let
     sway-nvidia-wrapper = pkgs.writeShellScriptBin "sway-nvidia" ''
-      exec ${pkgs.sway}/bin/sway --unsupported-gpu "$@"
+      export WLR_DRM_DEVICES=/dev/dri/card1:/dev/dri/card2 && exec ${pkgs.sway}/bin/sway
     '';
   in {
     enable = true;
