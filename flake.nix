@@ -22,29 +22,30 @@
   outputs = { self, nixpkgs, home-manager, nixvim, nix-on-droid, ... }@inputs:
   let
     inherit (self) outputs;
-    systems = [ 
-      "aarch64-linux"
-      "i686-linux"
-      "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
-    ];
-    forAllSystems = nixpkgs.lib.genAttrs systems;
   in
   {
     # NixOS multi-host configuration
     nixosConfigurations = {
       erebus = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         specialArgs = { inherit inputs outputs; };
         modules = [
           ./hosts/erebus
+          home-manager.nixosModules.home-manager {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.sh4k0 = ./home;
+              extraSpecialArgs = { inherit inputs outputs; };
+            };
+          }
         ];
       };
     };
     # home-manager standalone configuration
     homeConfigurations = {
       "sh4k0@erebus" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        pkgs = import nixpkgs { system = "x86_64-linux"; };
         extraSpecialArgs = { inherit inputs outputs; };
         modules = [
           ./home/home.nix
@@ -52,11 +53,15 @@
         ];
       };
     };
-    nixOnDroidConfigurations.default = nix-on-droid.lib.nixOnDroidConfiguration {
-      pkgs = import nixpkgs { system = "aarch64-linux"; };
-      modules = [
-        ./nix-on-droid
-      ];
+    # nix-on-droid configuration
+    nixOnDroidConfigurations = {
+      "redmi9" = nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import nixpkgs { system = "aarch64-linux"; };
+        extraSpecialArgs = { inherit inputs outputs; };
+        modules = [
+          ./nix-on-droid
+        ];
+      };
     };
   };
 }

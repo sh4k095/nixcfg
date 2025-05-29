@@ -1,6 +1,7 @@
 {
   imports = [
     ./modules/nvim-autopairs.nix
+    ./modules/colorizer.nix
     ./modules/barbar.nix
     ./modules/comment.nix
     ./modules/floaterm.nix
