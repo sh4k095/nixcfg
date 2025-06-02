@@ -17,9 +17,12 @@
       url = "github:nix-community/nix-on-droid";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tuxedo-nixos = {
+      url = "github:blitz/tuxedo-nixos";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, nix-on-droid, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixvim, nix-on-droid, tuxedo-nixos, ... }@inputs:
   let
     inherit (self) outputs;
   in
@@ -27,9 +30,16 @@
     # NixOS multi-host configuration
     nixosConfigurations = {
       erebus = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs outputs; };
         system = "x86_64-linux";
         modules = [
           ./hosts/erebus
+          tuxedo-nixos.nixosModules.default {
+            hardware.tuxedo-control-center = {
+              enable = true;
+              package = tuxedo-nixos.packages.x86_64-linux.default;
+            };
+          }
           home-manager.nixosModules.home-manager {
             home-manager = {
               useGlobalPkgs = true;

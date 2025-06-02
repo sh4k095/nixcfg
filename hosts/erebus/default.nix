@@ -124,7 +124,7 @@
       support32Bit = true;
     };
   };
-
+  hardware.tuxedo-keyboard.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
