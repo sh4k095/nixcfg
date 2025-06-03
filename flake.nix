@@ -1,6 +1,6 @@
 {
   description = "sh4k0's NixOS config";
- 
+
   inputs = {
     nixpkgs = {
       url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -22,42 +22,58 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim, nix-on-droid, tuxedo-nixos, ... }@inputs:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    nixvim,
+    nix-on-droid,
+    tuxedo-nixos,
+    ...
+  } @ inputs: let
     inherit (self) outputs;
-  in
-  {
+  in {
     # NixOS multi-host configuration
     nixosConfigurations = {
       erebus = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs outputs; };
+        specialArgs = {inherit inputs outputs;};
         system = "x86_64-linux";
         modules = [
           ./hosts/erebus
-          tuxedo-nixos.nixosModules.default {
+          tuxedo-nixos.nixosModules.default
+          {
             hardware.tuxedo-control-center = {
               enable = true;
               package = tuxedo-nixos.packages.x86_64-linux.default;
             };
           }
-          home-manager.nixosModules.home-manager {
+          home-manager.nixosModules.home-manager
+          {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               users.sh4k0 = ./home;
-              extraSpecialArgs = { inherit inputs outputs; };
+              extraSpecialArgs = {inherit inputs outputs;};
             };
           }
         ];
       };
     };
-    # home-manager standalone configuration
+    # home-manager standalone configurations
     homeConfigurations = {
       "sh4k0@erebus" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { system = "x86_64-linux"; };
-        extraSpecialArgs = { inherit inputs outputs; };
+        pkgs = import nixpkgs {system = "x86_64-linux";};
+        extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home/home.nix
+          nixvim.homeManagerModules.nixvim
+        ];
+      };
+      "sh4k0@steamdeck" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {system = "x86_64-linux";};
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          ./home/steamdeck.nix
           nixvim.homeManagerModules.nixvim
         ];
       };
@@ -65,8 +81,8 @@
     # nix-on-droid configuration
     nixOnDroidConfigurations = {
       "redmi9" = nix-on-droid.lib.nixOnDroidConfiguration {
-        pkgs = import nixpkgs { system = "aarch64-linux"; };
-        extraSpecialArgs = { inherit inputs outputs; };
+        pkgs = import nixpkgs {system = "aarch64-linux";};
+        extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./nix-on-droid
         ];
