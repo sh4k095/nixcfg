@@ -150,8 +150,8 @@
   # $ nix search wget
   #environment.systemPackages = with pkgs; [
   environment.systemPackages = [
-    (import scripts/nvidia-offload.nix { inherit pkgs; })
-    (import scripts/xmage-sway.nix { inherit pkgs; })
+    (import ../../lib/nvidia-offload.nix { inherit pkgs; })
+    (import ../../lib/xmage-sway.nix { inherit pkgs; })
     pkgs.winbox4
     pkgs.wireplumber
     pkgs.pwvucontrol
