@@ -3,11 +3,11 @@
 {
   imports = [
     modules/hardware-configuration.nix
-    ../../modules/desktop.nix
-    ../../modules/firefox.nix
-    ../../modules/gaming.nix
+    ../../modules/nixos/desktop.nix
+    ../../modules/nixos/firefox.nix
+    ../../modules/nixos/gaming.nix
     #inputs.home-manager.nixosModules.home-manager
-    ../../modules/nvidia.nix
+    ../../modules/nixos/nvidia.nix
     modules/boot.nix
     ../../users/sh4k0
   ];
