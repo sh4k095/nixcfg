@@ -87,7 +87,7 @@
         pkgs = import nixpkgs {system = "aarch64-linux";};
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./nix-on-droid
+          ./hosts/ceto
         ];
       };
     };
