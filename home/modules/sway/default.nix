@@ -28,7 +28,7 @@
         titlebar = false;
       };
       gaps = {
-        inner = 2;
+        inner = 4;
         outer = 2;
         smartBorders = "on";
         smartGaps = true;
@@ -67,17 +67,17 @@
             size = 11.0;
           };
         }
-        {
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-bottom.toml";
-          position = "bottom";
-          trayOutput = "none";
-          fonts = {
-            names = [ "JetBrainsMonoNLNerdFontMono" ];
-            style = "Regular";
-            size = 11.0;
-          };
-          workspaceButtons = false;
-        }
+        #{
+        #  statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-bottom.toml";
+        #  position = "bottom";
+        #  trayOutput = "none";
+        #  fonts = {
+        #    names = [ "JetBrainsMonoNLNerdFontMono" ];
+        #    style = "Regular";
+        #    size = 11.0;
+        #  };
+        #  workspaceButtons = false;
+        #}
       ];
     };
   };

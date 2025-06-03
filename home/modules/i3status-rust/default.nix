@@ -8,7 +8,22 @@
           theme = {
             theme = "gruvbox-dark";
             overrides = {
+              idle_bg = "#282828";
+              idle_fg = "#ebdbb2";
+              good_bg = "#98971a";
+              good_fg = "#282828";
+              warning_bg = "#d79921";
+              warning_fg = "#282828";
+              critical_bg = "#cc241d";
+              critical_fg = "#ebdbb2";
+              info_bg = "#458588";
+              info_fg = "#282828";
+              #alternating_tint_bg
+              #alternating_tint_fg
+              #separator_bg
+              #separator_fg
               separator = "<span font='14.5'></span>";
+              #end_separator
             };
           };
         };
@@ -19,6 +34,9 @@
             icons_overrides = {
               scratchpad = "📋";
             };
+            theme_overrides = {
+              idle_bg = "#32302f";
+            };
           }
           {
             block = "kdeconnect";
@@ -28,6 +46,12 @@
             block = "bluetooth";
             mac = "70:08:10:B1:E7:FB";
             format = " $icon $name ($percentage) ";
+            icons_overrides = {
+              bluetooth = "🦷";
+            };
+            theme_overrides = {
+              idle_bg = "#32302f";
+            };
           }
           {
             block = "sound";
@@ -41,6 +65,10 @@
             device_kind = "source";
             format = " $icon $volume ";
             show_volume_when_muted = true;
+            icons_overrides = {
+              microphone = "🎙️";
+              microphone_muted = "🙊";
+            };
           }
           {
             block = "backlight";
@@ -78,6 +106,20 @@
             interval = 1;
           }
           {
+            block = "amd_gpu";
+            format = " $icon $utilization ($vram_used/$vram_total) ";
+            icons_overrides = {
+              gpu = "👁️";
+            };
+          }
+          {
+            block = "nvidia_gpu";
+            format = " $icon $utilization $temperature $power ";
+            icons_overrides = {
+              gpu = "🧿 4060";
+            };
+          }
+          {
             block = "battery";
             format = " $icon $percentage ($time_remaining) $power ";
           }
@@ -88,55 +130,47 @@
           }
         ];
       };
-      bottom = {
-        icons = "emoji";
-        settings = {
-          theme = {
-            theme = "gruvbox-dark";
-            overrides = {
-              separator = "<span font='14.5'></span>";
-            };
-          };
-        };
-        blocks = [
-          {
-            block = "disk_space";
-            path = "/";
-            info_type = "available";
-            interval = 60;
-            warning = 20.0;
-            alert = 10.0;
-          }
-          {
-            block = "amd_gpu";
-            format = "$icon $utilization ($vram_used/$vram_total)";
-          }
-          {
-            block = "nvidia_gpu";
-            format = "$icon $utilization $temperature";
-          }
-        #  {
-        #    block = "memory";
-        #    format_mem = "$icon $mem_used_percents";
-        #    format_swap = "$icon $swap_used_percents";
-        #  }
-        #  {
-        #    block = "cpu";
-        #    interval = 1;
-        #  }
-        #  {
-        #    block = "load";
-        #    interval = 1;
-        #    format = " $icon $1m ";
-        #  }
-        #  { block = "sound"; }
-          {
-            block = "time";
-            interval = 60;
-            format = " $timestamp.datetime(f:'%a %d/%m %R') ";
-          }
-        ];
-      };
+      #bottom = {
+      #  icons = "emoji";
+      #  settings = {
+      #    theme = {
+      #      theme = "gruvbox-dark";
+      #      overrides = {
+      #        separator = "<span font='14.5'></span>";
+      #      };
+      #    };
+      #  };
+      #  blocks = [
+      #    {
+      #      block = "disk_space";
+      #      path = "/";
+      #      info_type = "available";
+      #      interval = 60;
+      #      warning = 20.0;
+      #      alert = 10.0;
+      #    }
+      #    {
+      #      block = "memory";
+      #      format_mem = "$icon $mem_used_percents";
+      #      format_swap = "$icon $swap_used_percents";
+      #    }
+      #    {
+      #      block = "cpu";
+      #      interval = 1;
+      #    }
+      #    {
+      #      block = "load";
+      #      interval = 1;
+      #      format = " $icon $1m ";
+      #    }
+      #    { block = "sound"; }
+      #    {
+      #      block = "time";
+      #      interval = 60;
+      #      format = " $timestamp.datetime(f:'%a %d/%m %R') ";
+      #    }
+      #  ];
+      #};
     };
   };
 }
