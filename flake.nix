@@ -42,9 +42,12 @@
           ./hosts/erebus
           tuxedo-nixos.nixosModules.default
           {
-            hardware.tuxedo-control-center = {
-              enable = true;
-              package = tuxedo-nixos.packages.x86_64-linux.default;
+            hardware = {
+              tuxedo-control-center = {
+                enable = true;
+                package = tuxedo-nixos.packages.x86_64-linux.default;
+              };
+              tuxedo-drivers.enable = true;
             };
           }
           home-manager.nixosModules.home-manager
@@ -69,7 +72,7 @@
           nixvim.homeManagerModules.nixvim
         ];
       };
-      "sh4k0@steamdeck" = home-manager.lib.homeManagerConfiguration {
+      "sh4k0@hemera" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {system = "x86_64-linux";};
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
@@ -80,7 +83,7 @@
     };
     # nix-on-droid configuration
     nixOnDroidConfigurations = {
-      "redmi9" = nix-on-droid.lib.nixOnDroidConfiguration {
+      "ceto" = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs {system = "aarch64-linux";};
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
