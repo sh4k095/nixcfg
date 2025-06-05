@@ -76,7 +76,7 @@
         pkgs = import nixpkgs {system = "x86_64-linux";};
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home/steamdeck.nix
+          ./hosts/hamera
           nixvim.homeManagerModules.nixvim
         ];
       };
