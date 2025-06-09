@@ -7,6 +7,7 @@
     ../modules/home-manager/fuzzel.nix
     ../modules/home-manager/theme.nix
     ../modules/home-manager/sway
+    ../modules/home-manager/swaync
     ../modules/home-manager/nvim
     ../modules/home-manager/i3status-rust
     ../modules/home-manager/zellij
@@ -18,13 +19,12 @@
   home.username = "sh4k0";
   home.homeDirectory = "/home/sh4k0";
 
-services.kdeconnect.enable = true;
-
+  services.kdeconnect.enable = true;
 
   # targets.genericLinux.enable = true; # enable on non-NixOS
 
   home.packages = [
-    #pkgs.btop
+    
     pkgs.ripgrep
     pkgs.fastfetch
     pkgs.wl-mirror
