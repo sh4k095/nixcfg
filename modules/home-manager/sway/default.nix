@@ -2,11 +2,11 @@
 
 {
   imports = [
-    ./modules/daemons
-    ./modules/keybindings
-    ./modules/modes
+    ./modules/daemons.nix
+    ./modules/keybindings.nix
+    ./modules/modes.nix
     #./modules/rules
-    ./modules/theme
+    ./modules/theme.nix
   ];
   wayland.windowManager.sway = {
     checkConfig = false;

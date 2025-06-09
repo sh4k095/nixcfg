@@ -14,8 +14,8 @@
               good_fg = "#282828";
               warning_bg = "#d79921";
               warning_fg = "#282828";
-              critical_bg = "#cc241d";
-              critical_fg = "#ebdbb2";
+              critical_bg = "#d65d0e";
+              critical_fg = "#282828";
               info_bg = "#458588";
               info_fg = "#282828";
               #alternating_tint_bg

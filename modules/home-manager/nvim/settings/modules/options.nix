@@ -31,8 +31,8 @@
       scrolloff = 8;
       cursorline = false;
       cursorcolumn = false;
-      signcolumn = "yes";
-      colorcolumn = "100";
+      #signcolumn = "yes";
+      #colorcolumn = "100";
       laststatus = 3;
       fileencoding = "utf-8";
       termguicolors = true;

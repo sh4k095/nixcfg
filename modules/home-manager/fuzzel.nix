@@ -9,7 +9,7 @@
         use-bold = true;
         dpi-aware = "yes";
         prompt = "'🚀 '";
-        terminal = "${pkgs.alacritty}/bin/alacritty";
+        terminal = "${pkgs.alacritty}/bin/alacritty -e";
         lines = 18;
         width = 45;
         horizontal-pad = 16;

@@ -2,6 +2,7 @@
 
 let
   mod = config.wayland.windowManager.sway.config.modifier;
+  fuzzel-powermenu = pkgs.callPackage ../../../../lib/fuzzel-powermenu.nix {};
 in 
 {
   wayland.windowManager.sway.config.keybindings = lib.mkOptionDefault {
@@ -11,6 +12,7 @@ in
     "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
     "${mod}+Shift+Return" = "exec ${pkgs.alacritty}/bin/alacritty -e ${pkgs.zellij}/bin/zellij -l welcome";
     "${mod}+d" = "exec ${pkgs.fuzzel}/bin/fuzzel";
+    "${mod}+Delete" = "exec ${fuzzel-powermenu}/bin/fuzzel-powermenu";
     # modes
     "${mod}+p" = "mode present";
     # special keys
