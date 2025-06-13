@@ -53,11 +53,29 @@
         };
         "HDMI-A-1" = {
           resolution = "2440x1440";
+          bg = "~/.config/sway/wp.png fill";
           scale = "1";
         };
       };
       bars = [
         {
+          colors = {
+            focusedWorkspace = {
+              background = "#fe8019";
+              border = "#fe8019";
+              text = "#282828";
+            };
+            inactiveWorkspace = {
+              background = "#3c3836";
+              border = "#3c3836";
+              text = "#ebdbb2";
+            };
+            urgentWorkspace = {
+              background = "#b16286";
+              border = "#b16286";
+              text = "#282828";
+            };
+          };
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
           position = "top";
           trayOutput = "none";
