@@ -1,7 +1,7 @@
 { pkgs }:
 
 pkgs.writeShellScriptBin "fuzzel-powermenu" ''
-  SELECTION="$(printf "1 - Lock\n2 - Suspend\n3 - Log out\n4 - Reboot\n5 - Reboot to UEFI\n6 - Hard reboot\n7 - Shutdown" | fuzzel --dmenu -l 7 -p "Power Menu: ")"
+  SELECTION="$(printf "🔐 Lock\n💤 Suspend\n🔄 Log out\n💀 Shutdown\n♻️ Reboot\n👹 Reboot to UEFI" | fuzzel --dmenu -l 6 -p "Power Menu: ")"
   
   case $SELECTION in
 	  *"🔐 Lock")
