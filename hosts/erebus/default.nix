@@ -6,7 +6,6 @@
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/firefox.nix
     ../../modules/nixos/gaming.nix
-    #inputs.home-manager.nixosModules.home-manager
     ../../modules/nixos/nvidia.nix
     modules/boot.nix
     ../../users/sh4k0
@@ -21,6 +20,8 @@
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  programs.adb.enable = true;
 
   nixpkgs.config = {
     #enableParallelBuildingByDefault = true;
@@ -82,15 +83,39 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
+  #programs.sway.enable = true;
+  #services.xserver = {
+  #  enable = true;
+  #  desktopManager = {
+  #    xterm.enable = false;
+  #  };
+  #  windowManager.i3.enable = true;
+  #};
+  #programs.i3lock.enable = true;
+
+  #services.xserver.displayManager.sessionPackages = let
+  #  sway-nvidia = pkgs.writeShellScriptBin "Sway-NVIDIA" ''
+  #    ${pkgs.sway}/bin/sway --unsupported-gpu
+  #  '';
+  #  in
+  #    [
+  #      {
+  #        manage = "window";
+  #        name = "Sway-NVIDIA";
+  #        start = "${sway-nvidia}/bin/sway-nvidia -ls && waitPID=$!";
+  #      }
+  #    ];
+      
+
   services.greetd = let
-    sway-nvidia-wrapper = pkgs.writeShellScriptBin "sway-nvidia" ''
+    sway-igpu = pkgs.writeShellScriptBin "sway-igpu" ''
       export WLR_DRM_DEVICES=/dev/dri/card1:/dev/dri/card2 && exec ${pkgs.sway}/bin/sway
     '';
   in {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${sway-nvidia-wrapper}/bin/sway-nvidia";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${sway-igpu}/bin/sway-igpu";
         user = "sh4k0";
       };
     };
@@ -169,6 +194,10 @@
     pkgs.vim
     pkgs.wget
     (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
+      #numpy
+      #scipy
+      #ase
+      #pymatgen
       jupyterlab
   ]))
   ];
