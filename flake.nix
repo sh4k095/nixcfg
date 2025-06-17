@@ -5,6 +5,9 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs?ref=nixos-unstable";
     };
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +28,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-wayland,
     home-manager,
     nixvim,
     nix-on-droid,
@@ -38,7 +42,20 @@
       erebus = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         system = "x86_64-linux";
-        modules = [
+        modules = [({ pkgs, config, ... }: {
+          config = {
+            nix.settings = {
+              trusted-public-keys = [
+                "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+                "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+              ];
+              substituters = [
+                "https://cache.nixos.org"
+                "https://nixpkgs-wayland.cachix.org"
+              ];
+            };
+            nixpkgs.overlays = [ inputs.nixpkgs-wayland.overlay ];
+          };})
           ./hosts/erebus
           tuxedo-nixos.nixosModules.default
           {
