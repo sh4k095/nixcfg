@@ -13,6 +13,11 @@ in
     "${mod}+Shift+Return" = "exec ${pkgs.alacritty}/bin/alacritty -e ${pkgs.zellij}/bin/zellij -l welcome";
     "${mod}+d" = "exec ${pkgs.fuzzel}/bin/fuzzel";
     "${mod}+Delete" = "exec ${fuzzel-powermenu}/bin/fuzzel-powermenu";
+    "${mod}+Escape" = ''
+      exec ${pkgs.sway}/bin/swaymsg '[app_id=dropdown-terminal] scratchpad show' \
+      || ${pkgs.alacritty}/bin/alacritty --class dropdown-terminal \
+      && sleep .1 && swaymsg ${pkgs.sway}/bin/swaymsg '[app_id=dropdown-terminal] resize set 100ppt 40ppt, move position 0 0'
+    '';
     # modes
     "${mod}+p" = "mode present";
     # special keys

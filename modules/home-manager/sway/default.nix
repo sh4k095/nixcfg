@@ -26,6 +26,22 @@
       window = {
         border = 0;
         titlebar = false;
+        commands = [
+          {
+            command = ''
+              {
+                floating enable
+                resize set 100ppt 40ppt
+                move position 0 0
+                move to scratchpad
+                scratchpad show
+              }
+              '';
+            criteria = {
+              app_id = "dropdown-terminal";
+            };
+          }
+        ];
       };
       gaps = {
         inner = 4;
@@ -51,8 +67,13 @@
           bg = "~/.config/sway/wp.png fill";
           scale = "1";
         };
+        "eDP-2" = {
+          resolution = "2560x1600";
+          bg = "~/.config/sway/wp.png fill";
+          scale = "1";
+        };
         "HDMI-A-1" = {
-          resolution = "2440x1440";
+          resolution = "3440x1440";
           bg = "~/.config/sway/wp.png fill";
           scale = "1";
         };
