@@ -5,7 +5,7 @@
     ./modules/daemons.nix
     ./modules/keybindings.nix
     ./modules/modes.nix
-    #./modules/rules
+    ./modules/rules.nix
     ./modules/theme.nix
   ];
   wayland.windowManager.sway = {
@@ -26,22 +26,22 @@
       window = {
         border = 0;
         titlebar = false;
-        commands = [
-          {
-            command = ''
-              {
-                floating enable
-                resize set 100ppt 40ppt
-                move position 0 0
-                move to scratchpad
-                scratchpad show
-              }
-              '';
-            criteria = {
-              app_id = "dropdown-terminal";
-            };
-          }
-        ];
+        #commands = [
+        #  {
+        #    command = ''
+        #      {
+        #        floating enable
+        #        resize set 100ppt 40ppt
+        #        move position 0 0
+        #        move to scratchpad
+        #        scratchpad show
+        #      }
+        #      '';
+        #    criteria = {
+        #      app_id = "dropdown-terminal";
+        #    };
+        #  }
+        #];
       };
       gaps = {
         inner = 4;

@@ -1,6 +1,7 @@
 {
   imports = [
     ./modules/nvim-autopairs.nix
+    ./modules/nvim-surround.nix
     ./modules/colorizer.nix
     ./modules/barbar.nix
     ./modules/comment.nix
@@ -9,6 +10,7 @@
     ./modules/lualine.nix
     ./modules/lsp.nix
     ./modules/neo-tree.nix
+    ./modules/neoscroll.nix
     ./modules/snacks.nix
     ./modules/startify.nix
     ./modules/telescope.nix

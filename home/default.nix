@@ -23,34 +23,40 @@
 
   # targets.genericLinux.enable = true; # enable on non-NixOS
 
-  home.packages = [
-    
-    pkgs.ripgrep
-    pkgs.fastfetch
-    pkgs.wl-mirror
-    pkgs.vimPlugins.LazyVim
+  home.packages = with pkgs; [
+    tldr
+    eza
+    bat
+    mpv
+    bashmount
+    bc
+    ripgrep
+    fastfetch
+    wl-mirror
+    #vimPlugins.LazyVim
     #python3.12Packages.jupyterlab
-    pkgs.alacritty
-    pkgs.android-tools
-    pkgs.waybar
+    alacritty
+    android-tools
+    waybar
     #pkgs.kdePackages.dolphin
     #pkgs.firefox
     #pkgs.fuzzel
-    pkgs.autotiling-rs
-    pkgs.xmage
-    pkgs.imv
-    pkgs.i3status-rust
+    autotiling-rs
+    xmage
+    imv
+    i3status-rust
     #pkgs.ovito
     #pkgs.neovim
-    pkgs.telegram-desktop
-    pkgs.yazi
-    pkgs.maestral
-    pkgs.maestral-gui
-    pkgs.lammps
-    pkgs.calibre
-    pkgs.devenv
-    pkgs.powerline-symbols
-    pkgs.swaylock-effects
+    ovito
+    telegram-desktop
+    yazi
+    maestral
+    maestral-gui
+    lammps
+    calibre
+    devenv
+    powerline-symbols
+    swaylock-effects
   ];
 
   home.sessionVariables = {
@@ -71,4 +77,7 @@
   };
 
   home.stateVersion = "25.05";
+  programs.zsh = {
+    enable = true;
+  };
 }

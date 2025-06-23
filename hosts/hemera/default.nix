@@ -3,11 +3,9 @@
 {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
-    ./modules/alacritty
-    ./modules/nvim
-    ./modules/theme.nix
-    ./modules/zellij
-    ./modules/
+    ../modules/home-manager/alacritty
+    ../modules/home-manager/nvim
+    ../modules/home-manager/zellij
   ];
 
   targets.genericLinux.enable = true;
@@ -16,25 +14,26 @@
 
   services.kdeconnect.enable = true;
 
-  home.packages = [
-    #pkgs.btop
+
+  home.packages = with pkgs; [
+    pkgs.btop
     pkgs.ripgrep
     pkgs.fastfetch
     pkgs.wl-mirror
     pkgs.vimPlugins.LazyVim
-    #python3.12Packages.jupyterlab
+    python3.12Packages.jupyterlab
     pkgs.alacritty
     pkgs.android-tools
     pkgs.waybar
-    #pkgs.kdePackages.dolphin
-    #pkgs.firefox
-    #pkgs.fuzzel
+    pkgs.kdePackages.dolphin
+    pkgs.firefox
+    pkgs.fuzzel
     pkgs.autotiling-rs
     pkgs.xmage
     pkgs.imv
     pkgs.i3status-rust
-    #pkgs.ovito
-    #pkgs.neovim
+    pkgs.ovito
+    pkgs.neovim
     pkgs.telegram-desktop
     pkgs.yazi
     pkgs.maestral

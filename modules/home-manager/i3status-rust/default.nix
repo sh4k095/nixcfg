@@ -3,8 +3,10 @@
     enable = true;
     bars = {
       top = {
-        icons = "emoji";
         settings = {
+          icons = {
+            icons = "emoji";
+          };
           theme = {
             theme = "gruvbox-dark";
             overrides = {

@@ -11,17 +11,15 @@
     ../../users/sh4k0
   ];
 
-  #home-manager = {
-  #  extraSpecialArgs = { inherit inputs; };
-  #  users = {
-  #    sh4k0 = import ../../home/home.nix;
-  #  };
-  #};
-
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = [ "root" "sh4k0" ];
+  };
 
   programs.adb.enable = true;
+  programs.thunderbird.enable = true;
+  programs.zsh.enable = true;
 
   nixpkgs.config = {
     #enableParallelBuildingByDefault = true;
@@ -46,6 +44,7 @@
       "steam-run"
       # winbox
       "winbox"
+      "winbox4"
     ];
   };
 
@@ -60,10 +59,8 @@
 #  };
 #}; })];
 
-  networking.hostName = "erebus"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.hostName = "erebus";
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
@@ -109,7 +106,7 @@
 
   services.greetd = let
     sway-igpu = pkgs.writeShellScriptBin "sway-igpu" ''
-      export WLR_DRM_DEVICES=/dev/dri/card1:/dev/dri/card2 && exec ${pkgs.sway}/bin/sway
+      export WLR_DRM_DEVICES=/dev/dri/card2 && exec ${pkgs.sway}/bin/sway
     '';
   in {
     enable = true;
@@ -153,7 +150,7 @@
   hardware.bluetooth.powerOnBoot = true;
 
   #hardware.tuxedo-rs = {
-  #  enable = true;
+  #  enable = tue;
   #  tailor-gui.enable = true;
   #};
 
@@ -175,15 +172,16 @@
   # $ nix search wget
   #environment.systemPackages = with pkgs; [
   environment.systemPackages = [
-    (import ../../lib/nvidia-offload.nix { inherit pkgs; })
+    #(import ../../lib/nvidia-offload.nix { inherit pkgs; })
     (import ../../lib/xmage-sway.nix { inherit pkgs; })
+    (pkgs.btop.override { rocmSupport = true; cudaSupport = true; })
+    pkgs.swaybg
     pkgs.winbox4
     pkgs.wireplumber
     pkgs.pwvucontrol
     pkgs.libsForQt5.qt5ct
     pkgs.fuzzel
     pkgs.networkmanagerapplet
-    pkgs.ovito
     pkgs.gcc
     pkgs.git
     pkgs.alsa-utils
@@ -198,11 +196,22 @@
       #scipy
       #ase
       #pymatgen
-      jupyterlab
+      #jupyterlab
   ]))
   ];
 
-  #hardware.tuxedo-keyboard.enable = true;
+  environment.sessionVariables = rec {
+    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME   = "$HOME/.local/share";
+    XDG_STATE_HOME  = "$HOME/.local/state";
+    XDG_BIN_HOME    = "$HOME/.local/bin";
+    PATH = [ 
+      "${XDG_BIN_HOME}"
+      "$HOME/.cargo/bin"
+    ];
+    QT_QPA_PLATFORM = "wayland";
+  };
 
   qt = {
     enable = true;
