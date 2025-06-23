@@ -57,6 +57,7 @@
     devenv
     powerline-symbols
     swaylock-effects
+    zoxide
   ];
 
   home.sessionVariables = {
