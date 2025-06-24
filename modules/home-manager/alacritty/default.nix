@@ -1,8 +1,8 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   options = {
-    alacritty.enable = lib.mkEnableOption "enables module";
+    alacritty.enable = lib.mkEnableOption "";
   };
   config = lib.mkIf config.alacritty.enable {
     programs.alacritty = {

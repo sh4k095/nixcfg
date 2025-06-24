@@ -3,18 +3,25 @@
 {
   imports = [
     ../modules/home-manager/alacritty
+    ../modules/home-manager/shell
+    ../modules/home-manager/bat
     ../modules/home-manager/swaylock
-    ../modules/home-manager/fuzzel.nix
+    ../modules/home-manager/fuzzel
     ../modules/home-manager/theme.nix
     ../modules/home-manager/sway
     ../modules/home-manager/swaync
     ../modules/home-manager/nvim
     ../modules/home-manager/i3status-rust
     ../modules/home-manager/zellij
+    ../modules/home-manager/zathura
     #./modules/btop.nix
     #inputs.LazyVim.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
   ];
+
+  zsh.enable = true;
+  bat.enable = true;
+  zathura.enable = true;
 
   home.username = "sh4k0";
   home.homeDirectory = "/home/sh4k0";
@@ -79,7 +86,7 @@
   };
 
   home.stateVersion = "25.05";
-  programs.zsh = {
-    enable = true;
-  };
+  #programs.zsh = {
+  #  enable = true;
+  #};
 }
