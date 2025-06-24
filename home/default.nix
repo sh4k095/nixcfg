@@ -21,9 +21,12 @@
 
   services.kdeconnect.enable = true;
 
+  alacritty.enable = true;
+
   # targets.genericLinux.enable = true; # enable on non-NixOS
 
   home.packages = with pkgs; [
+    android-tools
     tldr
     eza
     bat
@@ -33,8 +36,6 @@
     ripgrep
     fastfetch
     wl-mirror
-    #vimPlugins.LazyVim
-    #python3.12Packages.jupyterlab
     alacritty
     android-tools
     waybar
