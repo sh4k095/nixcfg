@@ -45,9 +45,7 @@
       };
       gaps = {
         inner = 4;
-        outer = 2;
-        smartBorders = "on";
-        smartGaps = true;
+        outer = 1;
       };
       input = {
         "type:keyboard" = {
