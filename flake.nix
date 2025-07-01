@@ -23,6 +23,9 @@
     tuxedo-nixos = {
       url = "github:blitz/tuxedo-nixos";
     };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
   };
 
   outputs = {
