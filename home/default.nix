@@ -7,7 +7,7 @@
     ../modules/home-manager/bat
     ../modules/home-manager/swaylock
     ../modules/home-manager/fuzzel
-    ../modules/home-manager/theme.nix
+    #../modules/home-manager/theme.nix
     ../modules/home-manager/sway
     ../modules/home-manager/swaync
     ../modules/home-manager/nvim
@@ -23,6 +23,12 @@
   bat.enable = true;
   zathura.enable = true;
 
+  nix.gc = {
+      automatic = true;
+      options = "--delete-older-than 7d";
+      persistent = true;
+    };
+
   home.username = "sh4k0";
   home.homeDirectory = "/home/sh4k0";
 
@@ -36,6 +42,7 @@
     android-tools
     tldr
     eza
+    swappy
     bat
     mpv
     bashmount
@@ -62,7 +69,7 @@
     maestral-gui
     lammps
     calibre
-    devenv
+    #devenv
     powerline-symbols
     swaylock-effects
     zoxide
