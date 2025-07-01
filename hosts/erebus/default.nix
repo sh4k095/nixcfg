@@ -2,7 +2,7 @@
 
 {
   imports = [
-    modules/hardware-configuration.nix
+    ./hardware-configuration.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/firefox.nix
     ../../modules/nixos/gaming.nix
@@ -12,9 +12,16 @@
   ];
 
   # Enable flakes
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    trusted-users = [ "root" "sh4k0" ];
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "root" "sh4k0" ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
 
   programs.adb.enable = true;
@@ -106,7 +113,7 @@
 
   services.greetd = let
     sway-igpu = pkgs.writeShellScriptBin "sway-igpu" ''
-      export WLR_DRM_DEVICES=/dev/dri/card2 && exec ${pkgs.sway}/bin/sway
+      export WLR_DRM_DEVICES=/dev/dri/card1 && exec ${pkgs.sway}/bin/sway
     '';
   in {
     enable = true;
@@ -177,8 +184,10 @@
     (pkgs.btop.override { rocmSupport = true; cudaSupport = true; })
     pkgs.swaybg
     pkgs.winbox4
+    pkgs.libinput
     pkgs.wireplumber
     pkgs.pwvucontrol
+    pkgs.swayosd
     pkgs.libsForQt5.qt5ct
     pkgs.fuzzel
     pkgs.networkmanagerapplet
@@ -220,6 +229,7 @@
   };
 
   fonts.packages = with pkgs; [
+    hack-font
     noto-fonts
     noto-fonts-emoji
     nerd-fonts.jetbrains-mono
