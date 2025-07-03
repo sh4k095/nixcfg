@@ -113,7 +113,7 @@
 
   services.greetd = let
     sway-igpu = pkgs.writeShellScriptBin "sway-igpu" ''
-      export WLR_DRM_DEVICES=/dev/dri/card1 && exec ${pkgs.sway}/bin/sway
+      export WLR_DRM_DEVICES=/dev/dri/card2 && exec ${pkgs.sway}/bin/sway
     '';
   in {
     enable = true;
