@@ -110,16 +110,21 @@
   #      }
   #    ];
       
-
   services.greetd = let
     sway-igpu = pkgs.writeShellScriptBin "sway-igpu" ''
-      export WLR_DRM_DEVICES=/dev/dri/card2 && exec ${pkgs.sway}/bin/sway
+      ln -sf /dev/dri/by-path/pci-0000:01:00.0-card /tmp/iGPU &&
+      export WLR_DRM_DEVICES=/tmp/iGPU &&
+      exec ${pkgs.sway}/bin/sway
+    '';
+    sway-nvidia = pkgs.writeShellScriptBin "sway-nvidia" ''
+      exec ${pkgs.sway}/bin/sway --unsupported-gpu
     '';
   in {
     enable = true;
     settings = {
       default_session = {
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${sway-igpu}/bin/sway-igpu";
+        #command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${sway-nvidia}/bin/sway-nvidia";
         user = "sh4k0";
       };
     };
