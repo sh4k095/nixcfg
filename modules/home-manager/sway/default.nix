@@ -80,18 +80,18 @@
         {
           colors = {
             focusedWorkspace = {
-              background = "#fe8019";
-              border = "#fe8019";
+              background = "#d65d0e";
+              border = "#d65d0e";
               text = "#282828";
             };
             inactiveWorkspace = {
-              background = "#3c3836";
-              border = "#3c3836";
+              background = "#282828";
+              border = "#282828";
               text = "#ebdbb2";
             };
             urgentWorkspace = {
-              background = "#b16286";
-              border = "#b16286";
+              background = "#458588";
+              border = "#458588";
               text = "#282828";
             };
           };
