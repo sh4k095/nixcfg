@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, outputs, ... }:
 
 {
   imports = [
@@ -11,17 +11,38 @@
     ../../users/sh4k0
   ];
 
-  # Enable flakes
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "root" "sh4k0" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [
+        "sh4k0"
+        "root"
+      ];
+      trusted-public-keys = [
+        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      ];
+      substituters = [
+        "https://cache.nixos.org"
+        "https://nixpkgs-wayland.cachix.org"
+      ];
     };
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
+  };
+
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.sh4k0 = ../../home;
+    extraSpecialArgs = {inherit inputs outputs;};
   };
 
   programs.adb.enable = true;
@@ -54,6 +75,10 @@
       "winbox4"
     ];
   };
+
+  nixpkgs.overlays = [
+    inputs.nixpkgs-wayland.overlay
+  ];
 
 #  nixpkgs.overlays = [(final: prev: { ovito = prev.ovito.overrideAttrs  rec {
 #  version = "3.12.2";
@@ -146,10 +171,14 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  #hardware.tuxedo-rs = {
-  #  enable = tue;
-  #  tailor-gui.enable = true;
-  #};
+
+  hardware = {
+    tuxedo-control-center = {
+      enable = true;
+      package = inputs.tuxedo-nixos.packages.x86_64-linux.default;
+    };
+  tuxedo-drivers.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -172,6 +201,7 @@
     #(import ../../lib/nvidia-offload.nix { inherit pkgs; })
     (import ../../lib/xmage-sway.nix { inherit pkgs; })
     (pkgs.btop.override { rocmSupport = true; cudaSupport = true; })
+    pkgs.kdePackages.dolphin
     pkgs.swaybg
     pkgs.winbox4
     pkgs.libinput

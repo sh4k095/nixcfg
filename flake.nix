@@ -40,49 +40,19 @@
   } @ inputs: let
     inherit (self) outputs;
   in {
-    # NixOS multi-host configuration
+    # NixOS configuration
     nixosConfigurations = {
       erebus = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         system = "x86_64-linux";
-        modules = [({ pkgs, config, ... }: {
-          config = {
-            nix.settings = {
-              trusted-public-keys = [
-                "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-                "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-              ];
-              substituters = [
-                "https://cache.nixos.org"
-                "https://nixpkgs-wayland.cachix.org"
-              ];
-            };
-            nixpkgs.overlays = [ inputs.nixpkgs-wayland.overlay ];
-          };})
+        modules = [
           ./hosts/erebus
           tuxedo-nixos.nixosModules.default
-          {
-            hardware = {
-              tuxedo-control-center = {
-                enable = true;
-                package = tuxedo-nixos.packages.x86_64-linux.default;
-              };
-              tuxedo-drivers.enable = true;
-            };
-          }
           home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.sh4k0 = ./home;
-              extraSpecialArgs = {inherit inputs outputs;};
-            };
-          }
         ];
       };
     };
-    # home-manager standalone configurations
+    # Home-manager standalone configurations
     homeConfigurations = {
       "sh4k0@erebus" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {system = "x86_64-linux";};
@@ -101,7 +71,7 @@
         ];
       };
     };
-    # nix-on-droid configuration
+    # Nix-on-droid configuration
     nixOnDroidConfigurations = {
       "ceto" = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs {system = "aarch64-linux";};
