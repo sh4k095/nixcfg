@@ -6,8 +6,8 @@
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/firefox.nix
     ../../modules/nixos/gaming.nix
-    ../../modules/nixos/nvidia.nix
     modules/boot.nix
+    modules/nvidia.nix
     ../../users/sh4k0
   ];
 
