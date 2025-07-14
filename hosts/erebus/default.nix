@@ -85,7 +85,7 @@
   # };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+  services.netbird.enable = true;
 
   #programs.sway.enable = true;
   #services.xserver = {
@@ -97,24 +97,9 @@
   #};
   #programs.i3lock.enable = true;
 
-  #services.xserver.displayManager.sessionPackages = let
-  #  sway-nvidia = pkgs.writeShellScriptBin "Sway-NVIDIA" ''
-  #    ${pkgs.sway}/bin/sway --unsupported-gpu
-  #  '';
-  #  in
-  #    [
-  #      {
-  #        manage = "window";
-  #        name = "Sway-NVIDIA";
-  #        start = "${sway-nvidia}/bin/sway-nvidia -ls && waitPID=$!";
-  #      }
-  #    ];
-      
   services.greetd = let
     sway-igpu = pkgs.writeShellScriptBin "sway-igpu" ''
-      ln -sf /dev/dri/by-path/pci-0000:01:00.0-card /tmp/iGPU &&
-      export WLR_DRM_DEVICES=/tmp/iGPU &&
-      exec ${pkgs.sway}/bin/sway
+      export WLR_DRM_DEVICES=/dev/dri/igpu1 && exec ${pkgs.sway}/bin/sway
     '';
     sway-nvidia = pkgs.writeShellScriptBin "sway-nvidia" ''
       exec ${pkgs.sway}/bin/sway --unsupported-gpu
@@ -123,8 +108,8 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${sway-igpu}/bin/sway-igpu";
-        #command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${sway-nvidia}/bin/sway-nvidia";
+        #command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${sway-igpu}/bin/sway-igpu";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${sway-nvidia}/bin/sway-nvidia";
         user = "sh4k0";
       };
     };
