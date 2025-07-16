@@ -24,10 +24,12 @@
   zathura.enable = true;
 
   nix.gc = {
-      automatic = true;
-      options = "--delete-older-than 7d";
-      persistent = true;
-    };
+    automatic = true;
+    options = "--delete-older-than 7d";
+    persistent = true;
+  };
+
+  programs.gpg.enable = true;
 
   home.username = "sh4k0";
   home.homeDirectory = "/home/sh4k0";

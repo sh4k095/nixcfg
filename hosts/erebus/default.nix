@@ -202,6 +202,7 @@
     (import ../../lib/xmage-sway.nix { inherit pkgs; })
     (pkgs.btop.override { rocmSupport = true; cudaSupport = true; })
     pkgs.kdePackages.dolphin
+    pkgs.pinentry-curses
     pkgs.swaybg
     pkgs.winbox4
     pkgs.libinput
@@ -256,6 +257,13 @@
     powerline-fonts
     powerline-symbols
   ];
+
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-curses;
+    enableSSHSupport = true;
+  };
 
   #programs.steam = {
   #  enable = true;
