@@ -12,6 +12,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,6 +51,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/erebus
+          sops-nix.nixosModules.sops
           tuxedo-nixos.nixosModules.default
           home-manager.nixosModules.home-manager
         ];

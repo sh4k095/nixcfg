@@ -1,0 +1,7 @@
+keys:
+  - &sh4k0 F171A1B7D2AFF371DF60EEC792136C40AFB76798
+creation_rules:
+  - path_regex: secrets/hosts/erebus.yaml
+    key-groups:
+      - pgp:
+        - *sh4k0
