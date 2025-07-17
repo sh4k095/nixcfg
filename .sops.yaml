@@ -1,7 +1,7 @@
 keys:
-  - &sh4k0 F171A1B7D2AFF371DF60EEC792136C40AFB76798
+  - &sh4k0 age12k0dtaerah0d84dxvmxv9s8w2el5hh4ls2esztny2g7km4dmpf3slr607j
 creation_rules:
   - path_regex: secrets/hosts/erebus.yaml
     key-groups:
-      - pgp:
+      - age:
         - *sh4k0

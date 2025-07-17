@@ -66,6 +66,7 @@
         modules = [
           ./home/home.nix
           nixvim.homeManagerModules.nixvim
+          sops-nix.homeManagerModules.sops
         ];
       };
       "sh4k0@hemera" = home-manager.lib.homeManagerConfiguration {
@@ -74,6 +75,7 @@
         modules = [
           ./hosts/hamera
           nixvim.homeManagerModules.nixvim
+          sops-nix.homeManagerModules.sops
         ];
       };
     };
