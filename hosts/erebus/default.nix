@@ -122,6 +122,8 @@
   #};
   #programs.i3lock.enable = true;
 
+  programs.niri.enable = true;
+
   services.greetd = let
     sway-igpu = pkgs.writeShellScriptBin "sway-igpu" ''
       export WLR_DRM_DEVICES=/dev/dri/igpu1 && exec ${pkgs.sway}/bin/sway
