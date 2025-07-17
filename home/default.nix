@@ -14,8 +14,7 @@
     ../modules/home-manager/i3status-rust
     ../modules/home-manager/zellij
     ../modules/home-manager/zathura
-    #./modules/btop.nix
-    #inputs.LazyVim.homeManagerModules.default
+    ../modules/home-manager/ssh
     inputs.nixvim.homeManagerModules.nixvim
   ];
 

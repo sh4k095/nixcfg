@@ -1,8 +1,14 @@
 {
   programs.ssh = {
     enable = true;
-    addKeysToAgent = true;
+    addKeysToAgent = "yes";
     matchBlocks = {
+      "gitlab.com" = {
+        identityFile = "~/.ssh/gitlab";
+      };
+      "github.com" = {
+        identityFile = "~/.ssh/github";
+      };
       "vsc4" = {
         hostname = "vsc4.vsc.ac.at";
         user = "cpaulett";
