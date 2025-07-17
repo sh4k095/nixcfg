@@ -37,6 +37,7 @@
     nixpkgs,
     nixpkgs-wayland,
     home-manager,
+    sops-nix,
     nixvim,
     nix-on-droid,
     tuxedo-nixos,
