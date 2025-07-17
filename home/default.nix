@@ -95,7 +95,7 @@
   };
 
   sops = {
-    age.keyFile = "~/.config/sops/age/keys.txt";
+    age.keyFile = "/home/sh4k0/.config/sops/age/keys.txt";
     defaultSopsFile = ../secrets/hosts/erebus/secrets.yaml;
     secrets = {
        mysecretkey = { };
