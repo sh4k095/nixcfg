@@ -120,7 +120,7 @@
           Host gitlab
             IdentityFile ${config.sops.placeholder."ssh_hosts/gitlab/identity"}
         '';
-        path = "/home/sh4k0/.ssh/ssh_hosts";
+        path = "/home/sh4k0/.ssh/config.d/ssh_hosts";
       };
     };
   };
