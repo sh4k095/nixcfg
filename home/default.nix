@@ -55,7 +55,7 @@
     wl-mirror
     alacritty
     android-tools
-    waybar
+    sops
     #pkgs.kdePackages.dolphin
     #pkgs.firefox
     #pkgs.fuzzel
