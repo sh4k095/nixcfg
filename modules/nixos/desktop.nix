@@ -14,5 +14,6 @@
     enable = true;
     wrapperFeatures.gtk = true;
     xwayland.enable = false;
+    extraPackages = [];
   };
 }
