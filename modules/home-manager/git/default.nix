@@ -13,4 +13,7 @@
       key = "F171A1B7D2AFF371DF60EEC792136C40AFB76798";
     };
   };
+  programs.lazygit = {
+    enable = true;
+  };
 }
