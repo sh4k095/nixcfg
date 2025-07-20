@@ -27,9 +27,12 @@
     tuxedo-nixos = {
       url = "github:blitz/tuxedo-nixos";
     };
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
+    nix-colors = {
+      url = "github:misterio77/nix-colors";
     };
+    #flake-parts = {
+    #  url = "github:hercules-ci/flake-parts";
+    #};
   };
 
   outputs = {
@@ -41,6 +44,7 @@
     nixvim,
     nix-on-droid,
     tuxedo-nixos,
+    nix-colors,
     ...
   } @ inputs: let
     inherit (self) outputs;
