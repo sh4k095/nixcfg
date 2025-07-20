@@ -3,7 +3,7 @@
     enable = true;
     addKeysToAgent = "yes";
     includes = [
-      "~/.ssh/ssh_hosts"
+      "config.d/ssh_hosts"
     ];
     #matchBlocks = {
     #  "gitlab.com" = {

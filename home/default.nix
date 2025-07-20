@@ -115,9 +115,9 @@
           Host vsc5
             User ${config.sops.placeholder."ssh_hosts/vsc5/user"}
             Hostname ${config.sops.placeholder."ssh_hosts/vsc5/hostname"}
-          Host github
+          Host github.com
             IdentityFile ${config.sops.placeholder."ssh_hosts/github/identity"}
-          Host gitlab
+          Host gitlab.com
             IdentityFile ${config.sops.placeholder."ssh_hosts/gitlab/identity"}
         '';
         path = "/home/sh4k0/.ssh/config.d/ssh_hosts";
