@@ -99,12 +99,34 @@
     age.keyFile = "/home/sh4k0/.config/sops/age/keys.txt";
     defaultSopsFile = ../secrets/hosts/erebus/secrets.yaml;
     secrets = {
-       mysecretkey = { };
-     };
+      "ssh_hosts/vsc4/user" = {};
+      "ssh_hosts/vsc4/hostname" = {};
+      "ssh_hosts/vsc5/user" = {};
+      "ssh_hosts/vsc5/hostname" = {};
+      "ssh_hosts/github/identity" = {};
+      "ssh_hosts/gitlab/identity" = {};
+    };
+    templates = {
+      "ssh_hosts" = {
+        content = ''
+          Host vsc4
+            User ${config.sops.placeholder."ssh_hosts/vsc4/user"}
+            Hostname ${config.sops.placeholder."ssh_hosts/vsc4/hostname"}
+          Host vsc5
+            User ${config.sops.placeholder."ssh_hosts/vsc5/user"}
+            Hostname ${config.sops.placeholder."ssh_hosts/vsc5/hostname"}
+          Host github
+            IdentityFile ${config.sops.placeholder."ssh_hosts/github/identity"}
+          Host gitlab
+            IdentityFile ${config.sops.placeholder."ssh_hosts/gitlab/identity"}
+        '';
+        path = "/home/sh4k0/.ssh/ssh_hosts";
+      };
+    };
   };
 
   home.stateVersion = "25.05";
   #programs.zsh = {
-  #  enable = true;
+  #  enable = true; 
   #};
 }
