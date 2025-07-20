@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -9,11 +9,4 @@
     wl-mirror
     mako
   ];
-
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    xwayland.enable = false;
-    extraPackages = [];
-  };
 }

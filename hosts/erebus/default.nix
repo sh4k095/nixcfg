@@ -6,10 +6,17 @@
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/firefox.nix
     ../../modules/nixos/gaming.nix
+    ../../modules/nixos/packages/sway
     modules/boot.nix
     modules/nvidia.nix
     ../../users/sh4k0
   ];
+  
+  sway = {
+    enable = true;
+    withNvidiaGPU = true;
+    withXWayland = false;
+  };
 
   nix = {
     settings = {
