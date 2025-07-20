@@ -6,6 +6,7 @@
     ../modules/home-manager/shell
     ../modules/home-manager/bat
     ../modules/home-manager/swaylock
+    ../modules/home-manager/git
     ../modules/home-manager/fuzzel
     #../modules/home-manager/theme.nix
     ../modules/home-manager/sway
