@@ -8,7 +8,7 @@
     programs.zellij = {
       enable = true;
       settings = lib.mkOptionDefault {
-        theme = "gruvbox-dark";
+        theme = "tokyo-night-dark";
         ui = {
           pane_frames = {
             rounded_corners = true;

@@ -23,6 +23,7 @@
   zsh.enable = true;
   bat.enable = true;
   zathura.enable = true;
+  zellij.enable = true;
 
   nix.gc = {
     automatic = true;
