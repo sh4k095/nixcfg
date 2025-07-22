@@ -14,6 +14,7 @@
     ./modules/snacks.nix
     ./modules/startify.nix
     ./modules/telescope.nix
+    ./modules/vimtex.nix
     ./modules/transparent.nix
     ./modules/treesitter.nix
     ./modules/web-devicons.nix
