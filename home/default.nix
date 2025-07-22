@@ -57,6 +57,7 @@
     ripgrep
     fastfetch
     wl-mirror
+    zotero
     alacritty
     android-tools
     sops
