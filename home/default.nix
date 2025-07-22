@@ -18,7 +18,10 @@
     ../modules/home-manager/ssh
     inputs.nixvim.homeManagerModules.nixvim
     inputs.sops-nix.homeManagerModules.sops
+    inputs.nix-colors.homeManagerModules.default
   ];
+
+  colorscheme = inputs.nix-colors.colorSchemes.dracula;
 
   zsh.enable = true;
   bat.enable = true;
@@ -77,6 +80,7 @@
     powerline-symbols
     swaylock-effects
     zoxide
+    inkscape
   ];
 
   home.sessionVariables = {

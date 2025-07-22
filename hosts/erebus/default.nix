@@ -228,15 +228,16 @@
     pkgs.brightnessctl
     pkgs.helvum
     pkgs.ueberzugpp
+    pkgs.texliveFull
     pkgs.vim
     pkgs.wget
-    (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
-      #numpy
-      #scipy
-      #ase
-      #pymatgen
-      #jupyterlab
+    (pkgs.python313.withPackages (python-pkgs: with python-pkgs; [
+      numpy
+      scipy
+      ase
+      jupyterlab
   ]))
+    #pkgs.python312Packages.pymatgen
   ];
 
   environment.sessionVariables = rec {
