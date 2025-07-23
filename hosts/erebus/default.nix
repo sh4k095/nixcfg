@@ -231,13 +231,13 @@
     pkgs.texliveFull
     pkgs.vim
     pkgs.wget
-    (pkgs.python313.withPackages (python-pkgs: with python-pkgs; [
-      numpy
-      scipy
-      ase
-      jupyterlab
-  ]))
-    #pkgs.python312Packages.pymatgen
+    #(pkgs.python312.withPackages (python-pkgs: with python-pkgs; [
+    #  numpy
+    #  scipy
+    #  ase
+    #  jupyterlab
+    #  pymatgen
+    #]))
   ];
 
   environment.sessionVariables = rec {
