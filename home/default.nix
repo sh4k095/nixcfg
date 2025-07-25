@@ -3,6 +3,7 @@
 {
   imports = [
     ../modules/home-manager/alacritty
+    ../modules/home-manager/helix
     ../modules/home-manager/shell
     ../modules/home-manager/bat
     ../modules/home-manager/swaylock
@@ -74,6 +75,7 @@
     telegram-desktop
     yazi
     maestral
+    helix
     maestral-gui
     lammps
     calibre
@@ -132,7 +134,4 @@
   };
 
   home.stateVersion = "25.05";
-  #programs.zsh = {
-  #  enable = true; 
-  #};
 }
