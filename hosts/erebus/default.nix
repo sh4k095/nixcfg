@@ -209,7 +209,7 @@
   environment.systemPackages = [
     #(import ../../lib/nvidia-offload.nix { inherit pkgs; })
     (import ../../lib/xmage-sway.nix { inherit pkgs; })
-    (pkgs.btop.override { rocmSupport = true; cudaSupport = true; })
+    #(pkgs.btop.override { rocmSupport = true; cudaSupport = true; })
     pkgs.kdePackages.dolphin
     pkgs.pinentry-curses
     pkgs.swaybg

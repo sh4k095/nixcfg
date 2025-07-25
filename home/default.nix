@@ -3,6 +3,7 @@
 {
   imports = [
     ../modules/home-manager/alacritty
+    ../modules/home-manager/btop
     ../modules/home-manager/helix
     ../modules/home-manager/shell
     ../modules/home-manager/bat
