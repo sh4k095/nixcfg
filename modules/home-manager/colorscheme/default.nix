@@ -1,9 +1,5 @@
 {lib, ...}:
 
-imports = [
-  schemes/gruvbox-dark.nix
-];
-
 with lib; let
   colornames = [
     # Primary colors
