@@ -9,7 +9,7 @@
       timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
       before-sleep  'playerctl pause' \
       before-sleep 'swaylock -f -c 000000' \
-      '';
+      ''; always = true;
     }
   ];
 }
