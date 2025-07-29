@@ -58,6 +58,7 @@
     ripgrep
     fastfetch
     wl-mirror
+    mattermost-desktop
     zotero
     alacritty
     android-tools
