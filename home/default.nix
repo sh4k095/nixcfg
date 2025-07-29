@@ -4,6 +4,7 @@
   imports = [
     ../modules/home-manager/alacritty
     ../modules/home-manager/colorscheme
+    ../modules/home-manager/colorscheme/schemes/gruvbox-dark.nix
     ../modules/home-manager/btop
     ../modules/home-manager/helix
     ../modules/home-manager/shell
@@ -21,10 +22,7 @@
     ../modules/home-manager/ssh
     inputs.nixvim.homeManagerModules.nixvim
     inputs.sops-nix.homeManagerModules.sops
-    inputs.nix-colors.homeManagerModules.default
   ];
-
-  colorscheme = inputs.nix-colors.colorSchemes.dracula;
 
   zsh.enable = true;
   bat.enable = true;

@@ -48,40 +48,32 @@
         mouse = {
           hide_when_typing = true;
         };
-        colors = {
+        colors = let
+          c = config.easyScheme.colors;
+        in {
           primary = {
-            background = "#282828";
-            foreground = "#ebdbb2";
+            background = "${c.background}";
+            foreground = "${c.foreground}";
           };
           normal = {
-            black = "#282828";
-            red = "#cc241d";
-            green = "#98971a";
-            yellow = "#d79921";
-            blue = "#458588";
-            magenta = "#b16286";
-            cyan = "#689d6a";
-            white = "#a89984";
+            black = "${c.black}";
+            red = "${c.red}";
+            green = "${c.green}";
+            yellow = "${c.yellow}";
+            blue = "${c.blue}";
+            magenta = "${c.magenta}";
+            cyan = "${c.cyan}";
+            white = "${c.white}";
           };
           bright = {
-            black = "#928374";
-            red = "#fb4934";
-            green = "#b8bb26";
-            yellow = "#fabd2f";
-            blue = "#83a598";
-            magenta = "#d3869b";
-            cyan = "#8ec07c";
-            white = "#ebdbb2";
-            #bright = {
-            #  black = "#${config.colorScheme.palette.base00}";
-            #  red = "#${config.colorScheme.palette.base08}";
-            #  green = "#${config.colorScheme.palette.base0B}";
-            #  yellow = "#${config.colorScheme.palette.base0A}";
-            #  blue = "#${config.colorScheme.palette.base0D}";
-            #  magenta = "#${config.colorScheme.palette.base0E}";
-            #  cyan = "#${config.colorScheme.palette.base0C}";
-            #  white = "#${config.colorScheme.palette.base05}";
-            #};
+            black = "${c.brightBlack}";
+            red = "${c.brightRed}";
+            green = "${c.brightGreen}";
+            yellow = "${c.brightYellow}";
+            blue = "${c.brightBlue}";
+            magenta = "${c.brightMagenta}";
+            cyan = "${c.brightCyan}";
+            white = "${c.brightWhite}";
           };
         };
       };

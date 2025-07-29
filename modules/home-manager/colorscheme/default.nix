@@ -1,4 +1,4 @@
-{lib, ...}:
+{ lib, ... }:
 
 with lib; let
   colornames = [
@@ -25,10 +25,13 @@ with lib; let
     "brightRed"
   ];
 in {
-  options.easyScheme.colors = builtins.listToAttrs (map
+  options.easyScheme = {
+    enable = lib.mkEnableOption "easyScheme";
+    colors = builtins.listToAttrs (map
     (c: {
       name = c;
       value = mkOption {type = types.str;};
     })
     colornames);
+  };
 }
