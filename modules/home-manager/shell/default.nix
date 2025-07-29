@@ -19,6 +19,7 @@
         "man" = "batman";
         "tree" = "eza -T";
         "yz" = "yazi";
+        "z" = "zoxide";
         "zj" = "zellij";
       };
       initContent = ''
