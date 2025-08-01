@@ -1,16 +1,16 @@
 {
   programs.starship = {
     enable = true;
+    enableZshIntegration = true;
     settings = {
-      character = {
-        success_symbol = "[λ](bold green)";
-        error_symbol = "[λ](bold red)";
-      };
+      format = "$character";
+      right_format = "$all";
       directory.read_only = " 󰌾";
       docker_context.symbol = " ";
       elixir.symbol = " ";
       git_branch.symbol = " ";
       git_commit.tag_symbol = "  ";
+      kubernetes.symbol = " ";
       golang.symbol = " ";
       haskell.symbol = " ";
       hostname.format = "@[$hostname]($style) ";
