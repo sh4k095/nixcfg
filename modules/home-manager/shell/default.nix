@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   options = {
@@ -30,6 +30,8 @@
         	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
         	rm -f -- "$tmp"
         }
+        eval "$(${pkgs.zoxide}/bin/zoxide init zsh)"
+        eval "$(direnv hook zsh)"
       '';
       oh-my-zsh = {
         enable = true;

@@ -3,6 +3,8 @@
 {
   imports = [
     ../modules/home-manager/alacritty
+    ../modules/home-manager/direnv
+    ../modules/home-manager/starship
     ../modules/home-manager/colorscheme
     ../modules/home-manager/colorscheme/schemes/gruvbox-dark.nix
     ../modules/home-manager/btop
