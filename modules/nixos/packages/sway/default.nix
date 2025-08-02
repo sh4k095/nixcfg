@@ -29,7 +29,10 @@
         [ "--unsupported-gpu" ]
       else
         [];
-      extraPackages = [];
+      extraPackages = with pkgs; [ 
+        swappy
+        swayidle
+      ];
     };
   };
 }
