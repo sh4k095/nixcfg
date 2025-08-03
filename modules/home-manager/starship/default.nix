@@ -188,7 +188,7 @@
         disabled = false;
         success_symbol = "[❯](bold fg:color_green)";
         error_symbol = "[✖](bold fg:color_red)";
-        vimcmd_symbol = "[󰘧](bold fg:color_green)";
+        vimcmd_symbol = "[\\[󰘧\\]](bold fg:color_purple)";
         # The following is only supported on fish due to upstream issues with mode detection in zsh.
         # See https://github.com/starship/starship/issues/625#issuecomment-732454148
         vimcmd_replace_one_symbol = "[󰘧](bold fg:color_purple)";

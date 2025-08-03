@@ -22,6 +22,7 @@ in
           "rsync"
           "ssh-agent"
           "sudo"
+          "vi-mode"
           "wd"
           "zoxide"
         ];
