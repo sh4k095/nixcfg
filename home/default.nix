@@ -9,7 +9,8 @@
     ../modules/home-manager/colorscheme/schemes/gruvbox-dark.nix
     ../modules/home-manager/btop
     ../modules/home-manager/helix
-    ../modules/home-manager/shell
+    ../modules/home-manager/zsh
+    ../modules/home-manager/fish
     ../modules/home-manager/bat
     ../modules/home-manager/swaylock
     ../modules/home-manager/git
@@ -26,7 +27,7 @@
     inputs.sops-nix.homeManagerModules.sops
   ];
 
-  zsh.enable = true;
+  fish.enable = true;
   bat.enable = true;
   zathura.enable = true;
   zellij.enable = true;

@@ -55,6 +55,7 @@
   programs.adb.enable = true;
   programs.thunderbird.enable = true;
   programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   nixpkgs.config = {
     #enableParallelBuildingByDefault = true;

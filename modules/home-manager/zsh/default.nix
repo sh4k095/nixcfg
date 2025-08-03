@@ -3,7 +3,7 @@
 let
   shell_aliases = import ./aliases.nix;
   shell_functions = import ./functions.nix;
-  cfg = config.shellConfig;
+  cfg = config.zsh;
 in
 {
   options = {
