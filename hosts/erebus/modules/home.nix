@@ -10,7 +10,6 @@
     ../../../modules/home-manager/btop
     ../../../modules/home-manager/helix
     ../../../modules/home-manager/zsh
-    ../../../modules/home-manager/fish
     ../../../modules/home-manager/bat
     ../../../modules/home-manager/swaylock
     ../../../modules/home-manager/git
@@ -27,7 +26,7 @@
     inputs.sops-nix.homeManagerModules.sops
   ];
 
-  fish.enable = true;
+  zsh.enable = true;
   bat.enable = true;
   zathura.enable = true;
   zellij.enable = true;
@@ -82,6 +81,7 @@
     helix
     maestral-gui
     lammps
+    fishPlugins.gruvbox
     calibre
     #devenv
     powerline-symbols
@@ -109,7 +109,7 @@
 
   sops = {
     age.keyFile = "/home/sh4k0/.config/sops/age/keys.txt";
-    defaultSopsFile = ../secrets/hosts/erebus/secrets.yaml;
+    defaultSopsFile = ../../../secrets/hosts/erebus/secrets.yaml;
     secrets = {
       "ssh_hosts/vsc4/user" = {};
       "ssh_hosts/vsc4/hostname" = {};

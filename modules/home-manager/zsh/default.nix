@@ -1,8 +1,8 @@
 { lib, config, pkgs, ... }:
 
 let
-  shell_aliases = import ./aliases.nix;
-  shell_functions = import ./functions.nix;
+  shell_aliases = import ./modules/aliases.nix;
+  shell_functions = import ./modules/functions.nix;
   cfg = config.zsh;
 in
 {

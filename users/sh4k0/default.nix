@@ -12,6 +12,6 @@
       "video"
       "wheel"
     ];
-    shell = pkgs.fish;
+    shell = pkgs.zsh;
   };
 }
