@@ -27,12 +27,6 @@
     tuxedo-nixos = {
       url = "github:blitz/tuxedo-nixos";
     };
-    nix-colors = {
-      url = "github:misterio77/nix-colors";
-    };
-    #flake-parts = {
-    #  url = "github:hercules-ci/flake-parts";
-    #};
   };
 
   outputs = {
@@ -44,13 +38,14 @@
     nixvim,
     nix-on-droid,
     tuxedo-nixos,
-    nix-colors,
     ...
   } @ inputs: let
     inherit (self) outputs;
   in {
-    # NixOS configuration
     nixosConfigurations = {
+      ##########
+      # erebus #
+      ##########
       erebus = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         system = "x86_64-linux";
@@ -58,17 +53,22 @@
           ./hosts/erebus
           sops-nix.nixosModules.sops
           tuxedo-nixos.nixosModules.default
-          home-manager.nixosModules.home-manager
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.sh4k0 = ./hosts/erebus/modules/home.nix;
+            home-manager.extraSpecialArgs = {inherit inputs outputs;};
+          }
         ];
       };
     };
-    # Home-manager standalone configurations
     homeConfigurations = {
+      # tartarus
       "sh4k0@erebus" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {system = "x86_64-linux";};
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home/home.nix
+          ./home
           nixvim.homeManagerModules.nixvim
           sops-nix.homeManagerModules.sops
         ];

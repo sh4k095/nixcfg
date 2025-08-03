@@ -45,12 +45,6 @@
   };
 
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.sh4k0 = ../../home;
-    extraSpecialArgs = {inherit inputs outputs;};
-  };
 
   programs.adb.enable = true;
   programs.thunderbird.enable = true;

@@ -2,27 +2,27 @@
 
 {
   imports = [
-    ../modules/home-manager/alacritty
-    ../modules/home-manager/direnv
-    ../modules/home-manager/starship
-    ../modules/home-manager/colorscheme
-    ../modules/home-manager/colorscheme/schemes/gruvbox-dark.nix
-    ../modules/home-manager/btop
-    ../modules/home-manager/helix
-    ../modules/home-manager/zsh
-    ../modules/home-manager/fish
-    ../modules/home-manager/bat
-    ../modules/home-manager/swaylock
-    ../modules/home-manager/git
-    ../modules/home-manager/fuzzel
-    #../modules/home-manager/theme.nix
-    ../modules/home-manager/sway
-    ../modules/home-manager/swaync
-    ../modules/home-manager/nvim
-    ../modules/home-manager/i3status-rust
-    ../modules/home-manager/zellij
-    ../modules/home-manager/zathura
-    ../modules/home-manager/ssh
+    ../../../modules/home-manager/alacritty
+    ../../../modules/home-manager/direnv
+    ../../../modules/home-manager/starship
+    ../../../modules/home-manager/colorscheme
+    ../../../modules/home-manager/colorscheme/schemes/gruvbox-dark.nix
+    ../../../modules/home-manager/btop
+    ../../../modules/home-manager/helix
+    ../../../modules/home-manager/zsh
+    ../../../modules/home-manager/fish
+    ../../../modules/home-manager/bat
+    ../../../modules/home-manager/swaylock
+    ../../../modules/home-manager/git
+    ../../../modules/home-manager/fuzzel
+    #../../../modules/home-manager/theme.nix
+    ../../../modules/home-manager/sway
+    ../../../modules/home-manager/swaync
+    ../../../modules/home-manager/nvim
+    ../../../modules/home-manager/i3status-rust
+    ../../../modules/home-manager/zellij
+    ../../../modules/home-manager/zathura
+    ../../../modules/home-manager/ssh
     inputs.nixvim.homeManagerModules.nixvim
     inputs.sops-nix.homeManagerModules.sops
   ];
@@ -104,7 +104,7 @@
     #  source = dotfiles/fuzzel;
     #  recursive = true;
     #};
-    ".config/sway/wp.png".source = ../modules/home-manager/sway/modules/wp.png;
+    ".config/sway/wp.png".source = ../../../modules/home-manager/sway/modules/wp.png;
   };
 
   sops = {
