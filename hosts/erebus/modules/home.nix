@@ -115,6 +115,9 @@
       "ssh_hosts/vsc4/hostname" = {};
       "ssh_hosts/vsc5/user" = {};
       "ssh_hosts/vsc5/hostname" = {};
+      "ssh_hosts/datalab/user" = {};
+      "ssh_hosts/datalab/hostname" = {};
+      "ssh_hosts/datalab/identity" = {};
       "ssh_hosts/github/identity" = {};
       "ssh_hosts/gitlab/identity" = {};
     };
@@ -127,6 +130,10 @@
           Host vsc5
             User ${config.sops.placeholder."ssh_hosts/vsc5/user"}
             Hostname ${config.sops.placeholder."ssh_hosts/vsc5/hostname"}
+          Host datalab
+            User ${config.sops.placeholder."ssh_hosts/datalab/user"}
+            Hostname ${config.sops.placeholder."ssh_hosts/datalab/hostname"}
+            IdentityFile ${config.sops.placeholder."ssh_hosts/datalab/identity"}
           Host github.com
             IdentityFile ${config.sops.placeholder."ssh_hosts/github/identity"}
           Host gitlab.com
