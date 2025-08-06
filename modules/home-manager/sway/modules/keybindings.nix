@@ -8,6 +8,17 @@ in
   wayland.windowManager.sway.config.keybindings = lib.mkOptionDefault {
     # General
     "${mod}+q" = "kill";
+    # Workspaces
+    #"${mod}+1" = "workspace number 1 一";
+    #"${mod}+2" = "workspace number 2 二";
+    #"${mod}+3" = "workspace number 3 三";
+    #"${mod}+4" = "workspace number 4 四";
+    #"${mod}+5" = "workspace number 5 五";
+    #"${mod}+6" = "workspace number 6 六";
+    #"${mod}+7" = "workspace number 7 七";
+    #"${mod}+8" = "workspace number 8 八";
+    #"${mod}+9" = "workspace number 9 九";
+    #"${mod}+0" = "workspace number 0 十";
     # Applications
     "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
     "${mod}+Shift+Return" = "exec ${pkgs.alacritty}/bin/alacritty -e ${pkgs.zellij}/bin/zellij -l welcome";
