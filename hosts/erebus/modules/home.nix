@@ -15,6 +15,7 @@
     ../../../modules/home-manager/git
     ../../../modules/home-manager/fuzzel
     #../../../modules/home-manager/theme.nix
+    ../../../modules/home-manager/theme
     ../../../modules/home-manager/sway
     ../../../modules/home-manager/swaync
     ../../../modules/home-manager/nvim
@@ -60,6 +61,8 @@
     ripgrep
     fastfetch
     wl-mirror
+    kdePackages.dolphin
+    kdePackages.qtsvg
     mattermost-desktop
     zotero
     alacritty
