@@ -51,6 +51,10 @@
 
   home.packages = with pkgs; [
     android-tools
+    libreoffice-qt
+    hunspell
+    hunspellDicts.en_US
+    hunspellDicts.it_IT
     tldr
     eza
     swappy
@@ -63,6 +67,8 @@
     wl-mirror
     kdePackages.dolphin
     kdePackages.qtsvg
+    #kdePackages.breeze-gtk
+    #kdePackages.breeze
     mattermost-desktop
     zotero
     alacritty

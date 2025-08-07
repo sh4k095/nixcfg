@@ -8,6 +8,8 @@
         { app_id = "ovito"; }
         { app_id = "pavucontrol"; }
         { app_id = "calculator"; }
+        { app_id = "org.kde.dolphin"; }
+        { class = "Electron"; }
       ];
     };
     window = {
