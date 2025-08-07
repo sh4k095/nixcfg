@@ -1,14 +1,13 @@
+{ pkgs, ... }:
+
 {
-  pkgs,
-  ...
-}: {
-      qt = {
-        enable = true;
-        platformTheme = {
-          name = "qtct";
-        };
-        style = {
-          package = pkgs.kdePackages.breeze;
-        };
-      };
+ qt = {
+   enable = true;
+   platformTheme = {
+     name = "qtct";
+   };
+   style = {
+     package = pkgs.kdePackages.breeze;
+   };
+ };
 }
