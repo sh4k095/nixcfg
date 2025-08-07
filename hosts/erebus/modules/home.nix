@@ -23,7 +23,7 @@
     ../../../modules/home-manager/zellij
     ../../../modules/home-manager/zathura
     ../../../modules/home-manager/ssh
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     inputs.sops-nix.homeManagerModules.sops
   ];
 

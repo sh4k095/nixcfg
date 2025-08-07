@@ -69,7 +69,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home
-          nixvim.homeManagerModules.nixvim
+          nixvim.homeModules.nixvim
           sops-nix.homeManagerModules.sops
         ];
       };
@@ -78,7 +78,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/hamera
-          nixvim.homeManagerModules.nixvim
+          nixvim.homeModules.nixvim
           sops-nix.homeManagerModules.sops
         ];
       };

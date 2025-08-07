@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     ../modules/home-manager/alacritty
     ../modules/home-manager/nvim
     ../modules/home-manager/zellij
