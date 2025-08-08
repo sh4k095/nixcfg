@@ -47,6 +47,11 @@
 
   alacritty.enable = true;
 
+  xdg = {
+    enable = true;
+    userDirs.createDirectories = true;
+  };
+
   # targets.genericLinux.enable = true; # enable on non-NixOS
 
   home.packages = with pkgs; [
