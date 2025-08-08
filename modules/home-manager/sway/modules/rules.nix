@@ -50,6 +50,17 @@
             app_id = "steam";
           };
         }
+        {
+          command = ''
+            {
+              floating enable
+              resize set 40ppt 60ppt
+            }
+            '';
+          criteria = {
+            app_id = "floaterm";
+          };
+        }
       ];
     };
   };

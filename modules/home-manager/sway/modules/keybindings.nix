@@ -21,7 +21,7 @@ in
     #"${mod}+0" = "workspace number 0 十";
     # Applications
     "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
-    "${mod}+Shift+Return" = "exec ${pkgs.alacritty}/bin/alacritty -e ${pkgs.zellij}/bin/zellij -l welcome";
+    "${mod}+Shift+Return" = "exec ${pkgs.alacritty}/bin/alacritty --class floaterm";
     "${mod}+d" = "exec ${pkgs.fuzzel}/bin/fuzzel";
     "${mod}+Delete" = "exec ${fuzzel-powermenu}/bin/fuzzel-powermenu";
     # Dropdown terminal
