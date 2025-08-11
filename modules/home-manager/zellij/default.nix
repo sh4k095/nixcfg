@@ -16,6 +16,7 @@
           };
         };
         show_startup_tips = false;
+        session_serialization = false;
       };
     };
   };
