@@ -111,7 +111,7 @@
   # };
 
   # Enable the X11 windowing system.
-  #services.netbird.enable = true;
+  services.netbird.enable = true;
 
   #programs.sway.enable = true;
   #services.xserver = {
