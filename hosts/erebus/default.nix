@@ -112,6 +112,7 @@
 
   # Enable the X11 windowing system.
   services.netbird.enable = true;
+  services.tailscale.enable = true;
 
   #programs.sway.enable = true;
   #services.xserver = {
