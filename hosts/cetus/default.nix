@@ -1,0 +1,76 @@
+{ inputs, config, lib, pkgs, outputs, ... }:
+
+{
+  imports = [
+    ./hardware-configuration.nix
+  ];
+  
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
+
+  networking = {
+    hostName = "ceto";
+    networkmanager.enable = true;
+  };
+
+  users = {
+    mutableUsers = false;
+    users = {
+      sh4k0 = {
+        isNormalUser = true;
+        extraGroups = [
+          "wheel"
+          "networkmanager"
+        ];
+        hashedPasswordFile = config.sops.secrets.passwords.sh4k0.path;
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAiZT8XMTeQwU36Rj5Ls+h0+zy+LSz/T72symouM7z8O sh4k0@erebus"
+        ];
+      };
+      root = {
+        hashedPasswordFile = config.sops.secrets.passwords.root.path;
+      };
+    };
+  };
+
+  services = {
+    openssh = {
+      enable = true;
+      settings = {
+        #PasswordAuthentication = false;
+      };
+    };
+    tailscale = {
+      enable = true;
+      authKeyFile = config.sops.secrets.tailscale.authkey.path;
+    };
+    automatic-timezoned = {
+      enable = true;
+    };
+    geoclue2 = {
+      enable = true;
+      geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
+    };
+  };
+  
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader = {
+      timeout = 0;
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
+    kernelModules = [ "kvm-intel" ];
+  };
+}
