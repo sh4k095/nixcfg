@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./disko.nix
     ./hardware-configuration.nix
     ../../users/sh4k0
   ];

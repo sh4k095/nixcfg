@@ -1,9 +1,11 @@
+{ lib, ... }:
+
 {
   disko.devices = {
     disk = {
       os = {
         type = "disk";
-        device = "/dev/disk/by-id/ata-SAMSUNG_MZ7LN256HCHP-000L7_S20HNXAH227866";
+        device = lib.mkDefault "/dev/disk/by-id/ata-SAMSUNG_MZ7LN256HCHP-000L7_S20HNXAH227866";
         content = {
           type = "gpt";
           partitions = {
@@ -37,7 +39,7 @@
       };
       data = {
         type = "disk";
-        device = "/dev/disk/by-id/ata-HGST_HTS721010A9E630_JR10006P1DJTPF";
+        device = lib.mkDefault "/dev/disk/by-id/ata-HGST_HTS721010A9E630_JR10006P1DJTPF";
         content = {
           type = "gpt";
           partitions = {
