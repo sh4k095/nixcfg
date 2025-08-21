@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../users/sh4k0
   ];
   
   nix = {
