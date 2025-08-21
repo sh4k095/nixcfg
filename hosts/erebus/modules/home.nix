@@ -122,7 +122,7 @@
   };
 
   sops = {
-    age.keyFile = "/home/sh4k0/.config/sops/age/keys.txt";
+    age.keyFile = "/home/sh4k0/.config/sops/age/erebus.txt";
     defaultSopsFile = ../../../secrets/hosts/erebus/secrets.yaml;
     secrets = {
       "ssh_hosts/vsc4/user" = {};
