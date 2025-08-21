@@ -22,8 +22,18 @@
   };
 
   networking = {
-    hostName = "ceto";
+    hostName = "cetus";
     networkmanager.enable = true;
+  };
+
+  sops = {
+    age.keyFile = "/home/sh4k0/.config/sops/age/cetus.txt";
+    defaultSopsFile = ../../secrets/hosts/cetus/secrets.yaml;
+    secrets = {
+      "passwords/sh4k0" = {};
+      "passwords/root" = {};
+      "tailscale/authkey" = {};
+    };
   };
 
   users = {
