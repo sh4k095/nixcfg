@@ -16,6 +16,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +39,7 @@
     nixpkgs-wayland,
     home-manager,
     sops-nix,
+    disko,
     nixvim,
     nix-on-droid,
     tuxedo-nixos,
@@ -43,9 +48,7 @@
     inherit (self) outputs;
   in {
     nixosConfigurations = {
-      ##########
-      # erebus #
-      ##########
+      # erebus
       erebus = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         system = "x86_64-linux";
@@ -59,6 +62,16 @@
             home-manager.users.sh4k0 = ./hosts/erebus/modules/home.nix;
             home-manager.extraSpecialArgs = {inherit inputs outputs;};
           }
+        ];
+      };
+      # cetus
+      cetus = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/cetus
+          sops-nix.nixosModules.sops
+          disko.nixosModules.disko
         ];
       };
     };
@@ -85,7 +98,7 @@
     };
     # Nix-on-droid configuration
     nixOnDroidConfigurations = {
-      "ceto" = nix-on-droid.lib.nixOnDroidConfiguration {
+      "hamera" = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs {system = "aarch64-linux";};
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
