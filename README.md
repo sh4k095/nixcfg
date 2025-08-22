@@ -1,4 +1,4 @@
-### nixcfg
+# nixcfg
 
 Configuration files for my NixOS-based infrastructure (very much a work in progress :hammer_and_wrench:).
 
