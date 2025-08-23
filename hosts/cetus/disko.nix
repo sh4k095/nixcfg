@@ -27,11 +27,26 @@
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ];
-                mountpoint = "/";
-                mountOptions = [
-                  "compress=zstd"
-                  "noatime"
-                ];
+                subvolumes = {
+                  "@" = {
+                    mountpoint = "/";
+                  };
+                  "@home" = {
+                    mountOptions = [ "compress=zstd" ];
+                    mountpoint = "/home";
+                  };
+                  "@nix" = {
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                    mountpoint = "/nix";
+                  };
+                  "@var_log" = {
+                    mountOptions = [ "compress=zstd" ];
+                    mountpoint = "/var/log";
+                  };
+                };
               };
             };
           };
