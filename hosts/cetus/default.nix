@@ -5,6 +5,7 @@
     ./disko.nix
     ./hardware-configuration.nix
     ../../users/sh4k0
+    inputs.sops-nix.nixosModules.sops
   ];
   
   nix = {
@@ -45,13 +46,13 @@
           "wheel"
           "networkmanager"
         ];
-        hashedPasswordFile = config.sops.secrets.passwords.sh4k0.path;
+        hashedPasswordFile = config.sops.secrets."passwords/sh4k0".path;
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAiZT8XMTeQwU36Rj5Ls+h0+zy+LSz/T72symouM7z8O sh4k0@erebus"
         ];
       };
       root = {
-        hashedPasswordFile = config.sops.secrets.passwords.root.path;
+        hashedPasswordFile = config.sops.secrets."passwords/root".path;
       };
     };
   };
@@ -65,7 +66,7 @@
     };
     tailscale = {
       enable = true;
-      authKeyFile = config.sops.secrets.tailscale.authkey.path;
+      authKeyFile = config.sops.secrets."tailscale/authkey".path;
     };
     automatic-timezoned = {
       enable = true;
@@ -85,4 +86,11 @@
     };
     kernelModules = [ "kvm-intel" ];
   };
+
+  environment.systemPackages = with pkgs; [
+    git
+    sops
+  ];
+
+  system.stateVersion = "25.11";
 }
