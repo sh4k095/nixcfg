@@ -29,7 +29,7 @@
       ipv4.addresses = [{
         address = "192.168.88.62";
         prefixLength = 24;
-      ]};
+      }];
     };
   };
 
