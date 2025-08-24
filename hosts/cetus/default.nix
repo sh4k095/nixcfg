@@ -70,7 +70,7 @@
       extraUpFlags = [
         "--advertise-routes \"192.168.88.0/24\""
       ];
-      useRoutingFeatures = "server";
+      useRoutingFeatures = "both";
     };
     automatic-timezoned = {
       enable = true;
