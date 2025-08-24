@@ -68,7 +68,7 @@
       enable = true;
       authKeyFile = config.sops.secrets."tailscale/authkey".path;
       extraUpFlags = [
-        "--advertise-routes \"192.168.88.0/24\""
+        "--advertise-routes=192.168.88.0/24"
       ];
       useRoutingFeatures = "both";
     };
