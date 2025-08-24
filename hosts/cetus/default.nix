@@ -67,6 +67,9 @@
     tailscale = {
       enable = true;
       authKeyFile = config.sops.secrets."tailscale/authkey".path;
+      extraUpFlags = [
+        "--advertise-routes '192.168.88.1/32'"
+      ];
     };
     automatic-timezoned = {
       enable = true;
