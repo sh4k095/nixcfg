@@ -135,6 +135,9 @@
       "ssh_hosts/datalab/identity" = {};
       "ssh_hosts/github/identity" = {};
       "ssh_hosts/gitlab/identity" = {};
+      "ssh_hosts/cetus/user" = {};
+      "ssh_hosts/cetus/hostname" = {};
+      "ssh_hosts/cetus/identity" = {};
     };
     templates = {
       "ssh_hosts" = {
@@ -153,6 +156,10 @@
             IdentityFile ${config.sops.placeholder."ssh_hosts/github/identity"}
           Host gitlab.com
             IdentityFile ${config.sops.placeholder."ssh_hosts/gitlab/identity"}
+          Host cetus
+            User ${config.sops.placeholder."ssh_hosts/cetus/user"}
+            Hostname ${config.sops.placeholder."ssh_hosts/cetus/hostname"}
+            IdentityFile ${config.sops.placeholder."ssh_hosts/cetus/identity"}
         '';
         path = "/home/sh4k0/.ssh/config.d/ssh_hosts";
       };
