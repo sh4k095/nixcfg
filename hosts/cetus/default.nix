@@ -72,6 +72,9 @@
       ];
       useRoutingFeatures = "both";
     };
+    adguardhome = {
+      enable = true;
+    };
     automatic-timezoned = {
       enable = true;
     };
