@@ -74,6 +74,17 @@
           disko.nixosModules.disko
         ];
       };
+      # installer
+      installer = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        system = "x86_64-linux";
+        modules = [
+          ({ pkgs, modulesPath, ... }: {
+            imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
+          })
+          ./hosts/installer
+        ];
+      };
     };
     homeConfigurations = {
       # tartarus
