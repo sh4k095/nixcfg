@@ -28,11 +28,11 @@
   };
 
   sops = {
-    age.keyFile = "/home/sh4k0/.config/sops/age/cetus.txt";
+    age.sshKeyPaths = [ "/etc/ssh/cetus_ed25519" ];
     defaultSopsFile = ../../secrets/hosts/cetus/secrets.yaml;
     secrets = {
-      "passwords/sh4k0" = {};
-      "passwords/root" = {};
+      "passwords/sh4k0" = { neededForUsers = true; };
+      "passwords/root" = { neededForUsers = true; };
       "tailscale/authkey" = {};
     };
   };

@@ -62,6 +62,7 @@
     hunspellDicts.it_IT
     tldr
     eza
+    gopass
     swappy
     bat
     mpv
@@ -122,7 +123,7 @@
   };
 
   sops = {
-    age.keyFile = "/home/sh4k0/.config/sops/age/erebus.txt";
+    age.sshKeyPaths = [ "/home/sh4k0/.ssh/erebus_ed25519" ];
     defaultSopsFile = ../../../secrets/hosts/erebus/secrets.yaml;
     secrets = {
       "ssh_hosts/vsc4/user" = {};
