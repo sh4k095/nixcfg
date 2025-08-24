@@ -1,12 +1,17 @@
 keys:
-  - &erebus age17pttjmfpyclx72hkgjywl7kgzp7xkpv8yahlqv5ewg48v7qmjsgqlcmc6l
-  - &cetus age1y9xt2q6n3w237tumzehwt4xarhyus0lnm7y3t7qha7anfzjr499s9e63l4
+  - &sh4k0 F171A1B7D2AFF371DF60EEC792136C40AFB76798
+  - &erebus age12n60z5cyg6n4ncppfsdm053x5hqamhs30zs74usf5nm0rg6ytuhssfnhet
+  - &cetus age1xf40xwvaxaufk5q05k59cfxv3x0vqw5ry59dd6efu6c965pdkg3qdy77lg
 creation_rules:
   - path_regex: secrets/hosts/erebus/secrets.yaml$
     key_groups:
-      - age:
+      - pgp:
+        - *sh4k0
+        age:
         - *erebus
   - path_regex: secrets/hosts/cetus/secrets.yaml$
     key_groups:
-      - age:
+      - pgp:
+        - *sh4k0
+        age:
         - *cetus
