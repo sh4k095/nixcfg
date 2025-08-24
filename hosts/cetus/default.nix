@@ -25,10 +25,6 @@
   networking = {
     hostName = "cetus";
     networkmanager.enable = true;
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [ 3000 ];
-    };
   };
 
   sops = {
@@ -78,6 +74,7 @@
     };
     adguardhome = {
       enable = true;
+      openFirewall = true;
       settings = {
         http = {
           address = "127.0.0.1:3000";
