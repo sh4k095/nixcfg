@@ -112,8 +112,10 @@
 
   # Enable the X11 windowing system.
   services.netbird.enable = true;
-  services.tailscale.enable = true;
-
+  services.tailscale = { 
+    enable = true;
+    extraSetFlags = [ "--accept-routes" ];
+  };
   #programs.sway.enable = true;
   #services.xserver = {
   #  enable = true;
