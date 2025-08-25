@@ -76,7 +76,7 @@
       extraSetFlags = [
         "--advertise-routes=192.168.88.0/24"
       ];
-      useRoutingFeatures = "both";
+      useRoutingFeatures = "server";
     };
     adguardhome = {
       enable = true;
