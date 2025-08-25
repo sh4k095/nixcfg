@@ -114,7 +114,9 @@
   services.netbird.enable = true;
   services.tailscale = { 
     enable = true;
-    extraSetFlags = [ "--accept-routes" ];
+    extraSetFlags = [
+      "--accept-routes"
+    ];
   };
   #programs.sway.enable = true;
   #services.xserver = {
