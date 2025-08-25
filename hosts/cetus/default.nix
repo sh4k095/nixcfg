@@ -78,15 +78,15 @@
       ];
       useRoutingFeatures = "server";
     };
-    adguardhome = {
-      enable = true;
-      openFirewall = true;
-      settings = {
-        http = {
-          address = "127.0.0.1:3000";
-        };
-      };
-    };
+    #adguardhome = {
+    #  enable = true;
+    #  openFirewall = true;
+    #  settings = {
+    #    http = {
+    #      address = "127.0.0.1:3000";
+    #    };
+    #  };
+    #};
     automatic-timezoned = {
       enable = true;
     };
