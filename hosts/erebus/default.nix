@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/firefox.nix
+    ../../modules/nixos/mittelab.nix
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/packages/sway
     modules/boot.nix
