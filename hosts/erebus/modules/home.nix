@@ -11,6 +11,7 @@
     ../../../modules/home-manager/helix
     ../../../modules/home-manager/zsh
     ../../../modules/home-manager/bat
+    ../../../modules/home-manager/mittelab
     ../../../modules/home-manager/swaylock
     ../../../modules/home-manager/git
     ../../../modules/home-manager/fuzzel
@@ -135,6 +136,9 @@
       "ssh_hosts/datalab/identity" = {};
       "ssh_hosts/github/identity" = {};
       "ssh_hosts/gitlab/identity" = {};
+      "ssh_hosts/cetus/user" = {};
+      "ssh_hosts/cetus/hostname" = {};
+      "ssh_hosts/cetus/identity" = {};
       "ssh_hosts/cetus/user" = {};
       "ssh_hosts/cetus/hostname" = {};
       "ssh_hosts/cetus/identity" = {};
