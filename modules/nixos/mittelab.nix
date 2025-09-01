@@ -40,7 +40,12 @@
         ];
       };
     };
+    #networkmanager.ensureProfiles.profiles = {
+    #  mittelab = {
+    #    connection.type = "wireguard";
+    #  };
+    #};
   };
   # Prevent Mittelab VPN from starting on boot
-  systemd.services.wg-quick-mittelab.wantedBy = lib.mkForce [];
+  #systemd.services.wg-quick-mittelab.wantedBy = lib.mkForce [];
 }
