@@ -71,6 +71,7 @@
     bc
     ripgrep
     fastfetch
+    devenv
     wl-mirror
     kdePackages.dolphin
     kdePackages.qtsvg
