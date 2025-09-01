@@ -7,6 +7,7 @@
     ../../modules/nixos/firefox.nix
     ../../modules/nixos/mittelab.nix
     ../../modules/nixos/gaming.nix
+    ../../modules/nixos/packages/docker
     ../../modules/nixos/packages/sway
     modules/boot.nix
     modules/nvidia.nix
@@ -212,6 +213,8 @@
     #(pkgs.btop.override { rocmSupport = true; cudaSupport = true; })
     pkgs.kdePackages.dolphin
     pkgs.pinentry-curses
+    pkgs.yubikey-manager
+    pkgs.yubikey-personalization
     pkgs.swaybg
     pkgs.winbox4
     pkgs.libinput
