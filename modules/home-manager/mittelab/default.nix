@@ -6,8 +6,8 @@
   ];
   
   sops = {
-    age.sshKeyPaths = [ "/home/sh4k0/.ssh/erebus_ed25519" ];
-    defaultSopsFile = ../../secrets/hosts/erebus/secrets.yaml;
+    #age.sshKeyPaths = [ "/home/sh4k0/.ssh/erebus_ed25519" ];
+    defaultSopsFile = ../../../secrets/hosts/erebus/secrets.yaml;
     secrets = {
       "ssh_hosts/mittelab" = {};
     };
@@ -17,7 +17,7 @@
     enable = true;
     addKeysToAgent = "yes";
     includes = [
-      config.sops.secrets."ssh_hpsts/mittelab".path;
+      config.sops.secrets."ssh_hosts/mittelab".path
     ];
   };
 }
