@@ -89,7 +89,7 @@
     vikunja = {
       enable = true;
       frontendScheme = "http";
-      frontendHostname = cetus;
+      frontendHostname = "cetus";
       port = 3456;
       settings = {
         service = {
