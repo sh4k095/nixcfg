@@ -102,7 +102,7 @@
         };
       };
     };
-    nginx.virtualHosts.${hostname} = {
+    nginx.virtualHosts.cetus = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
