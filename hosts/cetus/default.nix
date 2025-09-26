@@ -1,13 +1,18 @@
-{ inputs, config, lib, pkgs, outputs, ... }:
-
 {
+  inputs,
+  config,
+  lib,
+  pkgs,
+  outputs,
+  ...
+}: {
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
     ../../users/sh4k0
     inputs.sops-nix.nixosModules.sops
   ];
-  
+
   nix = {
     settings = {
       experimental-features = [
@@ -25,20 +30,14 @@
   networking = {
     hostName = "cetus";
     networkmanager.enable = true;
-    #interfaces.eno1 = {
-    #  ipv4.addresses = [{
-    #    address = "192.168.88.62";
-    #    prefixLength = 24;
-    #  }];
-    #};
   };
 
   sops = {
-    age.sshKeyPaths = [ "/etc/ssh/cetus_ed25519" ];
+    age.sshKeyPaths = ["/etc/ssh/cetus_ed25519"];
     defaultSopsFile = ../../secrets/hosts/cetus/secrets.yaml;
     secrets = {
-      "passwords/sh4k0" = { neededForUsers = true; };
-      "passwords/root" = { neededForUsers = true; };
+      "passwords/sh4k0" = {neededForUsers = true;};
+      "passwords/root" = {neededForUsers = true;};
       "tailscale/authkey" = {};
     };
   };
@@ -78,15 +77,46 @@
       ];
       useRoutingFeatures = "server";
     };
-    #adguardhome = {
-    #  enable = true;
-    #  openFirewall = true;
-    #  settings = {
-    #    http = {
-    #      address = "127.0.0.1:3000";
-    #    };
-    #  };
-    #};
+    adguardhome = {
+      enable = true;
+      openFirewall = true;
+      settings = {
+        http = {
+          address = "127.0.0.1:3000";
+        };
+      };
+    };
+    vikunja = {
+      enable = true;
+      frontendScheme = "http";
+      frontendHostname = cetus;
+      port = 3456;
+      settings = {
+        service = {
+          enableemailreminders = false;
+          enableregistration = false;
+          maxavatarsize = 4096;
+          jwtttl = 2592000;
+          jwtttllong = 25920000;
+          maxitemsperpage = 100;
+        };
+      };
+    };
+    nginx.virtualHosts.${hostname} = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://[::1]:3456";
+        proxyWebsockets = true;
+        recommendedProxySettings = true;
+        extraConfig = ''
+          client_max_body_size 5000M;
+          proxy_read_timeout   600s;
+          proxy_send_timeout   600s;
+          send_timeout         600s;
+        '';
+      };
+    };
     automatic-timezoned = {
       enable = true;
     };
@@ -95,7 +125,7 @@
       geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
     };
   };
-  
+
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader = {
@@ -103,7 +133,7 @@
       efi.canTouchEfiVariables = true;
       systemd-boot.enable = true;
     };
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = ["kvm-intel"];
   };
 
   environment.systemPackages = with pkgs; [
