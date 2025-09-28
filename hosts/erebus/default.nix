@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/firefox.nix
-    ../../modules/nixos/mittelab.nix
+    #../../modules/nixos/mittelab.nix
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/packages/docker
     ../../modules/nixos/packages/sway
@@ -218,6 +218,7 @@
     pkgs.swaybg
     pkgs.winbox4
     pkgs.libinput
+    pkgs.chromium
     pkgs.wireplumber
     pkgs.pwvucontrol
     pkgs.swayosd
