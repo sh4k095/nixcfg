@@ -9,43 +9,69 @@
     age.sshKeyPaths = [ "/etc/ssh/erebus_ed25519" ];
     defaultSopsFile = ../../secrets/hosts/erebus/secrets.yaml;
     secrets = {
-      "wireguard/mittelab/privatekey" = {};
+      "mittelab/inoc-vpn-env" = {};
+      "mittelab/members-wifi-env" = {};
     };
   };
   
-  networking = {
-    wg-quick.interfaces = {
-      mittelab = {
-        address = [ "10.242.42.2/32" ];
-        dns = [
-          "10.42.77.253"
-          "10.42.77.252"
-        ];
-        privateKeyFile = config.sops.secrets."wireguard/mittelab/privatekey".path;
-        peers = [
-          {
-            publicKey = "c49rv8ZVw67xuBnxEK3fg/cGrDD6y0ibIZjIlb2vxTs=";
-            allowedIPs = [
-              "10.242.42.0/24"
-              "10.42.77.0/24"
-              "10.42.88.0/24"
-              "10.42.132.0/24"
-              "192.168.4.0/24"
-              "192.168.88.0/24"
-              "10.42.10.0/24"
-            ];
+  networking.networkmanager = {
+    ensureProfiles = {
+      environmentFiles = [
+        config.sops.secrets."mittelab/inoc-vpn-env".path
+        config.sops.secrets."mittelab/members-wifi-env".path
+      ];
+      profiles = {
+        iNOC-vpn = {
+          connection = {
+            id = "mittelab-inoc";
+            interface-name = "wg-mittelab-inoc";
+            type = "wireguard";
+            #uuid = "948271ef-cf6e-40e3-be56-25a420b69d31";
+          };
+          ipv4 = {
+            address1 = "10.242.42.2/32";
+            dns = "10.42.77.253;10.42.77.252;";
+            #dns-search = "~;";
+            method = "manual";
+          };
+          ipv6 = {
+            addr-gen-mode = "default";
+            method = "disabled";
+          };
+          wireguard = {
+            private-key = "$WG_PRIVATE_KEY";
+          };
+          "wireguard-peer.c49rv8ZVw67xuBnxEK3fg/cGrDD6y0ibIZjIlb2vxTs=" = {
+            allowed-ips = "10.242.42.0/24;10.42.77.0/24;10.42.88.0/24;10.42.132.0/24;192.168.4.0/24;192.168.88.0/24;10.42.10.0/24;";
             endpoint = "vpn.mittelab.org:13231";
-            persistentKeepalive = 25;
-          }
-        ];
+            persistent-keepalive = 25;
+          };
+        };
+        Members-WiFi = {
+          connection = {
+            id = "Mittelab_Members_Legacy";
+            interface-name = "wlp3s0";
+            type = "wifi";
+            #uuid = "f23c84f2-6b25-46b3-b818-257098b04fdb";
+          };
+          ipv4 = {
+            method = "auto";
+          };
+          ipv6 = {
+            addr-gen-mode = "default";
+            method = "disabled";
+          };
+          wifi = {
+            mode = "infrastructure";
+            ssid = "Mittelab_Members_Legacy";
+          };
+          wifi-security = {
+            auth-alg = "open";
+            key-mgmt = "wpa-psk";
+            psk = "$MEMBERS_WIFI_PASSWORD";
+          };
+        };
       };
     };
-    #networkmanager.ensureProfiles.profiles = {
-    #  mittelab = {
-    #    connection.type = "wireguard";
-    #  };
-    #};
   };
-  # Prevent Mittelab VPN from starting on boot
-  #systemd.services.wg-quick-mittelab.wantedBy = lib.mkForce [];
 }
