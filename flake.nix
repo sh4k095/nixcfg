@@ -87,8 +87,8 @@
       };
     };
     homeConfigurations = {
-      # tartarus
-      "sh4k0@erebus" = home-manager.lib.homeManagerConfiguration {
+      # Steam Deck
+      "sh4k0@steamdeck" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {system = "x86_64-linux";};
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
@@ -97,19 +97,10 @@
           sops-nix.homeManagerModules.sops
         ];
       };
-      "sh4k0@hemera" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {system = "x86_64-linux";};
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/hamera
-          nixvim.homeModules.nixvim
-          sops-nix.homeManagerModules.sops
-        ];
-      };
     };
-    # Nix-on-droid configuration
+    # Pixel 9
     nixOnDroidConfigurations = {
-      "hamera" = nix-on-droid.lib.nixOnDroidConfiguration {
+      "sh4k0@pixel9" = nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs {system = "aarch64-linux";};
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
