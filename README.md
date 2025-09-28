@@ -5,15 +5,15 @@ Configuration files for my NixOS-based infrastructure (very much a work in progr
 ## Installation runbook
 
 1. Generate the installer ISO image:
-```
+```bash
 nix build github:sh4k0/nixcfg#nixosConfigurations.installer.config.system.build.isoImage
 ```
 2. Note the IP address of the installation target:
-```
+```bash
 ip a
 ```
 3. Deploy the desired configuration using `nixos-anywhere`. Sample bash script to deploy `cetus`:
-```
+```bash
 #!/usr/bin/env bash
 
 # Create a temporary directory
