@@ -8,6 +8,7 @@
     ../../modules/nixos/mittelab.nix
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/packages/docker
+    ../../modules/nixos/packages/winbox
     ../../modules/nixos/packages/sway
     modules/boot.nix
     modules/nvidia.nix
@@ -26,6 +27,7 @@
         "nix-command"
         "flakes"
       ];
+      auto-optimise-store = true;
       trusted-users = [
         "sh4k0"
         "root"
@@ -45,9 +47,6 @@
       options = "--delete-older-than 7d";
     };
   };
-
-
-
   programs.adb.enable = true;
   programs.thunderbird.enable = true;
   programs.zsh.enable = true;
@@ -55,7 +54,7 @@
   nixpkgs.config = {
     #enableParallelBuildingByDefault = true;
     #cudaSupport = true;
-    rocmSupport = true;
+    #rocmSupport = true;
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
       # CUDA
       #"cuda_cudart"
@@ -81,6 +80,13 @@
 
   nixpkgs.overlays = [
     inputs.nixpkgs-wayland.overlay
+    (final: prev: {
+      winbox4 = prev.winbox4.overrideAttrs (oldAttrs: {
+        postInstall = (oldAttrs.postInstall or "") + ''
+          wrapProgram $out/bin/WinBox --set QT_QPA_PLATFORM xcb
+        '';
+      });
+    })
   ];
 
 #  nixpkgs.overlays = [(final: prev: { ovito = prev.ovito.overrideAttrs  rec {
@@ -96,42 +102,22 @@
 
   networking.hostName = "erebus";
   networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
-
-  # Enable the X11 windowing system.
-  services.netbird.enable = true;
   services.tailscale = { 
     enable = true;
     extraSetFlags = [
       "--accept-routes"
     ];
   };
-  #programs.sway.enable = true;
-  #services.xserver = {
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+  #services.transmission = {
   #  enable = true;
-  #  desktopManager = {
-  #    xterm.enable = false;
-  #  };
-  #  windowManager.i3.enable = true;
+  #  package = pkgs.transmission-gtk;
+  #  openFirewall = true;
   #};
-  #programs.i3lock.enable = true;
-
   programs.niri.enable = true;
-
   services.greetd = let
     sway-igpu = pkgs.writeShellScriptBin "sway-igpu" ''
       export WLR_DRM_DEVICES=/dev/dri/igpu1 && exec ${pkgs.sway}/bin/sway
@@ -212,11 +198,13 @@
     (import ../../lib/xmage-sway.nix { inherit pkgs; })
     #(pkgs.btop.override { rocmSupport = true; cudaSupport = true; })
     pkgs.kdePackages.dolphin
+    pkgs.uv
+    pkgs.cmake
     pkgs.pinentry-curses
     pkgs.yubikey-manager
     pkgs.yubikey-personalization
     pkgs.swaybg
-    pkgs.winbox4
+    #pkgs.winbox4
     pkgs.libinput
     pkgs.chromium
     pkgs.wireplumber
@@ -232,18 +220,11 @@
     pkgs.brightnessctl
     pkgs.helvum
     pkgs.ueberzugpp
-    pkgs.texliveFull
+    pkgs.texlive.combined.scheme-full
     pkgs.vim
     pkgs.wget
-    #(pkgs.python312.withPackages (python-pkgs: with python-pkgs; [
-    #  numpy
-    #  scipy
-    #  ase
-    #  jupyterlab
-    #  pymatgen
-    #]))
   ];
-
+  programs.nix-ld.enable = true;
   environment.sessionVariables = rec {
     XDG_CACHE_HOME  = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
@@ -256,13 +237,11 @@
     ];
     QT_QPA_PLATFORM = "wayland";
   };
-
   qt = {
     enable = true;
     platformTheme = "qt5ct";
     style= "kvantum";
   };
-
   fonts.packages = with pkgs; [
     hack-font
     noto-fonts
@@ -271,67 +250,12 @@
     powerline-fonts
     powerline-symbols
   ];
-
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-curses;
     enableSSHSupport = true;
   };
-
-  #programs.steam = {
-  #  enable = true;
-  #  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  #  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  #  localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  #};
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-networking.firewall = rec {
-  allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
-  allowedUDPPortRanges = allowedTCPPortRanges;
-};
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
-
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-  # to actually do that.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.11"; # Did you read the comment?
-
+  system.stateVersion = "24.11";
 }
 
