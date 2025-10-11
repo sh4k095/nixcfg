@@ -23,44 +23,46 @@
       profiles = {
         iNOC-vpn = {
           connection = {
-            id = "mittelab-inoc";
-            interface-name = "wg-mittelab-inoc";
+            id = "mittelab";
+            interface-name = "mittelab";
             type = "wireguard";
-            #uuid = "948271ef-cf6e-40e3-be56-25a420b69d31";
+            uuid = "948271ef-cf6e-40e3-be56-25a420b69d31";
           };
           ipv4 = {
             address1 = "10.242.42.2/32";
             dns = "10.42.77.253;10.42.77.252;";
-            #dns-search = "~;";
+            dns-search = "~;";
             method = "manual";
           };
           ipv6 = {
             addr-gen-mode = "default";
             method = "disabled";
           };
+          proxy = { };
           wireguard = {
             private-key = "$WG_PRIVATE_KEY";
           };
           "wireguard-peer.c49rv8ZVw67xuBnxEK3fg/cGrDD6y0ibIZjIlb2vxTs=" = {
             allowed-ips = "10.242.42.0/24;10.42.77.0/24;10.42.88.0/24;10.42.132.0/24;192.168.4.0/24;192.168.88.0/24;10.42.10.0/24;";
             endpoint = "vpn.mittelab.org:13231";
-            persistent-keepalive = 25;
+            persistent-keepalive = "25";
           };
         };
-        Members-WiFi = {
+        Mittelab_Members_Legacy = {
           connection = {
             id = "Mittelab_Members_Legacy";
             interface-name = "wlp3s0";
             type = "wifi";
-            #uuid = "f23c84f2-6b25-46b3-b818-257098b04fdb";
+            uuid = "f23c84f2-6b25-46b3-b818-257098b04fdb";
           };
           ipv4 = {
             method = "auto";
           };
           ipv6 = {
             addr-gen-mode = "default";
-            method = "disabled";
+            method = "auto";
           };
+          proxy = { };
           wifi = {
             mode = "infrastructure";
             ssid = "Mittelab_Members_Legacy";
