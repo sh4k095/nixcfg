@@ -29,7 +29,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tuxedo-nixos = {
-      url = "github:blitz/tuxedo-nixos";
+      url = "github:sund3RRR/tuxedo-nixos";
     };
   };
 
