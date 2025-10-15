@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, outputs, ... }:
+{ inputs, config, options, lib, pkgs, outputs, ... }:
 
 {
   imports = [
@@ -112,11 +112,6 @@
     enable = true;
     package = pkgs.mullvad-vpn;
   };
-  #services.transmission = {
-  #  enable = true;
-  #  package = pkgs.transmission-gtk;
-  #  openFirewall = true;
-  #};
   programs.niri.enable = true;
   services.greetd = let
     sway-igpu = pkgs.writeShellScriptBin "sway-igpu" ''
@@ -198,12 +193,15 @@
     (import ../../lib/xmage-sway.nix { inherit pkgs; })
     #(pkgs.btop.override { rocmSupport = true; cudaSupport = true; })
     pkgs.kdePackages.dolphin
+    pkgs.wireguard-tools
     pkgs.uv
     pkgs.cmake
     pkgs.pinentry-curses
     pkgs.yubikey-manager
     pkgs.yubikey-personalization
     pkgs.swaybg
+    pkgs.jetbrains.pycharm-community
+    pkgs.step-cli
     #pkgs.winbox4
     pkgs.libinput
     pkgs.chromium
@@ -224,7 +222,23 @@
     pkgs.vim
     pkgs.wget
   ];
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = options.programs.nix-ld.libraries.default ++ (
+      with pkgs; [
+        dbus
+        wayland
+        glib
+        libGL
+        fontconfig
+        xorg.libX11
+        libxkbcommon
+        freetype
+        krb5
+        libdrm
+      ]
+    );
+  };
   environment.sessionVariables = rec {
     XDG_CACHE_HOME  = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
