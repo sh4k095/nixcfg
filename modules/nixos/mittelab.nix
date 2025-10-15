@@ -27,6 +27,7 @@
             interface-name = "mittelab";
             type = "wireguard";
             uuid = "948271ef-cf6e-40e3-be56-25a420b69d31";
+            autoconnect = false;
           };
           ipv4 = {
             address1 = "10.242.42.2/32";
