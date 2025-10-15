@@ -1,9 +1,11 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = [
-    pkgs.winbox4
-  ];
+  programs.winbox = {
+    enable = true;
+    package = pkgs.winbox4;
+    openFirewall = false;
+  };
   # Setting the Qt backend to XCB to allow WinBox to run under Wayland
   nixpkgs.overlays = [
     (final: prev: {
