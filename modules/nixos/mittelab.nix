@@ -1,4 +1,4 @@
-{ inputs, config, lib, ...}:
+{ inputs, config, lib, pkgs, ...}:
 
 {
   imports = [
@@ -13,6 +13,28 @@
       "mittelab/members-wifi-env" = {};
     };
   };
+
+  environment.systemPackages =
+    let
+      dockform = with pkgs; buildGoModule rec {
+        pname = "dockform";
+        version = "0.6.0";
+        src = fetchFromGitHub {
+          owner = "gcstr";
+          repo = pname;
+          rev = "v${version}";
+          hash = "sha256-p3dMRI/7KisJv31rXLPs7dtEk/U+rlWaFMJAcDy0ufk=";
+        };
+        vendorHash = "sha256-gihQfXmVJSTArV+YOlYKEFOvNmCd75SLsK8pIo+FKvs=";
+        subPackages = "cmd/dockform";
+        ldflags = [
+          "-s -w"
+          "-X github.com/gcstr/dockform/internal/cli.version=${version}"
+        ];
+      };
+    in [
+      dockform
+    ];
   
   networking.networkmanager = {
     ensureProfiles = {
