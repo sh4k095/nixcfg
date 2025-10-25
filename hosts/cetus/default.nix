@@ -99,13 +99,13 @@
     #mullvad-vpn = {
     #  enable = true;
     #};
-    #automatic-timezoned = {
-    #  enable = true;
-    #};
-    #geoclue2 = {
-    #  enable = true;
-    #  geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
-    #};
+    automatic-timezoned = {
+      enable = true;
+    };
+    geoclue2 = {
+      enable = true;
+      geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
+    };
   };
 
   boot = {
