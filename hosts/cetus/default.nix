@@ -1,5 +1,5 @@
 {
-  inputv,
+  inputs,
   config,
   lib,
   pkgs,
