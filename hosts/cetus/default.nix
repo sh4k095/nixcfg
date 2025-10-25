@@ -86,44 +86,16 @@
         };
       };
     };
-    vikunja = {
-      enable = true;
-      frontendScheme = "http";
-      frontendHostname = "cetus";
-      port = 3456;
-      settings = {
-        service = {
-          enableemailreminders = false;
-          enableregistration = false;
-          maxavatarsize = 4096;
-          jwtttl = 2592000;
-          jwtttllong = 25920000;
-          maxitemsperpage = 100;
-        };
-      };
-    };
-    nginx.virtualHosts.cetus = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://[::1]:3456";
-        proxyWebsockets = true;
-        recommendedProxySettings = true;
-        extraConfig = ''
-          client_max_body_size 5000M;
-          proxy_read_timeout   600s;
-          proxy_send_timeout   600s;
-          send_timeout         600s;
-        '';
-      };
-    };
-    automatic-timezoned = {
+    mullvad-vpn = {
       enable = true;
     };
-    geoclue2 = {
-      enable = true;
-      geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
-    };
+    #automatic-timezoned = {
+    #  enable = true;
+    #};
+    #geoclue2 = {
+    #  enable = true;
+    #  geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
+    #};
   };
 
   boot = {
