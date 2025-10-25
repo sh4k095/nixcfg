@@ -31,7 +31,7 @@
     hostName = "cetus";
     networkmanager.enable = true;
     firewall = {
-      interfaces."eno1".allowUDPPorts = [
+      interfaces."eno1".allowedUDPPorts = [
         53
       ];
     };
