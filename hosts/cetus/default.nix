@@ -86,9 +86,9 @@
         };
       };
     };
-    mullvad-vpn = {
-      enable = true;
-    };
+    #mullvad-vpn = {
+    #  enable = true;
+    #};
     #automatic-timezoned = {
     #  enable = true;
     #};
