@@ -84,10 +84,6 @@
     };
     adguardhome = {
       enable = true;
-      dns = {
-        bind_hosts = [ "0.0.0.0" ];
-        bootstrap_dns = [ "9.9.9.9" ];
-      };
       settings = {
         users = [
           {
@@ -95,6 +91,10 @@
             password = "$2y$10$KU.j9cq2ZYNLKmaa4oCK9eMqdjkjCCDSE3XSr3CV7ofqLHK/bZpWW";
           }
         ];
+        dns = {
+          bind_hosts = [ "0.0.0.0" ];
+          bootstrap_dns = [ "9.9.9.9" ];
+        };
       };
       openFirewall = true;
       mutableSettings = false;
