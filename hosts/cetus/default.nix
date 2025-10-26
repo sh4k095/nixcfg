@@ -82,20 +82,20 @@
       ];
       useRoutingFeatures = "server";
     };
-    adguardhome = {
-      enable = true;
-      openFirewall = true;
-      settings = {
-        http = {
-          address = "127.0.0.1:3000";
-        };
-        #dns = {
-        #  bind_hosts = [
-        #    "127.0.0.1"
-        #  ];
-        #};
-      };
-    };
+    #adguardhome = {
+    #  enable = true;
+    #  openFirewall = true;
+    #  settings = {
+    #    http = {
+    #      address = "127.0.0.1:3000";
+    #    };
+    #    #dns = {
+    #    #  bind_hosts = [
+    #    #    "127.0.0.1"
+    #    #  ];
+    #    #};
+    #  };
+    #};
     #mullvad-vpn = {
     #  enable = true;
     #};
