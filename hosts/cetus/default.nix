@@ -84,6 +84,7 @@
     };
     adguardhome = {
       enable = true;
+      openFirewall = true;
       settings = {
         users = [
           {
@@ -95,12 +96,11 @@
           bind_hosts = [ "0.0.0.0" ];
           bootstrap_dns = [ "9.9.9.9" ];
         };
+        querylog = {
+          file_enabled = false;
+        };
       };
-      openFirewall = true;
       mutableSettings = false;
-      squerylog = {
-        file_enabled = false;
-      };
     };
     #mullvad-vpn = {
     #  enable = true;
