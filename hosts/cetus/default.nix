@@ -85,16 +85,9 @@
     adguardhome = {
       enable = true;
       openFirewall = true;
-    #  settings = {
-    #    http = {
-    #      address = "127.0.0.1:3000";
-    #    };
-    #    #dns = {
-    #    #  bind_hosts = [
-    #    #    "127.0.0.1"
-    #    #  ];
-    #    #};
-    #  };
+      mutableSettings = true;
+      port = 3000;
+      settings = {};
     };
     #mullvad-vpn = {
     #  enable = true;
