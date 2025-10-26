@@ -88,7 +88,7 @@
         users = [
           {
             name = "sh4k0";
-            password = "$2y$10$KU.j9cq2ZYNLKmaa4oCK9eMqdjkjCCDSE3XSr3CV7ofqLHK/bZpWW";
+            password = "$2y$10$7Xxj1/2Cg6gqtSbkVtYPOeueDpxKK7Dn7RLzzT5jhEuBjkIHoo9Lu";
           }
         ];
         dns = {
