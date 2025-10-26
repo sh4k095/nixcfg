@@ -30,11 +30,10 @@
   networking = {
     hostName = "cetus";
     networkmanager.enable = true;
-    #firewall = {
-    #  allowedUDPPorts = [
-    #    53
-    #  ];
-    #};
+    firewall = {
+      allowedTCPPorts = [ 53 ];
+      allowedUDPPorts = [ 53 ];
+    };
   };
 
   sops = {
