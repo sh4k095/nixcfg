@@ -84,10 +84,23 @@
     };
     adguardhome = {
       enable = true;
+      dns = {
+        bind_hosts = [ "0.0.0.0" ];
+        bootstrap_dns = [ "9.9.9.9" ];
+      };
+      settings = {
+        users = [
+          {
+            name = "sh4k0";
+            password = "$2y$10$KU.j9cq2ZYNLKmaa4oCK9eMqdjkjCCDSE3XSr3CV7ofqLHK/bZpWW";
+          }
+        ];
+      };
       openFirewall = true;
-      mutableSettings = true;
-      port = 3000;
-      settings = {};
+      mutableSettings = false;
+      squerylog = {
+        file_enabled = false;
+      };
     };
     #mullvad-vpn = {
     #  enable = true;
