@@ -30,11 +30,11 @@
   networking = {
     hostName = "cetus";
     networkmanager.enable = true;
-    firewall = {
-      allowedUDPPorts = [
-        53
-      ];
-    };
+    #firewall = {
+    #  allowedUDPPorts = [
+    #    53
+    #  ];
+    #};
   };
 
   sops = {
@@ -82,8 +82,8 @@
       ];
       useRoutingFeatures = "server";
     };
-    #adguardhome = {
-    #  enable = true;
+    adguardhome = {
+      enable = true;
     #  openFirewall = true;
     #  settings = {
     #    http = {
@@ -95,7 +95,7 @@
     #    #  ];
     #    #};
     #  };
-    #};
+    };
     #mullvad-vpn = {
     #  enable = true;
     #};
