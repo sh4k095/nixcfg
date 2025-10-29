@@ -7,10 +7,11 @@
   ...
 }: {
   imports = [
+    inputs.sops-nix.nixosModules.sops
     ./disko.nix
     ./hardware-configuration.nix
     ../../users/sh4k0
-    inputs.sops-nix.nixosModules.sops
+    ../../modules/nixos/services/adguardhome
   ];
 
   nix = {
@@ -30,10 +31,6 @@
   networking = {
     hostName = "cetus";
     networkmanager.enable = true;
-    firewall = {
-      allowedTCPPorts = [ 53 ];
-      allowedUDPPorts = [ 53 ];
-    };
   };
 
   sops = {
@@ -80,26 +77,6 @@
         "--advertise-routes=192.168.88.0/24"
       ];
       useRoutingFeatures = "server";
-    };
-    adguardhome = {
-      enable = true;
-      openFirewall = true;
-      settings = {
-        users = [
-          {
-            name = "sh4k0";
-            password = "$2y$10$7Xxj1/2Cg6gqtSbkVtYPOeueDpxKK7Dn7RLzzT5jhEuBjkIHoo9Lu";
-          }
-        ];
-        dns = {
-          bind_hosts = [ "0.0.0.0" ];
-          bootstrap_dns = [ "9.9.9.9" ];
-        };
-        querylog = {
-          file_enabled = false;
-        };
-      };
-      mutableSettings = false;
     };
     #mullvad-vpn = {
     #  enable = true;
