@@ -7,7 +7,7 @@
   
   sops = {
     age.sshKeyPaths = [ "/etc/ssh/erebus_ed25519" ];
-    defaultSopsFile = ../../secrets/hosts/erebus/secrets.yaml;
+    defaultSopsFile = ../../../../../.secrets/hosts/erebus/secrets.yaml;
     secrets = {
       "mittelab/inoc-vpn-env" = {};
       "mittelab/members-wifi-env" = {};

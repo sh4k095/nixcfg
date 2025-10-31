@@ -3,13 +3,13 @@ keys:
   - &erebus age12n60z5cyg6n4ncppfsdm053x5hqamhs30zs74usf5nm0rg6ytuhssfnhet
   - &cetus age1xf40xwvaxaufk5q05k59cfxv3x0vqw5ry59dd6efu6c965pdkg3qdy77lg
 creation_rules:
-  - path_regex: dendron/_secrets/hosts/erebus/secrets.yaml$
+  - path_regex: .secrets/hosts/erebus/secrets.yaml$
     key_groups:
       - pgp:
         - *sh4k0
         age:
         - *erebus
-  - path_regex: secrets/hosts/cetus/secrets.yaml$
+  - path_regex: .secrets/hosts/cetus/secrets.yaml$
     key_groups:
       - pgp:
         - *sh4k0

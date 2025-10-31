@@ -126,7 +126,7 @@
 
   sops = {
     age.sshKeyPaths = [ "/home/sh4k0/.ssh/erebus_ed25519" ];
-    defaultSopsFile = ../../../_secrets/hosts/erebus/secrets.yaml;
+    defaultSopsFile = ../../../../.secrets/hosts/erebus/secrets.yaml;
     secrets = {
       "ssh_hosts/vsc4/user" = {};
       "ssh_hosts/vsc4/hostname" = {};
