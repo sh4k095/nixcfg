@@ -60,16 +60,16 @@ in
       hostTypeHomeManager = types.submodule [
         baseHostModule
         {
-          modules = [
-            config.flake.modules.homeManager.core
-            (
-              { pkgs, config, ... }:
-              {
-                nix.package = pkgs.nix;
-                age.identityPaths = [ "${config.home.homeDirectory}/.ssh/agenix" ];
-              }
-            )
-          ];
+          #modules = [
+          #  config.flake.modules.homeManager.core
+          #  (
+          #    { pkgs, config, ... }:
+          #    {
+          #      nix.package = pkgs.nix;
+          #      age.identityPaths = [ "${config.home.homeDirectory}/.ssh/agenix" ];
+          #    }
+          #  )
+          #];
         }
       ];
     in
