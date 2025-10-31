@@ -2,28 +2,28 @@
 
 {
   imports = [
-    ../../../modules/home-manager/alacritty
-    ../../../modules/home-manager/direnv
-    ../../../modules/home-manager/starship
-    ../../../modules/home-manager/colorscheme
-    ../../../modules/home-manager/colorscheme/schemes/gruvbox-dark.nix
-    ../../../modules/home-manager/btop
-    ../../../modules/home-manager/helix
-    ../../../modules/home-manager/zsh
+    ../_modules/home-manager/alacritty
+    ../_modules/home-manager/direnv
+    ../_modules/home-manager/starship
+    ../_modules/home-manager/colorscheme
+    ../_modules/home-manager/colorscheme/schemes/gruvbox-dark.nix
+    ../_modules/home-manager/btop
+    ../_modules/home-manager/helix
+    ../_modules/home-manager/zsh
     #../../../modules/home-manager/bat
-    ../../../modules/home-manager/mittelab
-    ../../../modules/home-manager/swaylock
-    ../../../modules/home-manager/git
-    ../../../modules/home-manager/fuzzel
+    ../_modules/home-manager/mittelab
+    ../_modules/home-manager/swaylock
+    ../_modules/home-manager/git
+    ../_modules/home-manager/fuzzel
     #../../../modules/home-manager/theme.nix
-    ../../../modules/home-manager/theme
-    ../../../modules/home-manager/sway
-    ../../../modules/home-manager/swaync
-    ../../../modules/home-manager/nvim
-    ../../../modules/home-manager/i3status-rust
-    ../../../modules/home-manager/zellij
-    ../../../modules/home-manager/zathura
-    ../../../modules/home-manager/ssh
+    ../_modules/home-manager/theme
+    ../_modules/home-manager/sway
+    ../_modules/home-manager/swaync
+    ../_modules/home-manager/nvim
+    ../_modules/home-manager/i3status-rust
+    ../_modules/home-manager/zellij
+    ../_modules/home-manager/zathura
+    ../_modules/home-manager/ssh
     inputs.nixvim.homeModules.nixvim
     inputs.sops-nix.homeManagerModules.sops
   ];

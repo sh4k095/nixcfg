@@ -2,7 +2,7 @@
 
 let
   mod = config.wayland.windowManager.sway.config.modifier;
-  fuzzel-powermenu = pkgs.callPackage ../../../../lib/fuzzel-powermenu.nix {};
+  fuzzel-powermenu = pkgs.callPackage ../../../../_lib/fuzzel-powermenu.nix {};
 in 
 {
   wayland.windowManager.sway.config.keybindings = lib.mkOptionDefault {

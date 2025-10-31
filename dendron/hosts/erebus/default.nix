@@ -30,7 +30,7 @@
 
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
-    home-manager.users.sh4k0 = ./hosts/erebus/modules/home.nix;
+    home-manager.users.sh4k0 = ./_modules_specific/home.nix;
     home-manager.extraSpecialArgs = { inherit inputs outputs; };
   
     nix = {
