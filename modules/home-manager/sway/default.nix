@@ -64,6 +64,7 @@
           resolution = "2560x1600";
           bg = "~/.config/sway/wp.png fill";
           scale = "1";
+          position = "3440 0";
         };
         "eDP-2" = {
           resolution = "2560x1600";
@@ -74,6 +75,7 @@
           resolution = "3440x1440";
           bg = "~/.config/sway/wp.png fill";
           scale = "1";
+          position = "0 0";
         };
       };
       bars = [
