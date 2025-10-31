@@ -1,6 +1,9 @@
 {
   programs.git = {
     enable = true;
+    lfs.enable = true;
+    userName  = "sh4k0";
+    userEmail = "carlofedep@gmail.com";
     aliases = {
       br = "branch";
       ci = "commit -m";

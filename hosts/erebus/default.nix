@@ -13,6 +13,7 @@
     modules/boot.nix
     modules/nvidia.nix
     ../../users/sh4k0
+    inputs.sops-nix.nixosModules.sops
   ];
   
   sway = {
@@ -86,7 +87,36 @@
           wrapProgram $out/bin/WinBox --set QT_QPA_PLATFORM xcb
         '';
       });
-    })
+    #  (final: prev: {maestral = prev.maestral.overrideAttrs rec {
+    #    version = "1.9.5";
+    #    src = final.fetchFromGitHub {
+    #      owner = "SamSchott";
+    #      repo = "maestral";
+    #      tag = "v${version}";
+    #      hash = "sha256-xFSnJPKTAPXYa4FuqkFF5gLzGZ9TltNVDhyBnswiut4=";
+    #    };
+    #    dependencies = with pkgs.python313Packages; [
+    #      click
+    #      desktop-notifier
+    #      dbus-python
+    #      dropbox
+    #      fasteners
+    #      keyring
+    #      keyrings-alt
+    #      packaging
+    #    ];
+    #  };
+    #  })#  
+    #  (final: prev: {maestral-qt = prev.maestral-qt.overrideAttrs rec {
+    #    version = "1.9.5";
+    #    src = final.fetchFromGitHub {
+    #      owner = "SamSchott";
+    #      repo = "maestral-qt";
+    #      tag = "v${version}";
+    #      hash = "sha256-FCn9ELbodk+zCJNmlOVoxE/KSSqbxy5HTB1vpiu7AJA=";
+    #    };
+    #  };
+    })#  
   ];
 
 #  nixpkgs.overlays = [(final: prev: { ovito = prev.ovito.overrideAttrs  rec {
@@ -101,7 +131,12 @@
 #}; })];
 
   networking.hostName = "erebus";
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    plugins = [
+      pkgs.networkmanager-openconnect
+    ];
+  };
   services.tailscale = { 
     enable = true;
     extraSetFlags = [
@@ -124,7 +159,6 @@
     enable = true;
     settings = {
       default_session = {
-        #command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${sway-igpu}/bin/sway-igpu";
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${sway-nvidia}/bin/sway-nvidia";
         user = "sh4k0";
       };
@@ -202,8 +236,9 @@
     pkgs.swaybg
     pkgs.jetbrains.pycharm-community
     pkgs.step-cli
-    #pkgs.winbox4
     pkgs.libinput
+    pkgs.networkmanager-openconnect
+    pkgs.openconnect
     pkgs.chromium
     pkgs.wireplumber
     pkgs.pwvucontrol
@@ -259,7 +294,7 @@
   fonts.packages = with pkgs; [
     hack-font
     noto-fonts
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     nerd-fonts.jetbrains-mono
     powerline-fonts
     powerline-symbols
@@ -270,6 +305,7 @@
     pinentryPackage = pkgs.pinentry-curses;
     enableSSHSupport = true;
   };
+
   system.stateVersion = "24.11";
 }
 
