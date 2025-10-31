@@ -10,7 +10,7 @@
     ../../../modules/home-manager/btop
     ../../../modules/home-manager/helix
     ../../../modules/home-manager/zsh
-    ../../../modules/home-manager/bat
+    #../../../modules/home-manager/bat
     ../../../modules/home-manager/mittelab
     ../../../modules/home-manager/swaylock
     ../../../modules/home-manager/git
@@ -29,7 +29,7 @@
   ];
 
   zsh.enable = true;
-  bat.enable = true;
+  #bat.enable = true;
   zathura.enable = true;
   zellij.enable = true;
 
@@ -96,7 +96,7 @@
     yazi
     maestral
     helix
-    maestral-gui
+    #maestral-gui
     lammps
     fishPlugins.gruvbox
     calibre
@@ -143,6 +143,8 @@
       "ssh_hosts/cetus/user" = {};
       "ssh_hosts/cetus/hostname" = {};
       "ssh_hosts/cetus/identity" = {};
+      "ssh_hosts/leonardo/user" = {};
+      "ssh_hosts/leonardo/hostname" = {};
     };
     templates = {
       "ssh_hosts" = {
@@ -165,6 +167,9 @@
             User ${config.sops.placeholder."ssh_hosts/cetus/user"}
             Hostname ${config.sops.placeholder."ssh_hosts/cetus/hostname"}
             IdentityFile ${config.sops.placeholder."ssh_hosts/cetus/identity"}
+          Host leonardo
+            User ${config.sops.placeholder."ssh_hosts/leonardo/user"}
+            Hostname ${config.sops.placeholder."ssh_hosts/leonardo/hostname"}
         '';
         path = "/home/sh4k0/.ssh/config.d/ssh_hosts";
       };
