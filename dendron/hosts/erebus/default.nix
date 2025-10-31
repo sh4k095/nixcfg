@@ -235,7 +235,7 @@
     #environment.systemPackages = with pkgs; [
     environment.systemPackages = [
       #(import ../../lib/nvidia-offload.nix { inherit pkgs; })
-      (import ../../lib/xmage-sway.nix { inherit pkgs; })
+      (import _lib/xmage-sway.nix { inherit pkgs; })
       #(pkgs.btop.override { rocmSupport = true; cudaSupport = true; })
       pkgs.kdePackages.dolphin
       pkgs.wireguard-tools

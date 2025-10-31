@@ -121,12 +121,12 @@
     #  source = dotfiles/fuzzel;
     #  recursive = true;
     #};
-    ".config/sway/wp.png".source = ../../../modules/home-manager/sway/modules/wp.png;
+    ".config/sway/wp.png".source = ../_modules/home-manager/sway/modules/wp.png;
   };
 
   sops = {
     age.sshKeyPaths = [ "/home/sh4k0/.ssh/erebus_ed25519" ];
-    defaultSopsFile = ../../../secrets/hosts/erebus/secrets.yaml;
+    defaultSopsFile = ../../../_secrets/hosts/erebus/secrets.yaml;
     secrets = {
       "ssh_hosts/vsc4/user" = {};
       "ssh_hosts/vsc4/hostname" = {};

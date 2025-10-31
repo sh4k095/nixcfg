@@ -7,7 +7,7 @@
   
   sops = {
     #age.sshKeyPaths = [ "/home/sh4k0/.ssh/erebus_ed25519" ];
-    defaultSopsFile = ../../../secrets/hosts/erebus/secrets.yaml;
+    #defaultSopsFile = ../../../../../secrets/hosts/erebus/secrets.yaml;
     secrets = {
       "ssh_hosts/mittelab" = {};
     };
