@@ -3,7 +3,7 @@
   flake.modules.nixos.host_erebus =
 
   { inputs, config, options, lib, pkgs, outputs, ... }:
-  
+
   {
     imports = [
       ./_hardware-configuration.nix

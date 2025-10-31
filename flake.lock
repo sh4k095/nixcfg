@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760701190,
-        "narHash": "sha256-y7UhnWlER8r776JsySqsbTUh2Txf7K30smfHlqdaIQw=",
+        "lastModified": 1761899396,
+        "narHash": "sha256-XOpKBp6HLzzMCbzW50TEuXN35zN5WGQREC7n34DcNMM=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "3a9450b26e69dcb6f8de6e2b07b3fc1c288d85f5",
+        "rev": "6f4cf5abbe318e4cd1e879506f6eeafd83f7b998",
         "type": "github"
       },
       "original": {
@@ -131,11 +131,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761770832,
-        "narHash": "sha256-IQIWG6kHxnUpx5KEb9r0BROL3/R6UQ/30aO2oHncBA8=",
+        "lastModified": 1761878381,
+        "narHash": "sha256-lCRaipHgszaFZ1Cs8fdGJguVycCisBAf2HEFgip5+xU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "124b99dbd1594dbebdd575ac7142752ee96a98a0",
+        "rev": "4ac96eb21c101a3e5b77ba105febc5641a8959aa",
         "type": "github"
       },
       "original": {
@@ -356,13 +356,29 @@
         "type": "github"
       }
     },
+    "nixpkgs-secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1761933509,
+        "narHash": "sha256-WmJCRAWFQG3Ggxgu1KwuIksiVlfBEiWibuI4s9CFPX4=",
+        "ref": "refs/heads/main",
+        "rev": "202e9af52131fdc52782fa2e3951ca6f236a480c",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/sh4k095/nixcfg-secrets"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/sh4k095/nixcfg-secrets"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1761845553,
-        "narHash": "sha256-c1syrVBdPiNFD3d4ruGxu/XU819s5a01wrL/ndfENeo=",
+        "lastModified": 1761903212,
+        "narHash": "sha256-lSIrqFA4mnukm8IPTp8x4IYZ+/kXLv2tZsvT0yv9FZM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "24ccb50bc2f7905565ff1550502175ad29175f21",
+        "rev": "7e82f02937587358bce377bef87359f44e0fa07b",
         "type": "github"
       },
       "original": {
@@ -379,11 +395,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1761790919,
-        "narHash": "sha256-TqfLHVpJoLzwnFhHSR0tAGjJ28loVgVxVKn58Sb/HxI=",
+        "lastModified": 1761916096,
+        "narHash": "sha256-qIp4lC3x6Ifej/YTkM+4rwc6I4q9P1k4RoEe7/v9h/Y=",
         "owner": "nix-community",
         "repo": "nixpkgs-wayland",
-        "rev": "262a49c139941d29bb582bbe0ebc84532042c4fe",
+        "rev": "1dc6e8c50450a9de6de404757b883bdb5ef84f07",
         "type": "github"
       },
       "original": {
@@ -434,11 +450,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1761744315,
-        "narHash": "sha256-OknzyEoI+VEYgk/FWMyx3tvjb/MPPyqS+G/aemDz51w=",
+        "lastModified": 1761829429,
+        "narHash": "sha256-VuFa5OzKyYl4XvQwaWS9ZfhVrtpCYPE3Dgy83kDPf30=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "6233fc6b2c3f203d8a5970f4a2c1df5777902717",
+        "rev": "0420aa712f01b08b4d9f36b1a46b2f26c720aa80",
         "type": "github"
       },
       "original": {
@@ -516,6 +532,7 @@
         "import-tree": "import-tree",
         "nix-on-droid": "nix-on-droid",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-secrets": "nixpkgs-secrets",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nixvim": "nixvim",

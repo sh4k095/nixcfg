@@ -1,5 +1,9 @@
 { inputs, config, lib, pkgs, ...}:
 
+let
+  secretspath = builtins.toString inputs.nixcfg-secrets;
+in
+
 {
   imports = [
     inputs.sops-nix.nixosModules.sops
@@ -7,7 +11,7 @@
   
   sops = {
     age.sshKeyPaths = [ "/etc/ssh/erebus_ed25519" ];
-    defaultSopsFile = ../../../../../.secrets/hosts/erebus/secrets.yaml;
+    defaultSopsFile = "${secretspath}/hosts/erebus/secrets.yaml";
     secrets = {
       "mittelab/inoc-vpn-env" = {};
       "mittelab/members-wifi-env" = {};

@@ -38,6 +38,10 @@
     tuxedo-nixos = {
       url = "github:sund3RRR/tuxedo-nixos";
     };
+    nixpkgs-secrets = {
+      url = "git+ssh://git@github.com/sh4k095/nixcfg-secrets";
+      flake = false;
+    };
   };
 
   outputs =

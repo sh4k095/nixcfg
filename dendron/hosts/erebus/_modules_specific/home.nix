@@ -1,4 +1,8 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, lib, config, pkgs, ... }:
+
+let
+  secretspath = builtins.toString inputs.nixcfg-secrets;
+in
 
 {
   imports = [
@@ -126,7 +130,7 @@
 
   sops = {
     age.sshKeyPaths = [ "/home/sh4k0/.ssh/erebus_ed25519" ];
-    defaultSopsFile = ../../../../.secrets/hosts/erebus/secrets.yaml;
+    defaultSopsFile = "${secretspath}/hosts/erebus/secrets.yaml";
     secrets = {
       "ssh_hosts/vsc4/user" = {};
       "ssh_hosts/vsc4/hostname" = {};

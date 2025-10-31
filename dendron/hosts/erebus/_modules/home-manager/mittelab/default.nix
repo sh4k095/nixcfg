@@ -1,5 +1,9 @@
 { inputs, config, lib, ...}:
 
+let
+  secretspath = builtins.toString inputs.nixcfg-secrets;
+in
+
 {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
