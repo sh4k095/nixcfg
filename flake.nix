@@ -11,7 +11,9 @@
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
     };
-    import-tree.url = "github:vic/import-tree";
+    import-tree = {
+      url = "github:vic/import-tree";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,8 +40,8 @@
     tuxedo-nixos = {
       url = "github:sund3RRR/tuxedo-nixos";
     };
-    nixpkgs-secrets = {
-      url = "git+ssh://git@github.com/sh4k095/nixcfg-secrets";
+    nixcfg-secrets = {
+      url = "git+ssh://git@github.com/sh4k095/nixcfg-secrets?shallow=1&ref=main";
       flake = false;
     };
   };
