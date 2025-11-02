@@ -242,6 +242,7 @@
       pkgs.uv
       pkgs.cmake
       pkgs.pinentry-curses
+      pkgs.bitwarden-desktop
       pkgs.yubikey-manager
       pkgs.yubikey-personalization
       pkgs.swaybg
