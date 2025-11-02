@@ -6,7 +6,6 @@
 
   {
     imports = [
-      ./_hardware-configuration.nix
       _modules/nixos/desktop.nix
       _modules/nixos/firefox.nix
       _modules/nixos/mittelab.nix

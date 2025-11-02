@@ -52,5 +52,5 @@
 
   outputs =
     { flake-parts, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./dendron);
+    flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
