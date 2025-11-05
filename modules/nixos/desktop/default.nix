@@ -7,6 +7,6 @@
     bluetooth
     steam
     wayland
-    winbox
+    #winbox
   ];
 }

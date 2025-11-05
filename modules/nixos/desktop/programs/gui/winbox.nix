@@ -1,8 +1,8 @@
 {
-  flake.modules.nixos.winbox = { pkgs, ... }: {
+  flake.modules.nixos.winbox = { pkgs, lib, ... }: {
     programs.winbox = {
       enable = true;
-      package = pkgs.winbox4;
+      package = lib.mkForce pkgs.winbox4;
       openFirewall = false;
     };
     
