@@ -2,6 +2,8 @@
 
 {
   flake.modules.nixos.dev.imports = with config.flake.modules.nixos; [
+    libvirt
     mittelab
+    uv
   ];
 }

@@ -23,7 +23,7 @@
     };
     fonts.packages = with pkgs; [
       noto-fonts
-      nerd-fonts-color-emoji
+      noto-fonts-color-emoji
       nerd-fonts.jetbrains-mono
       powerline-fonts
       powerline-symbols
@@ -38,7 +38,7 @@
     services = {
       displayManager.defaultSession = "sway";
       libinput.enable = true;
-      xserver.xkb.layout = "us";
+      #xserver.xkb.layout = "us";
     };
   };
 }

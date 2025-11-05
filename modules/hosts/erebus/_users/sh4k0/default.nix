@@ -10,8 +10,6 @@
         uid = 1000;
         isNormalUser = true;
         extraGroups = [
-          "adbusers"
-          "audio"
           "bluetooth"
           "dialout"
           "input"

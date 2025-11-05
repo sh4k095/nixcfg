@@ -7,16 +7,13 @@
     imports = [
       _modules/nixos/desktop.nix
       _modules/nixos/firefox.nix
-      _modules/nixos/mittelab.nix
-      _modules/nixos/gaming.nix
       _modules/nixos/packages/docker
-      _modules/nixos/packages/winbox
+        #_modules/nixos/packages/winbox
       _modules/nixos/packages/sway
       _modules_specific/boot.nix
       _modules_specific/nvidia.nix
       _users/sh4k0
       inputs.sops-nix.nixosModules.sops
-      inputs.tuxedo-nixos.nixosModules.default
       inputs.home-manager.nixosModules.home-manager
     ];
     
@@ -49,7 +46,6 @@
         options = "--delete-older-than 7d";
       };
     };
-    programs.adb.enable = true;
     programs.thunderbird.enable = true;
     programs.zsh.enable = true;
   
@@ -179,32 +175,6 @@
     # services.printing.enable = true;
   
   
-    #services.cpupower-gui.enable = true;
-    # Enable sound.
-    # hardware.pulseaudio.enable = true;
-    # OR
-    security.rtkit.enable = true;
-    services.pipewire = {
-      enable = true;
-      audio.enable = true;
-      pulse.enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-    };
-    hardware.bluetooth.enable = true;
-    hardware.bluetooth.powerOnBoot = true;
-  
-  
-    hardware = {
-      tuxedo-control-center = {
-        enable = true;
-        package = inputs.tuxedo-nixos.packages.x86_64-linux.default;
-      };
-    tuxedo-drivers.enable = true;
-    };
-  
     # Enable touchpad support (enabled default in most desktopManager).
     # services.libinput.enable = true;
   
@@ -228,7 +198,6 @@
       #(pkgs.btop.override { rocmSupport = true; cudaSupport = true; })
       pkgs.kdePackages.dolphin
       pkgs.wireguard-tools
-      pkgs.uv
       pkgs.cmake
       pkgs.pinentry-curses
       pkgs.bitwarden-desktop
@@ -245,14 +214,12 @@
       pkgs.pwvucontrol
       pkgs.swayosd
       pkgs.libsForQt5.qt5ct
-      pkgs.fuzzel
       pkgs.networkmanagerapplet
       pkgs.gcc
       pkgs.git
       pkgs.alsa-utils
       pkgs.udisks
       pkgs.brightnessctl
-      pkgs.helvum
       pkgs.ueberzugpp
       pkgs.texlive.combined.scheme-full
       pkgs.vim
