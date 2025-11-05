@@ -2,7 +2,7 @@
   flake.modules.nixos.host_elysium = { lib, ... }: {
     disko.devices = {
       disk = {
-        nvme0n1 = {
+        ssd = {
           type = "disk";
           device = lib.mkDefault "/dev/disk/by-id/ata-CT480BX500SSD1_2126E5B45555";
           content = {
