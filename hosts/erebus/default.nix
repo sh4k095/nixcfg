@@ -193,9 +193,6 @@
       support32Bit = true;
     };
   };
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
 
   hardware = {
     tuxedo-control-center = {
