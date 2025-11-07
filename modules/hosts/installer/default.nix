@@ -1,10 +1,12 @@
 {
-  flake.modules.nixos.host_installer = { pkgs, ... }: {
-    #imports = [
-    #  <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
-    #  <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
-    #  ../../users/sh4k0
-    #];
+  nixosHosts.installer.unstable = true;
+
+  flake.modules.nixos.host_installer = { pkgs, modulesPath, ... }: {
+
+    imports = [
+      (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+      (modulesPath + "/installer/cd-dvd/channel.nix")
+    ];
     
     nix = {
       settings = {
@@ -13,6 +15,12 @@
           "flakes"
         ];
       };
+    };
+
+    users.users.nixos = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
+      password = "nixos";
     };
   
     security.sudo.wheelNeedsPassword = false;
@@ -32,6 +40,7 @@
   
     services.openssh = {
       enable = true;
+      passwordAuthentication = true;
     };
   };
 }
