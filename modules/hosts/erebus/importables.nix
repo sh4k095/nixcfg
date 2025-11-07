@@ -8,7 +8,7 @@
       _modules/nixos/desktop.nix
       _modules/nixos/firefox.nix
       _modules/nixos/packages/docker
-      _modules/nixos/packages/winbox
+        #_modules/nixos/packages/winbox
       _modules/nixos/packages/sway
       _modules_specific/boot.nix
       _modules_specific/nvidia.nix
@@ -54,6 +54,7 @@
       #cudaSupport = true;
       #rocmSupport = true;
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "discord-ptb"
         # CUDA
         #"cuda_cudart"
         #"cuda_cccl"

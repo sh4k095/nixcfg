@@ -12,6 +12,10 @@ in
   config = lib.mkIf cfg.enable {
     programs.zsh = {
       enable = true;
+      history = {
+        size = 1000000000;
+        ignoreDups = true;
+      };
       shellAliases = shell_aliases.aliases;
       initContent = shell_functions.functions;
       oh-my-zsh = {

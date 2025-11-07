@@ -5,8 +5,9 @@
     android
     audio
     bluetooth
+    discord
     steam
     wayland
-    #winbox
+    winbox
   ];
 }

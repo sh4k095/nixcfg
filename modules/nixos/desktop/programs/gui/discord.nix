@@ -1,6 +1,6 @@
 {
-  flake.modules.nixos.desktop = {
-    environment.systemPackages = [
+  flake.modules.nixos.discord = { pkgs, ... }: {
+    environment.systemPackages = with pkgs; [
       discord-ptb
     ];
   };

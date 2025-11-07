@@ -1,103 +1,145 @@
+{ config, ... }:
+
+let
+  diskMain = "/dev/disk/by-id/ata-CT480BX500SSD1_2126E5B45555";
+in
 {
-  flake.modules.nixos.host_elysium = { lib, ... }: {
-    disko.devices = {
-      disk = {
-        ssd = {
-          type = "disk";
-          device = lib.mkDefault "/dev/disk/by-id/ata-CT480BX500SSD1_2126E5B45555";
-          content = {
-            type = "gpt";
-            partitions = {
-              ESP = {
-                label = "boot";
-                name = "ESP";
-                size = "512M";
-                type = "EF00";
-                content = {
-                  type = "filesystem";
-                  format = "vfat";
-                  mountpoint = "/boot";
-                  mountOptions = [
-                    "defaults"
-                  ];
-                };
+  disko.devices = {
+    disk = {
+      main = {
+        type = "disk";
+        device = "${diskMain}";
+        content = {
+          type = "gpt";
+          partitions = {
+            efi = {
+              size = "1G";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot/efis/${diskMain}-part2";
               };
-              luks = {
-                size = "100%";
-                label = "luks";
-                content = {
-                  type = "luks";
-                  name = "cryptroot";
-                  extraOpenArgs = [
-                    "--allow-discards"
-                    "--perf-no_read_workqueue"
-                    "--perf-no_write_workqueue"
-                  ];
-                  # https://0pointer.net/blog/unlocking-luks2-volumes-with-tpm2-fido2-pkcs11-security-hardware-on-systemd-248.html
-                  settings = {
-                    crypttabExtraOpts = [
-                      "fido2-device=auto"
-                      "token-timeout=10"
-                    ];
-                  };
-                  content = {
-                    type = "btrfs";
-                    extraArgs = [
-                      "-L"
-                      "nixos"
-                      "-f"
-                    ];
-                    subvolumes = {
-                      "/root" = {
-                        mountpoint = "/";
-                        mountOptions = [
-                          "subvol=root"
-                          "compress=zstd"
-                          "noatime"
-                        ];
-                      };
-                      "/home" = {
-                        mountpoint = "/home";
-                        mountOptions = [
-                          "subvol=home"
-                          "compress=zstd"
-                          "noatime"
-                        ];
-                      };
-                      "/nix" = {
-                        mountpoint = "/nix";
-                        mountOptions = [
-                          "subvol=nix"
-                          "compress=zstd"
-                          "noatime"
-                        ];
-                      };
-                      "/persist" = {
-                        mountpoint = "/persist";
-                        mountOptions = [
-                          "subvol=persist"
-                          "compress=zstd"
-                          "noatime"
-                        ];
-                      };
-                      "/log" = {
-                        mountpoint = "/var/log";
-                        mountOptions = [
-                          "subvol=log"
-                          "compress=zstd"
-                          "noatime"
-                        ];
-                      };
-                    };
-                  };
-                };
+            };
+            bpool = {
+              size = "4G";
+              content = {
+                type = "zfs";
+                pool = "bpool";
               };
+            };
+            rpool = {
+              end = "-1M";
+              content = {
+                type = "zfs";
+                pool = "rpool";
+              };
+            };
+            bios = {
+              size = "100%";
+              type = "EF02";
             };
           };
         };
       };
     };
-    fileSystems."/persist".neededForBoot = true;
-    fileSystems."/var/log".neededForBoot = true;
+    zpool = {
+      bpool = {
+        type = "zpool";
+        options = {
+          ashift = "12";
+          autotrim = "on";
+          compatibility = "grub2";
+        };
+        rootFsOptions = {
+          acltype = "posixacl";
+          canmount = "off";
+          compression = "lz4";
+          devices = "off";
+          normalization = "formD";
+          relatime = "on";
+          xattr = "sa";
+          "com.sun:auto-snapshot" = "false";
+        };
+        mountpoint = "/boot";
+        datasets = {
+          nixos = {
+            type = "zfs_fs";
+            options.mountpoint = "none";
+          };
+          "nixos/root" = {
+            type = "zfs_fs";
+            options.mountpoint = "legacy";
+            mountpoint = "/boot";
+          };
+        };
+      };
+
+      rpool = {
+        type = "zpool";
+        options = {
+          ashift = "12";
+          autotrim = "on";
+        };
+        rootFsOptions = {
+          acltype = "posixacl";
+          canmount = "off";
+          compression = "zstd";
+          dnodesize = "auto";
+          normalization = "formD";
+          relatime = "on";
+          xattr = "sa";
+          "com.sun:auto-snapshot" = "false";
+        };
+        mountpoint = "/";
+
+        datasets = {
+          nixos = {
+            type = "zfs_fs";
+            options.mountpoint = "none";
+          };
+          "nixos/var" = {
+            type = "zfs_fs";
+            options.mountpoint = "none";
+          };
+          "nixos/empty" = {
+            type = "zfs_fs";
+            options.mountpoint = "legacy";
+            mountpoint = "/";
+            postCreateHook = "zfs snapshot rpool/nixos/empty@start";
+          };
+          "nixos/home" = {
+            type = "zfs_fs";
+            options.mountpoint = "legacy";
+            mountpoint = "/home";
+          };
+          "nixos/var/log" = {
+            type = "zfs_fs";
+            options.mountpoint = "legacy";
+            mountpoint = "/var/log";
+          };
+          "nixos/var/lib" = {
+            type = "zfs_fs";
+            options.mountpoint = "legacy";
+            mountpoint = "/var/lib";
+          };
+          "nixos/config" = {
+            type = "zfs_fs";
+            options.mountpoint = "legacy";
+            mountpoint = "/etc/nixos";
+          };
+          "nixos/persist" = {
+            type = "zfs_fs";
+            options.mountpoint = "legacy";
+            mountpoint = "/persist";
+          };
+          "nixos/nix" = {
+            type = "zfs_fs";
+            options.mountpoint = "legacy";
+            mountpoint = "/nix";
+          };
+        };
+      };
+    };
   };
 }
