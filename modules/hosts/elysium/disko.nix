@@ -25,11 +25,18 @@
                   mountOptions = [ "umask=0077" ];
                 };
               };
-              rpool = {
+              luks = {
                 size = "100%";
                 content = {
-                  type = "zfs";
-                  pool = "rpool";
+                  type = "luks";
+                  name = "cryptroot";
+                  settings = {
+                    allowDiscards = true;
+                  };
+                  content = {
+                    type = "zfs";
+                    pool = "rpool";
+                  };
                 };
               };
             };
