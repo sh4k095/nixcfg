@@ -17,10 +17,15 @@
       };
     };
 
-    users.users.nixos = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" ];
-      password = "nixos";
+    users.users = {
+      nixos = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+        password = "nixos";
+      };
+      root = {
+        password = "nixos";
+      };
     };
   
     security.sudo.wheelNeedsPassword = false;
