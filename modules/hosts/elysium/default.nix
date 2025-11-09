@@ -7,5 +7,6 @@
     imports = with config.flake.modules.nixos; [
       core
     ];
+    networking.hostId = "bb5e3b6a";
   };
 }
