@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.host_erebus = { inputs, ... }: {
+  flake.modules.nixos.host_erebus = { inputs, config, ... }: {
 
     imports = [ inputs.sops-nix.nixosModules.sops ];
    
@@ -12,5 +12,7 @@
         "passwords/sh4k0" = { neededForUsers = true; }; 
       };
     };
+
+    users.users.sh4k0.hashedPasswordFile = config.sops.secrets."passwords/sh4k0".path;
   };
 }
