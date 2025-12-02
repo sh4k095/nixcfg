@@ -5,5 +5,7 @@
     inputs.disko.nixosModules.disko
     bootloader
     nix
+    packages
+    users
   ];
 }

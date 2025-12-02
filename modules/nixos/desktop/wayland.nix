@@ -40,5 +40,6 @@
       libinput.enable = true;
       #xserver.xkb.layout = "us";
     };
+    environment.systemPackages = [ inputs.noctalia.packages."x86_64-linux".default ];
   };
 }

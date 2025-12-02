@@ -8,13 +8,10 @@
       _modules/nixos/desktop.nix
       _modules/nixos/firefox.nix
       _modules/nixos/packages/docker
-        #_modules/nixos/packages/winbox
       _modules/nixos/packages/sway
       _modules_specific/boot.nix
-      _modules_specific/nvidia.nix
       _users/sh4k0
       inputs.sops-nix.nixosModules.sops
-      inputs.home-manager.nixosModules.home-manager
     ];
     
     sway = {
@@ -23,10 +20,7 @@
       withXWayland = false;
     };
 
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
     home-manager.users.sh4k0 = ./_modules_specific/home.nix;
-    home-manager.extraSpecialArgs = { inherit inputs outputs; };
   
     nix = {
       settings = {
@@ -76,56 +70,6 @@
         "winbox4"
       ];
     };
-  
-    nixpkgs.overlays = [
-      (final: prev: {
-        winbox4 = prev.winbox4.overrideAttrs (oldAttrs: {
-          postInstall = (oldAttrs.postInstall or "") + ''
-            wrapProgram $out/bin/WinBox --set QT_QPA_PLATFORM xcb
-          '';
-        });
-      #  (final: prev: {maestral = prev.maestral.overrideAttrs rec {
-      #    version = "1.9.5";
-      #    src = final.fetchFromGitHub {
-      #      owner = "SamSchott";
-      #      repo = "maestral";
-      #      tag = "v${version}";
-      #      hash = "sha256-xFSnJPKTAPXYa4FuqkFF5gLzGZ9TltNVDhyBnswiut4=";
-      #    };
-      #    dependencies = with pkgs.python313Packages; [
-      #      click
-      #      desktop-notifier
-      #      dbus-python
-      #      dropbox
-      #      fasteners
-      #      keyring
-      #      keyrings-alt
-      #      packaging
-      #    ];
-      #  };
-      #  })#  
-      #  (final: prev: {maestral-qt = prev.maestral-qt.overrideAttrs rec {
-      #    version = "1.9.5";
-      #    src = final.fetchFromGitHub {
-      #      owner = "SamSchott";
-      #      repo = "maestral-qt";
-      #      tag = "v${version}";
-      #      hash = "sha256-FCn9ELbodk+zCJNmlOVoxE/KSSqbxy5HTB1vpiu7AJA=";
-      #    };
-      #  };
-      })#  
-    ];
-  
-  #  nixpkgs.overlays = [(final: prev: { ovito = prev.ovito.overrideAttrs  rec {
-  #  version = "3.12.2";
-  #  src = final.fetchFromGitLab {
-  #    owner = "stuko";
-  #    repo = "ovito";
-  #    rev = "v${version}";
-  #    hash = "sha256-qpKQAO2f1TfspqjbCLA/3ERWdMeknKe0a54yd9PZbsA=";
-  #    fetchSubmodules = true;
-  #  };
-  #}; })];
   
     networking.hostName = "erebus";
     networking.networkmanager = {
