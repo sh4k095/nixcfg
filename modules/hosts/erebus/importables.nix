@@ -70,6 +70,49 @@
         "winbox4"
       ];
     };
+
+
+  nixpkgs.overlays = [
+    (final: prev: {xmage = prev.xmage.overrideAttrs rec {
+      panme = "xmage";
+      version = "1.4.58-dev_2025-10-06_20-40";
+      src = final.fetchurl {
+        url = "http://xmage.today/files/mage-full_${version}.zip";
+        sha256 = "sha256-UOtxV+ykDIH+PLjLrC66Rut92IIw2iDHWwvJ2ytmUAs=";
+      };
+    };
+
+    #  (final: prev: {maestral = prev.maestral.overrideAttrs rec {
+    #    version = "1.9.5";
+    #    src = final.fetchFromGitHub {
+    #      owner = "SamSchott";
+    #      repo = "maestral";
+    #      tag = "v${version}";
+    #      hash = "sha256-xFSnJPKTAPXYa4FuqkFF5gLzGZ9TltNVDhyBnswiut4=";
+    #    };
+    #    dependencies = with pkgs.python313Packages; [
+    #      click
+    #      desktop-notifier
+    #      dbus-python
+    #      dropbox
+    #      fasteners
+    #      keyring
+    #      keyrings-alt
+    #      packaging
+    #    ];
+    #  };
+    #  })#  
+    #  (final: prev: {maestral-qt = prev.maestral-qt.overrideAttrs rec {
+    #    version = "1.9.5";
+    #    src = final.fetchFromGitHub {
+    #      owner = "SamSchott";
+    #      repo = "maestral-qt";
+    #      tag = "v${version}";
+    #      hash = "sha256-FCn9ELbodk+zCJNmlOVoxE/KSSqbxy5HTB1vpiu7AJA=";
+    #    };
+    #  };
+    })#  
+  ];
   
     networking.hostName = "erebus";
     networking.networkmanager = {
