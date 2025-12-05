@@ -9,6 +9,7 @@
     discord
     home-manager
     steam
+    sway
     wayland
     winbox
   ];

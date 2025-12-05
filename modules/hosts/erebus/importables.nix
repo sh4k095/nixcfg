@@ -5,7 +5,6 @@
 
   {
     imports = [
-      _modules/nixos/desktop.nix
       _modules/nixos/firefox.nix
       _modules/nixos/packages/docker
       _modules/nixos/packages/sway
