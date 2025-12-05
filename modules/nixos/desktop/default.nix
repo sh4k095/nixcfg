@@ -7,6 +7,7 @@
     audio
     bluetooth
     discord
+    firefox
     home-manager
     steam
     sway
