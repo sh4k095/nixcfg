@@ -31,7 +31,8 @@
             "-X github.com/gcstr/dockform/internal/cli.version=${version}"
           ];
         };
-      in [
+      in with pkgs; [
+        docker-client
         dockform
       ];
     
