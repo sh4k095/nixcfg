@@ -3,7 +3,6 @@
     programs.firefox = {
       enable = true;
       preferencesStatus = "locked";
-  
       policies = {
         AppAutoUpdate = false;
         AutofillCreditCardEnabled = false;
@@ -145,6 +144,8 @@
         };
         SkipTermsOfUse = true;
         ExtensionSettings = {
+          # To find the add-on id of an extension, simply visit about:memory,
+          # go to "Measure" and scroll down to the list of running extensions.
           "uBlock0@raymondhill.net" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
             installation_mode = "force_installed";
@@ -178,13 +179,31 @@
           "extension@tabliss.io" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/file/3940751/tabliss-2.6.0.xpi";
             installation_mode = "force_installed";
-            private_browsing = false;
+            private_browsing = true;
             updates_disabled = true;
           };
           "wayback_machine@mozilla.org" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4047136/wayback_machine_new-3.2.xpi";
             installation_mode = "force_installed";
             private_browsing = true;
+            updates_disabled = true;
+          };
+          "vimium-c@gdh1995.cn" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/4474326/vimium_c-2.12.3.xpi";
+            installation_mode = "force_installed";
+            private_browsing = true;
+            updates_disabled = true;
+          };
+          "idcac-pub@guus.ninja" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/4613590/istilldontcareaboutcookies-1.1.8.xpi";
+            installation_mode = "force_installed";
+            private_browsing = false;
+            updates_disabled = true;
+          };
+          "zotero@chnm.gmu.edu" = {
+            install_url = "https://www.zotero.org/download/connector/dl?browser=firefox&version=5.0.193";
+            installation_mode = "force_installed";
+            private_browsing = false;
             updates_disabled = true;
           };
         };
