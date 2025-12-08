@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.qbittorrent = { pkgs, ... }: {
-    environemnt.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       qbittorrent-enhanced
     ];
   };

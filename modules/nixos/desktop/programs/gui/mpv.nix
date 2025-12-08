@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.mpv = { pkgs, ... }: {
-    environemnt.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs; [
       mpv
     ];
   };
