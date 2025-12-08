@@ -17,12 +17,12 @@
       let
         dockform = with pkgs; buildGoModule rec {
           pname = "dockform";
-          version = "0.6.0";
+          version = "0.7.0";
           src = fetchFromGitHub {
             owner = "gcstr";
             repo = pname;
             rev = "v${version}";
-            hash = "sha256-p3dMRI/7KisJv31rXLPs7dtEk/U+rlWaFMJAcDy0ufk=";
+            hash = "sha256-xZCFsLZv9JHh86pKdiSTL5lDpAOdsTazgmsw/zVkjWk=";
           };
           vendorHash = "sha256-gihQfXmVJSTArV+YOlYKEFOvNmCd75SLsK8pIo+FKvs=";
           subPackages = "cmd/dockform";
