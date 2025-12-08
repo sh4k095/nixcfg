@@ -9,6 +9,8 @@
     discord
     firefox
     home-manager
+    mpv
+    qbittorrent
     steam
     sway
     wayland

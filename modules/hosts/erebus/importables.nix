@@ -173,6 +173,10 @@
     #    tree
     #  ];
     #};
+      #services.qbittorrent = {
+      #  enable = true;
+      #  package = pkgs.qbittorrent-enhanced;
+      #};
   
     # programs.firefox.enable = true;
   
