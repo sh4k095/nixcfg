@@ -12,6 +12,8 @@
       _users/sh4k0
       inputs.sops-nix.nixosModules.sops
     ];
+
+    boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
     
     sway = {
       enable = true;
