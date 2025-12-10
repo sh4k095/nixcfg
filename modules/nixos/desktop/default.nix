@@ -7,7 +7,7 @@
     audio
     bluetooth
     discord
-    firefox
+    #firefox
     home-manager
     mpv
     qbittorrent

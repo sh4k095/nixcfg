@@ -1,12 +1,7 @@
-{
-  flake.modules.homeManager.core = { inputs, config, ... }: {
-    imports = [
-      inputs.home-manager.nixosModules.home-manager
-      (
-        with config.flake.modules.homeManager; [
-          firefox
-        ]
-      )
+{ config, ... }: {
+  flake.modules.homeManager.core = {
+    imports = with config.flake.modules.homeManager; [
+      firefox
     ];
     #home-manager.users.sh4k0 = {
     #  xdg.mimeApps = {
