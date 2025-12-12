@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.firefox = { pkgs, ...}: {
+  flake.modules.homeManager.firefox = {
     programs.firefox = {
       enable = true;
       #preferencesStatus = "locked";
