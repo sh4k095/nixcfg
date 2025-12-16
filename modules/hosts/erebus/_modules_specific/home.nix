@@ -21,7 +21,7 @@ in
     ../_modules/home-manager/fuzzel
     #../../../modules/home-manager/theme.nix
     ../_modules/home-manager/theme
-    ../_modules/home-manager/sway
+    #../_modules/home-manager/sway
     ../_modules/home-manager/swaync
     ../_modules/home-manager/nvim
     ../_modules/home-manager/i3status-rust

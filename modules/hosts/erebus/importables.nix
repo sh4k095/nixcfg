@@ -15,11 +15,11 @@
 
     boot.kernel.sysctl."fs.inotify.max_user_watches" = 1048576;
     
-    sway = {
-      enable = true;
-      withNvidiaGPU = true;
-      withXWayland = false;
-    };
+      #sway = {
+      #  enable = true;
+      #  withNvidiaGPU = true;
+      #  withXWayland = false;
+      #};
 
     home-manager.users.sh4k0 = ./_modules_specific/home.nix;
   
