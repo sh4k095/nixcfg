@@ -76,7 +76,7 @@
             };
             statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
             position = "top";
-            trayOutput = "none";
+            #trayOutput = "none";
             fonts = {
               names = [ "JetBrainsMonoNLNerdFontMono" ];
               style = "Regular";
