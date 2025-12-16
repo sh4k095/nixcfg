@@ -6,6 +6,7 @@
     bootloader
     nix
     packages
+    services
     users
   ];
 }
