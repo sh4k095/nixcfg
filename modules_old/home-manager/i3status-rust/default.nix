@@ -1,4 +1,9 @@
 {
+
+ services = {
+   blueman-applet.enable = true;
+   network-manager-applet.enable = true;
+ };
   programs.i3status-rust = {
     enable = true;
     bars = {
