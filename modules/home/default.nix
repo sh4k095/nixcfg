@@ -3,6 +3,7 @@
     imports = with config.flake.modules.homeManager; [
       firefox
       sway
+      waybar
       xdg
     ];
   };
