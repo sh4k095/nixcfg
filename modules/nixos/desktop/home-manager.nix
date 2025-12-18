@@ -19,7 +19,7 @@ topLevel@{ inputs, ... }: {
         extraSpecialArgs = {
           inputs = inputs;
           configName = "nixos_${hostName}";
-          #nhSwitchCommand = "nh os switch";
+          nhSwitchCommand = "nh os switch";
         };
       };
     };

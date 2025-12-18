@@ -14,7 +14,7 @@ in
     ../_modules/home-manager/btop
     ../_modules/home-manager/helix
     ../_modules/home-manager/zsh
-    #../../../modules/home-manager/bat
+    ../_modules/home-manager/bat
     ../_modules/home-manager/mittelab
     ../_modules/home-manager/swaylock
     ../_modules/home-manager/git
@@ -37,11 +37,11 @@ in
   zathura.enable = true;
   zellij.enable = true;
 
-  nix.gc = {
-    automatic = true;
-    options = "--delete-older-than 7d";
-    persistent = true;
-  };
+    #nix.gc = {
+    #  automatic = true;
+    #  options = "--delete-older-than 7d";
+    #  persistent = true;
+    #};
 
   programs.gpg.enable = true;
 

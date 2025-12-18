@@ -245,9 +245,6 @@
       tray = {
         icon-size = 21;
         spacing = 4;
-        icons = {
-          "TelegramDesktop" = "";
-        };
       };
     };
   };
