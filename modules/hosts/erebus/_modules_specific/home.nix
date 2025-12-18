@@ -75,6 +75,11 @@ in
     bc
     ripgrep
     fastfetch
+    difftastic
+    fd
+    file
+    tcpdump
+    whois
     devenv
     wl-mirror
     kdePackages.dolphin
