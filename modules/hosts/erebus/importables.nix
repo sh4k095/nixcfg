@@ -9,7 +9,7 @@
         #_modules/nixos/packages/docker
       _modules/nixos/packages/sway
       _modules_specific/boot.nix
-      _users/sh4k0
+        #_users/sh4k0
       inputs.sops-nix.nixosModules.sops
     ];
 
@@ -23,24 +23,21 @@
 
     home-manager.users.sh4k0 = ./_modules_specific/home.nix;
   
-    nix = {
-      settings = {
-        experimental-features = [
-          "nix-command"
-          "flakes"
-        ];
-        auto-optimise-store = true;
-        trusted-users = [
-          "sh4k0"
-          "root"
-        ];
-      };
-      gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
-      };
-    };
+      #nix = {
+      #  settings = {
+      #    experimental-features = "nix-command flakes";
+      #    auto-optimise-store = true;
+      #    trusted-users = [
+      #      "sh4k0"
+      #      "root"
+      #    ];
+      #  };
+      #    gc = {
+      #      automatic = true;
+      #      dates = "weekly";
+      #      options = "--delete-older-than 7d";
+      #    };
+      #};
     programs.thunderbird.enable = true;
     programs.zsh.enable = true;
   
@@ -115,23 +112,23 @@
     })#  
   ];
   
-    networking.hostName = "erebus";
-    networking.networkmanager = {
-      enable = true;
-      plugins = [
-        pkgs.networkmanager-openconnect
-      ];
-    };
-    services.tailscale = { 
-      enable = true;
-      extraSetFlags = [
-        "--accept-routes"
-      ];
-    };
-    services.mullvad-vpn = {
-      enable = true;
-      package = pkgs.mullvad-vpn;
-    };
+      #    networking.hostName = "erebus";
+      #    networking.networkmanager = {
+      #      enable = true;
+      #      plugins = [
+      #        pkgs.networkmanager-openconnect
+      #      ];
+      #    };
+      #    services.tailscale = { 
+      #      enable = true;
+      #      extraSetFlags = [
+      #        "--accept-routes"
+      #      ];
+      #    };
+      #    services.mullvad-vpn = {
+      #      enable = true;
+      #      package = pkgs.mullvad-vpn;
+      #    };
     programs.niri.enable = true;
     services.greetd = let
       sway-igpu = pkgs.writeShellScriptBin "sway-igpu" ''
