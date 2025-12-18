@@ -50,7 +50,7 @@ in
           { name, ... }:
           {
             modules = [
-              #config.flake.modules.nixos.core
+              config.flake.modules.nixos.core
               { networking.hostName = name; }
               (config.flake.modules.nixos."host_${name}" or { })
             ];
