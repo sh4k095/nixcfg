@@ -121,17 +121,17 @@ in
   };
   qt.enable = true;
   #gtk.theme.name = "arc-dark";
-  home.file = {
-    #".config/alacritty" = {
-    #  source = dotfiles/alacritty;
-    #  recursive = true;
-    #  };
-    #".config/fuzzel" = {
-    #  source = dotfiles/fuzzel;
-    #  recursive = true;
+    #home.file = {
+    #  #".config/alacritty" = {
+    #  #  source = dotfiles/alacritty;
+    #  #  recursive = true;
+    #  #  };
+    #  #".config/fuzzel" = {
+    #  #  source = dotfiles/fuzzel;
+    #  #  recursive = true;
+    #  #};
+    #  ".config/sway/wp.png".source = ../_modules/home-manager/sway/modules/wp.png;
     #};
-    ".config/sway/wp.png".source = ../_modules/home-manager/sway/modules/wp.png;
-  };
 
   sops = {
     age.sshKeyPaths = [ "/home/sh4k0/.ssh/erebus_ed25519" ];

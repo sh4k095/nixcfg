@@ -1,5 +1,11 @@
 { 
   flake.modules.homeManager.sway = { pkgs, lib, config, ... }: {
+    home.file = {
+      ".config/sway/wp.png" = {
+        source = ./wp.png;
+        recursive = true;
+      };
+    };
     wayland.windowManager.sway = {
       checkConfig = false;
       enable = true;
@@ -36,21 +42,21 @@
           };
         };
         output = {
-          "eDP-1" = {
-            resolution = "2560x1600";
-            #bg = "~/.config/sway/wp.png fill";
-            scale = "1";
-            position = "3440 0";
-          };
+          #"eDP-1" = {
+          #  resolution = "2560x1600";
+          #  bg = "~/.config/sway/wp.png fill";
+          #  scale = "1";
+          #  position = "3440 0";
+          #};
           "eDP-2" = {
             resolution = "2560x1600";
-            #bg = "~/.config/sway/wp.png fill";
+            bg = "~/.config/sway/wp.png fill";
             scale = "1";
             position = "3440 0";
           };
           "HDMI-A-1" = {
             resolution = "3440x1440";
-            #bg = "~/.config/sway/wp.png fill";
+            bg = "~/.config/sway/wp.png fill";
             scale = "1";
             position = "0 0";
           };
@@ -60,36 +66,6 @@
             command = lib.getExe config.programs.waybar.package; 
           }
         ];
-        #bars = [
-        #  {
-        #    colors = {
-        #      focusedWorkspace = {
-        #        background = "#d65d0e";
-        #        border = "#d65d0e";
-        #        text = "#282828";
-        #      };
-        #      inactiveWorkspace = {
-        #        background = "#282828";
-        #        border = "#282828";
-        #        text = "#ebdbb2";
-        #      };
-        #      urgentWorkspace = {
-        #        background = "#458588";
-        #        border = "#458588";
-        #        text = "#282828";
-        #      };
-        #    };
-        #    statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
-        #    position = "top";
-        #    #trayOutput = "none";
-        #    fonts = {
-        #      names = [ "JetBrainsMonoNLNerdFontMono" ];
-        #      style = "Regular";
-        #      size = 11.0;
-        #    };
-        #  #  workspaceButtons = false;
-        #  }
-        #];
       };
     };
   };
