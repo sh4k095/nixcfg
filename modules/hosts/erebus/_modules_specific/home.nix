@@ -8,12 +8,12 @@ in
   imports = [
     ../_modules/home-manager/alacritty
     ../_modules/home-manager/direnv
-    ../_modules/home-manager/starship
+    #../_modules/home-manager/starship
     ../_modules/home-manager/colorscheme
     ../_modules/home-manager/colorscheme/schemes/gruvbox-dark.nix
     ../_modules/home-manager/btop
     ../_modules/home-manager/helix
-    ../_modules/home-manager/zsh
+    # ../_modules/home-manager/zsh
     ../_modules/home-manager/bat
     ../_modules/home-manager/mittelab
     ../_modules/home-manager/swaylock
@@ -32,7 +32,7 @@ in
     inputs.sops-nix.homeManagerModules.sops
   ];
 
-  zsh.enable = true;
+  #zsh.enable = true;
   #bat.enable = true;
   zathura.enable = true;
   zellij.enable = true;
