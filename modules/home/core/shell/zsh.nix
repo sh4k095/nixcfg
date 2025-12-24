@@ -23,7 +23,7 @@
       };
       autosuggestion.enable = true;
       history = {
-        expireDuplicateFirst = true;
+        expireDuplicatesFirst = true;
         extended = true;
         findNoDups = true;
         ignoreAllDups = true;
