@@ -7,6 +7,7 @@
     audio
     bluetooth
     discord
+    eduroam
     #firefox
     home-manager
     mpv

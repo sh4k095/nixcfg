@@ -235,10 +235,10 @@
     "nixcfg-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1766574950,
-        "narHash": "sha256-EMeVqfBqGWYjbINGoDGZhgk4juFFELkyE2LxbARwV1Q=",
+        "lastModified": 1766575263,
+        "narHash": "sha256-hmF6KQ41rnhtLPv8+KrzIRSZFELLqUiiULmPydgwYKw=",
         "ref": "main",
-        "rev": "bc1eb0c43b7f87f13678f9005103537a05ed9b92",
+        "rev": "8d414882a2020710aa80065f1346e3fa93ebf496",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/sh4k095/nixcfg-secrets"
